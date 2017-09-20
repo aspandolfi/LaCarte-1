@@ -23,7 +23,9 @@ export class LoginPage {
 			alert("teste");
 		}
 	}
-
+	soontm(){
+		alert("Essa opção estará disponível em breve!");
+	}
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
