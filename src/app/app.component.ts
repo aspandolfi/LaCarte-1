@@ -7,7 +7,6 @@ import { CadastPage } from '../pages/cadast/cadast';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { LoginPage } from '../pages/login/login';
 import { CardapioPage } from '../pages/cardapio/cardapio';
-import { Cardapio2Page } from '../pages/cardapio2/cardapio2';
 
 @Component({
   templateUrl: 'app.html'

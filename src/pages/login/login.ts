@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+//apenas rest sem provider mas da pau?
+import { RestProvider } from '../../providers/rest/rest';
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -14,15 +17,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+	usuarios: string[];
+	errorMessage: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider) {
   }
 
-	mudarPagina(pgnum: number){
-		if(pgnum==1){
-			alert("teste");
-		}
-	}
 	soontm(){
 		alert("Essa opção estará disponível em breve!");
 	}
