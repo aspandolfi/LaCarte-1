@@ -38,19 +38,6 @@ export class PerfilPage {
 	}
 
   ionViewDidLoad() {
-		/*
-		console.log('ionViewDidLoad PerfilPage');
-		this.printHello("Olá, " + this.obj_usuario.nome + "!");
-		this.UsuarioProvider.getUserData().subscribe(
-			data=>{
-				const response = (data as any);
-				const obj_retorno = JSON.parse(response._body);
-				this.lista_usuarios = obj_retorno.results;
-				console.log(obj_retorno);
-			}, error=>{
-				console.log(error);
-			}
-		)*/
   }
 
 }
