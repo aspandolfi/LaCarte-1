@@ -14,6 +14,7 @@ import { Cardapio2PageModule } from '../pages/cardapio2/cardapio2.module';
 import { LoginPageModule } from '../pages/login/login.module';
 import { HttpModule } from "@angular/http";
 import { UsuarioProvider } from '../providers/usuario/usuario';
+import { RestProvider } from '../providers/rest/rest';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { UsuarioProvider } from '../providers/usuario/usuario';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UsuarioProvider
+    UsuarioProvider,
+    RestProvider
   ]
 })
 export class AppModule {}
