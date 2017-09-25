@@ -1,3 +1,22 @@
 page-cardapio2 {
-
+    #imgcomida {
+        width: 125px;
+        height: 75px;
+        resize: both;
+        overflow: auto;
+        margin: auto;
+        border: 2px;
+        float:left;
+        background-color: grey;
+        left: -20px;
+    }
+    #caixinha{
+        width: 250px;
+        height: 75px;
+    }
+    hr {
+        background-color: grey;
+        height: 1px;
+        border: 0;
+    }
 }

@@ -1,3 +1,4 @@
+//
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -12,8 +13,8 @@ import { PerfilPageModule } from '../pages/perfil/perfil.module';
 import { CardapioPageModule } from '../pages/cardapio/cardapio.module';
 import { Cardapio2PageModule } from '../pages/cardapio2/cardapio2.module';
 import { LoginPageModule } from '../pages/login/login.module';
-import { HttpModule } from "@angular/http";
-import { UsuarioProvider } from '../providers/usuario/usuario';
+import { RestProvider } from '../providers/rest/rest';
+//import { HttpModule } from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -21,15 +22,17 @@ import { UsuarioProvider } from '../providers/usuario/usuario';
 		//HomePage
   ],
   imports: [
-    BrowserModule,
-    IonicModule.forRoot(MyApp),
-    CadastPageModule,
-		PerfilPageModule,
-		LoginPageModule,
-		CardapioPageModule,
-		Cardapio2PageModule,
-		HttpModule
+    BrowserModule,  
+    IonicModule.forRoot(MyApp, {
+      preloadModules: true,
+      CadastPageModule,
+      PerfilPageModule,
+      LoginPageModule,
+      CardapioPageModule,
+      Cardapio2PageModule,
+    })
   ],
+
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
@@ -39,7 +42,7 @@ import { UsuarioProvider } from '../providers/usuario/usuario';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UsuarioProvider
+    RestProvider
   ]
 })
 export class AppModule {}

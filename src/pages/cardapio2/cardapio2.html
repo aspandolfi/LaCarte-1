@@ -9,40 +9,13 @@
 
 
 <ion-content padding>
-	<style>
-		#imgcomida {
-			width: 125px;
-			height: 75px;
-			resize: both;
-			overflow: auto;
-			margin: auto;
-			border: 2px;
-			float:left;
-			background-color: grey;
-			left: -20px;
-		}
-		#caixinha{
-			width: 250px;
-			height: 75px;
-		}
-		hr {
-			background-color: grey;
-			height: 1px;
-			border: 0;
-		}
-	</style>
-	<!--
-	<div id="imgcomida">
-		Imagem de comida
-		(placeholder)
-	</div> <br>&nbsp;&nbsp;Comida 01<br>&nbsp;&nbsp;R$ 0,00<br><br><br>
-	-->
+	
 	<img id="imgcomida" src="http://s.glbimg.com/po/rc/media/2012/11/19/16_26_25_11_destaque_05_02_2010.jpg"> <br>&nbsp;&nbsp;Comida 01<br>&nbsp;&nbsp;R$ 0,00<br><br><br>
 	<p>Massa caseira, molho a bolonhesa, presunto, queijo mussarela, molho branco.</p><hr>
 	<p align="center">adicionais</p>
 	<div  id="tabela"><table>
 		<tr>
-			<td><ion-checkbox [(ngModel)]="a"></ion-checkbox></td>
+			<td id="teste"><ion-checkbox [(ngModel)]="a"></ion-checkbox></td>
 			<td>&nbsp;&nbsp;Bacon</td>
 			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 			<td>R$ 2,50</td>

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PerfilPage } from '../perfil/perfil';
 
-import { UsuarioProvider } from '../../providers/usuario/usuario';
 
 /**
  * Generated class for the CadastPage page.
@@ -25,7 +24,7 @@ export class CadastPage {
 		senha: '',
 	};
 	
-  constructor(public navCtrl: NavController, public navParams: NavParams, public usuarioProvider: UsuarioProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, ) {
   }
 
 	/*

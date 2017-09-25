@@ -8,32 +8,27 @@
 </ion-header>
 
 
-<ion-content padding>
-	<style>
-	#logo {
-			width: 75px;
-			height: auto;
-			resize: both;
-			overflow: auto;
-			margin: auto;
-		}
-	</style>
-	<h1 align="center">La Carte</h1>
+<ion-content id="logo2" padding>
+	
+	<h1 align="center" id="titulo">La Carte</h1>
 	<div id="logo">
 		<img src="https://i.imgur.com/stxDP4K.png" />
 	</div>
 	<ion-item>
-		<ion-label floating>Nome</ion-label>
-		<ion-input type="text"></ion-input>
+		<ion-input placeholder="Nome" type="text"></ion-input>
 	</ion-item>
+	<div>
+		<br>
+	</div>	
 	<ion-item>
-			<ion-label floating>Senha</ion-label>
-			<ion-input type="password"></ion-input>
+			
+			<ion-input placeholder="Senha" type="password"></ion-input>
 	</ion-item>
+	<br>
 	<div align="center">
 		<button ion-button color="light">Entrar</button><br>
 		<button ion-button>Entrar com Facebook</button><br>
-		<button ion-button color="danger">Entrar com o Google</button><br>
+		<button ion-button color="danger">Entrar com o Google+</button><br>
 		<br>----------------------------- OU ------------------------------<br>
 		<button ion-button (click)="mudarPagina(1)" color="light">Cadastre-se Aqui</button>
 	</div>
