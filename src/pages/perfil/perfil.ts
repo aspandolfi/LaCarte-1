@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { RestProvider } from './../../providers/rest/rest';
 //import { UsuarioProvider } from '../../providers/usuario/usuario';
-
-/**
- * Generated class for the PerfilPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -16,21 +10,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 	//providers:[ UsuarioProvider ]
 })
 
-
-
 export class PerfilPage {
-	public obj_usuario = {
-		nome: "Jose Ninguem",
-		cpf: "00000000000",
-		telefone: 999999999,
-		email: "zeninguem@gmail.com"
-}	;
-  constructor(
-		public navCtrl: NavController,
-		public navParams: NavParams,
-		//private UsuarioProvider: UsuarioProvider
-	) {
-  }
+	usuarios = {};
+	constructor(public navCtrl: NavController, private rest: RestProvider) {
+		this.rest.getUsers().subscribe((data)=> {
+			this.usuarios = data;
+		})
+	}
 
 	public lista_usuarios = new Array<any>();
 	public printHello(txt:string){

@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 //import { HomePage } from '../pages/home/home';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -29,6 +30,7 @@ import { RestProvider } from '../providers/rest/rest';
 		LoginPageModule,
 		CardapioPageModule,
 		Cardapio2PageModule,
+		HttpClientModule,
 		HttpModule
   ],
   bootstrap: [IonicApp],

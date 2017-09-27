@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
 //apenas rest sem provider mas da pau?
 import { RestProvider } from '../../providers/rest/rest';
 

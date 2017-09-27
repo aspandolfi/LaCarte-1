@@ -16,10 +16,13 @@
 			}
 		</style>	
 
-		<p>Nome: {{ obj_usuario.nome }}</p>
-		<p>E-mail: {{ obj_usuario.email }} </p>
-		<p>Telefone: {{ obj_usuario.telefone }}</p>
-		<p>CPF: {{ obj_usuario.cpf }}</p>
-
+		<ion-list inset>
+			<ion-item *ngFor="let user of usuarios.savedUsuarios">
+				<h2>{{user.name}}</h2>
+				<h2>{{user.email}}</h2>
+				<h2>{{user.telefone}}</h2>
+				<h2>{{user.cpf}}</h2>
+			</ion-item>
+		</ion-list>
 
 </ion-content>
