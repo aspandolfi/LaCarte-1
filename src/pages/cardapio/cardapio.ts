@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Cardapio2Page } from '../cardapio2/cardapio2';
 
-/**
- * Generated class for the CardapioPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -20,6 +15,10 @@ export class CardapioPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CardapioPage');
+  }
+
+  public moveTo(){
+    this.navCtrl.push(Cardapio2Page)
   }
 
 }

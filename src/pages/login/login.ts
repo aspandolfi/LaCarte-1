@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CadastPage } from '../cadast/cadast';
 
 
 @IonicPage()
@@ -9,17 +10,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams) {
   }
-
-	mudarPagina(pgnum: number){
-		if(pgnum==1){
-			alert("teste");
-		}
-	}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+  }
+
+  public moveTo(){
+    this.navCtrl.push(CadastPage)
   }
 
 }

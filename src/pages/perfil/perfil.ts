@@ -24,10 +24,10 @@ export class PerfilPage {
 	) {
   }
 
-	public lista_usuarios = new Array<any>();
-	public printHello(txt:string){
-		alert(txt);
-	}
+	// public lista_usuarios = new Array<any>();
+	// public printHello(txt:string){
+		// alert(txt);
+	// }
 
   ionViewDidLoad() {
 		

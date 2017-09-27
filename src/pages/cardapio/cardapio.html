@@ -1,107 +1,33 @@
 <ion-header>
-	<ion-navbar no-border-bottom>
-	  <ion-title>
-		Cardapio
-	  </ion-title>
+	<ion-navbar>
+		<button ion-button menuToggle>
+				<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>cardapio</ion-title>
 	</ion-navbar>
-  
-	<ion-toolbar no-border-top>
-	  <ion-segment [(ngModel)]="cardapio">
-		<ion-segment-button value="comida">
-		  Comidas
-		</ion-segment-button>
-		<ion-segment-button value="bebidas">
-		  Bebidas
-		</ion-segment-button>
-		<ion-segment-button value="sobremesas">
-		  Sobremesas
-		</ion-segment-button>
-	  </ion-segment>
-	</ion-toolbar>
-  </ion-header>
-  
-  <ion-content>
-	<div [ngSwitch]="cardapio">
-	  <ion-list *ngSwitchCase="'comida'">
-		<ion-item>
-			<ion-thumbnail item-start>
-			<img src="http://s.glbimg.com/po/rc/media/2012/11/19/16_26_25_11_destaque_05_02_2010.jpg">
-		  </ion-thumbnail>
-		  <h2>Lasanha</h2>
-		</ion-item>
-		<ion-item>
-		  <ion-thumbnail item-start>
-			<img src="https://abrilclaudia.files.wordpress.com/2016/10/receita-macarrao-aromatico1.jpg?quality=85&strip=info&w=620">
-		  </ion-thumbnail>
-		  <h2>Macarrão</h2>
-		</ion-item>
-		<ion-item>
-		  <ion-thumbnail item-start>
-			<img src="https://previews.123rf.com/images/ryzhkov86/ryzhkov861111/ryzhkov86111100164/11417633-Deep-Fried-Calamari-Rings-with-Sauce-Bowl-Stock-Photo-squid.jpg">
-		  </ion-thumbnail>
-		  <h2>Lula Frita</h2>
-		</ion-item>
-		<ion-item>
-		  <ion-thumbnail item-start>
-			<img src="https://previews.123rf.com/images/inlovepai/inlovepai1209/inlovepai120900163/15280385-Hot-Meat-Dishes-Fried-Chicken-with-Red-Spicy-Sauce-and-Sticky-rice-Stock-Photo.jpg">
-		  </ion-thumbnail>
-		  <h2>Frango a passarinho</h2>
+</ion-header>
 
-		</ion-item>
-	  </ion-list>
-  
-	  <ion-list *ngSwitchCase="'bebidas'">
-			<ion-item>
-			  <ion-thumbnail item-start>
-				<img src="https://melhorcomsaude.com/wp-content/uploads/2013/09/beneficios-da-agua-para-o-corpo.jpg\">
-			  </ion-thumbnail>
-			  <h2>Água</h2>
-			</ion-item>
-			<ion-item>
-			  <ion-thumbnail item-start>
-				<img src="https://cdn-cosmos.bluesoft.com.br/products/7894900011517">
-			  </ion-thumbnail>
-			  <h2>Refrigerante</h2>
-			</ion-item>
-			<ion-item>
-			  <ion-thumbnail item-start>
-				<img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEhUQEQ8VEBAVFxUVEBAQEBUSEhAQFRgWFhUXFRUYHSggGBolGxYVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGi0mICUtLS0tLystLS0tLy0tLS0tLSstLy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOEA4QMBEQACEQEDEQH/xAAbAAEAAwEBAQEAAAAAAAAAAAAAAwQFAgEGB//EADoQAAIBAgMFBQYEBgIDAAAAAAABAgMRBCExBRJBUWEicYGRwQYyUqGx0RNCcvAUIzNikuGy8QdDgv/EABoBAQACAwEAAAAAAAAAAAAAAAACBAEDBQb/xAAzEQEAAgECBQIEBQQBBQAAAAAAAQIDBBEFEiExQTJREyJhgTNCcZGhI7HR8MEUFVJi8f/aAAwDAQACEQMRAD8A/cAAAAAAAAAHNSaim3ojXmy1xUm9u0dWYiZnaEOGxcZ5aS+F6+HMp6LiWHVx8k7T7T3TvitTusHQawAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB5KKeTV1yZi1YtG0wROzPxOz+MP8AG/0Z5zW8D6/E007T7f4nwtU1HiznD46UezNN9bdpd64mrS8ayYbfC1cT08+fv/lm+CLdaNGE1JXTuuaPTY8lMlYtSd4VZiYnaXRNgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ4jDRnqs+DWqKer0OHVV2yR9/MJ0yWp2Z06dSi7p5c1o/1LgeayabWcMtz4p3p/H3j/lbi1MsbT3XcNjYzyfZly4PuZ29DxfDqfln5be0/wDCvkw2r+i0dZpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGVt3ac6G5GFJVJTbV5SUYRSXFjbcVKeGrTzvTi+MI3ln0k0reRxdVwmk/PhrWJ/T/Yj9limbxZYhX3XacZ9bzb+WhUrxe2C/wAPPjmPvv8A4j9kpw80b1ldpRpyV1aS87d56DDnx5q82Od4V7Vms7S7/h4fBH/FG5h7+BH4V/igPfwY8rd2QHv4ff5v7gRVnNLsvwlK3z3WBXwO0ZzqOlOk4SS3lJNOMl4PLxt3GGGkAAAAAAAAAAAAAAAAAAAAABkbfjd0v1P/AIsCfBw8DLKzVoRkrNePFdxX1GlxaivLkjdKt5rO8MmthpUZbylk9Hp4NHlNXpc/DbxkxW6T/u0wu0vXLG0w1qMt6Kkm80et0+aM2KuSPMKNq8szDvd6s3MPd3q/MDxx/dwIpxQFPBr+f/8AD+oGqYYAAAAAAAAAAAAAAAAAAAAAZ+1ad9yyvZv6MxNojuzCTDZamn/qsW+3NDPLKx+IuZGdXijyzyyp46pGUbJ53TRxuJ63T6jBOOs9fDdhpatt5eYKuox3Zc3bueZjh3EsWHTxjyT1hnLjm1t4T/xkOZ0I4vpvdr+Dd6sZD4iccU08+T4N/Z7/ABUPiRtjX6efzMfCv7OZ1ItZSXmba6jFbtaEeS0eFbBr+c/0L6s3b7oy0wwAAAAAAAAAAAAAAAAAAAAArY2dkcni15rj6fVuwxvLJpYh7x4rBmvObuvWxxypnVOhNre7XFWY8R1ODMT7rkY3DxHUbSl8Ny8R1JREpfDRyxL5k4m0eUoxuHiXzN9clkvhQ9jiXzN1cticb6HYk7+X2PWcIvNo6+zk6usQ1jtqIAAAAAAAAAAAAAAAAAAAACntP3fM5HF4/px91jT+pg0fe8zxmGn9V07+lYky/t0aohkNnG5ZX4hxKRLlSiHDZKKpbOGzZFEoctm2KM7PYslFSYfU+z3p6nquER0+zia7u2jtucAAAAAAAAAAAAAAAAAAAAApbU0Xicniv4cfdY03qYNL3vM8lij+o6lvSnm8mXJ7NUd2TJnN5V6IcSZLZOEbZnlhJy2TiEnLJ7MkREEvq/Z7Tw9T1HCo6T+jha7u2jsOeAAAAAAAAAAAAAAAAAAAAAobWeS8fQ5PFvRH3WdN3lhU32vM8pj/ABHUt6UtV5PuZamektde7KbOcvQjkyScI2zMJOWycMw8ubGXUDMMS+t9nlk+5Hp+F+mXB13dsHWUAAAAAAAAAAAAAAAAAAAAAGdth5R8fQ5PFvRX7rel7ywoPtHlKet07elJVeT7ixafllCvdmSKC7CKTMpwjJQk5ZOGQ2Qy7gShGX13s/7r7l6np+GemXA13qa51VEAAAAAAAAAAAAAAAAAAENfFU4e/NR73n5GrJnx4/XaITpjtf0wo1NvUFo5S7o/exStxXTx2mZ+yxXQ5Z8KOM2rCtZRUlu3vvW4+JztdraZ6xFYnp7rWHS2xbzZRh7xwK+tan0u6ryfcbr+mUa92dIpLcIpGWyEbMwk5NsMvScDuBOEZfYbAXZfh6nqeGR8kvP631NU6akAAAAAAAAAAAAAAAAIsRiI01eTtyXF9yNWXNTFXe0p0pN52hi4zak5ZLsR6PtPx+xwtTxLJfpXpH8r+LS1jv1lj1pOzd731azdvHicm9pmN56r9IjfZTlLLk+q+nUrTbp9ViI6/R3syXafd6mzDPdjPHSF+Gpoj1q09nVZ5M23n5ZKd2fIqLUIpGU4RslCcPDZAGyBJTJR3Rs+x2D7r8PU9Xw30T9nn9b6modJSAAAAAAAAAAAAAAAIMXiVTjd5vgubNGoz1w15p+zZjxzedoYNWq5u8n2uVskuR53Lmtmtvaero1pFI2hXqS3dbW0ysr5edyva0Vnr+jdWJnspzhkm1eHjvRXV9GaJr038N8T4jup1r5J5/Fd6Ju6syvbfpErFNu73Zc7zl3LyJYvJnjasNOGppj1qs9nld5Mneflkp3UZFVahFIJw4ZOEnhsgDZAkpk690bPsthe4/A9Zw78OXntZ62mdFTAAAAAAAAAAAAAAeSkkrvJLUxMxEbyRG7AxVdzbk9NIrp9zzupzzltNp7eHSx0isbQrVK3C181lyTyd/mVbX8N9aqsqi0u9crX1Su75FebRs3RWVbfk4PK6d5ZvNtu+fSxDr8Ps27RF1Osst7nZ24P9+hotHlYp7Otl+8+VvLPMlj6bsZ/TDUjqVvzqk9nlfRkr+lmndRkV1mEbMpuGThJyzZDL1E4YSUtTZXuhbs+02J7j8Poet4d+G89rPW0ToKgAAAAAAAAAAAAADP2xWtFR+J5/pWf1sc/iGXlxxWPP9ljTU3tv7MatVaytln28uzlf65HEvaa9Nvu6FaxPVQrVeO9lmrc5lS3Xrv/APVqtfGzmVTOKl2pJZW5ta/UdpjfrLMV6TMdkU0nCykuN2uCzMbRNNt04mYvvMKNdxlkm+z2b5WslqzRfaZ6fosU5q9/KxstreduXDlkZpMbNeeJ26tNalafUqy5r6C/ZKndSkaFiEbMpw5ZKGXJthkNkCWjqTp3Qt2fabF9zx9D1/D/AMN53V+toF9VAAAAAAAAAAAAAAfP7arP8VrhGK1ejd3mcDiN5nNt7Q6WlrHJv7yxcXP4bzu+0r5PV2ucm8x46uhjr79Gfi6itlHdaabWnhbuNFrRPTbZbxVmJ6zvumo1YZu2fO/DkIvXbfZrtS3ZDTqRTcUrppK2vPXxegpMR2hstW20TLmtK17bt81aPCOWRC0/XulSN/dNsp9prlH1z+dydfLXqI+WJaqKk+pUcVtBfslXuqSRpboRyRlOHLRKEnDRshkSNsCWjqidPUhfs+02Mux4+iPYaD8J53VetfLysAAAAAAAAAAAAAA+T2zVtXmrZ5a5fli1meW4hk21No/T+0OzpKb4Yn/fLErzbvK+8uLyVl3XObaZmOb/AH9nSpWI+VRxNVPNa2d/DNvusa+XmttWG+NqV3tPSHijOMabSc/xFduCclDva0SXFmy2Dz7K2PV0vktEz08NOhaEdNe68n3ma25YYvvaypiHrkrW1vx9dTXfts34/CTYy7bytl9iVfO6Oq9MNkp27qSOroRtPRKqvI1t0I5Gd0ocMlCTlmyEniNsCWjqjZj9SF+z7XZH9Px9Eex0H4Tzmq9a6XVcAAAAAAAAAAAFPaO06VBXqSs+EVnJ9yKmp1uLTxveft5YmYh8xj/bKp/6qSS5z7T8la3zOLk43e0/06xEfXqhOT2Y8dozxF5zac27OyS5Wtyy49DmZ8tst+e/eXf4Zfmw/pMvJO70cnwu7fTU0dZn3dOOkd9kWIop2Tg3zV8n0JV+W0bsW+asxuj2zipqpGjh4bqqNKrLLd3YO8mlzs7eXI6ebJivXf2hyNNhm19/Ed2nU0tdWta8clY5336fR0q99/P1UMTJWSja3TiyFtp227LOOJ3mZT7Dj/Mln+XTxRLH5hr1c/JDaZSt3UUdQhZOqvJEG2EbRJJw0ZhKHJtqk8NkCSi80bcfqRv2fa7I/p+L9D2Wh/Cec1X4i45JatLvZbm0R3lX2RSxVNfnj/kjTbU4q97R+6cY7T4RLaNJuynd9EzXTXYLzy1tvKU4bxG8wsUq0Z5xd+fQsUyVv6Za5rMd3ZNgAAAAAAzExuPg/anZEqU/xVeVOT1bbcHyb+jPI8S0NsF5vHWs+e+30lqyV8vnqlznVakWzatpyj8Suu9a/L6G61d67uvwfPy5Jxz5/vDWgnpm9XZJcOrNcRPZ6CdklOV2m8lf6CJ8yjaNomIKKhG8r9FzSve/mZ+JGyPw9ukQ9xFS7ay8Pda5mLTvZKldoUa0uGSWfTPXQj3WKxt1XfZ93nK/w+qNtOu6vq+lYbUkULepShFNEZThBNEG2EUjKUPYUJy0i34epYx6fJftWWJy0r3lNDZlR6uMe93fyLddHf8ANtDXOqpHbqnjsuCXaqPvSVvJlvFocczta0/ZptrL/lqnpbKpLPek+9pL5I6WPhWGOu8yr31+Wem0LGKq7sElJxz0UnmZ11vg4ek7bfXu1Yo577yzakr53/13nAvfmjm33j+36rlY26PFPy6MzGTaO/Q5SnVtJO/EjivtlrMe7Nq71ls7Nq7ta2inFq390c18t49Lpb8mpms/mj+Yc7LG+Pf2bh2FMAAAAAABW2lUpRpTlWt+Ek3Pe0t9zVnik45jJ28sTPu/KJY6lVlJQvBXe7CbW848M+LtwPF5sHJaZp6fHv8Ado3ieyliJShJSirNO6voSxTDNbTS0WjvDeozVSCqQvZrT4Xo4+BDNj26w9bpdRXNSLPW/tf99CvPfaVrZ5JK2t7634GJiPDMb7o5VLd6EQlsr1al/wB8ehsiE4hoezUr1JL+31RtpHdU1noj9W9JHPv3UYRVCEtkLmGwFJq86j3vhWVul+J29Nw7TzWJy3nf2hVyajJE/LHR3Vowp23Irvtn5ssZcFNPtyRHX6IUyWyeqUMsT18itbVy2RiRTxXyK86iZlsjG4hX3vq7cixp7c1t58dUb12ePGyvw3eS5d5upxPJF+u3L7MTp67fV1jK0ZdlX3laSvpJW/2WOIZseavw4nrG0/qhgxWp809p6KbnyucDaaTvVc2ie7mVTj5rkSmYnrDERt0cykNujLcoyzpVLZ70PKVk/qekrO9sWSY69P56OZaOlq/q+kO8oAAAAAAAPzz/AMg7Wc6n8NF9iGc+Uqlr59EmvFvkcbiObmnkjtH92jJbw+Hr0497+RzImWmVapiasV7118Ms19yUY6W7wc0rGyfaL8GW7OL/AA5PtpO9v7l1JWwbxtErmj1k4L7z28vsqcoziqkZKpBpOLjo1z7zm5MNqzO71OLLXJWJrPRXqccuGZp5VmJRSfPUJQrVJEoThpeyrvVl+h/WJvxx3VNd0pH6vpZRKF69XPiUM4GK497QnFkVeq1LW33Onkmd+jNaRNVyjXjVju8bfNHQx5cepx/Dt32/2VK9LYrbs2opRe7L/s4OTFelppeOy9S1bRvCF1OuXQjWE3UavBL/AGb+eYiawjy+ZG7/AL9SERKTytfsvjbXqtCxffatkaeYN5PP9pkJiJneD6I5mq1eqcOVPnp80Ridu/Zi1fZvVUlCDjmk4NPpdHo8tYjFTl7Ry7OZWZ5rb/V9Od9zwAAAAAAH41tibnWnxcpyb5tt6Hm8073mfqqW6yoOi+OXfkypadp6obI8RQRKttjZl4jCXyjm+mr7jfS/U2aOwaG0KMv5eHqTpuzlCcXGD6qT919V8yxOmtl/LK3pdRmwT8vb2fW1YyteUN1tZwbTt4oo6jh+XF1mOn0en02sx5YiN9p9pUpzuUZo6EIajMcspwm2TtFYebm4uaaUbRaTvOcIrXvLekwzltNY9lLiNuXFE/V9zBXJ24Tm33jZx/jQ5rU2ZjhuaJ7MxmqzsXHXnp6mrLRdx26IKOIcXvLTrl3mmt7Y55qpZMcWjaWnOEK0VZ2lw6HUtTHrMcRE7W8OfE2w2+jPnhJRdnH7HL/6bJS/LaFqM1ZjeJU5Tz1Xhp4Fe872WKx0db/B+SMxMeWNnt7xa8TZWd6zDHayGLf3MbSlKRKw5dkZlFM12jZKJb0v6cO6C8cjt33jDjif/X/hzY9dvu+rPSOaAAAAAAAq4TZ1Gld06cYuTvKSXabfXU11xUr2hiIiE1SjGWsU+9XJzWJ7wygls6i8nSg1ycI/Yx8OntBtD2ngacfdhGP6YpfQzFax2g2h5PBRfAkyqV9kQlwAzcT7LU5cLdzsVcuiw5PVX9ui1i1mbH6bfv1Ztf2N5VZLwTKduEYp7TMLleMZY71iWRtT2clQUZb7lepRVmrWX4kG38ieDh9cFueJ38Nep4jbPTkmu3Xd9hRtzL1axsoTaXleorEtmN2bXlf16Hntdi5Ms/Xq62lvzUVaizfJWsc60TvK3HaHuEruGfX5amMeS2KearXlxxds0a0asWuas1xzO1hz01FJq5t6Wx23YuLwUqbtqr5PhY4Oo01sFtp7eJdHFmreN1W1nZ2fXgaYjq3TO8JIL58TZVCZRpO/VGWZl3GXD92JW32Rl5Gm3JLm18yMV5rRHuxNtomX0NVZwiuM4K3TeR6DNXrSv1j+7m0nvP0l9KdpRAAAAAAAAAAAAAAeWMsvHACjtDZ8asd19GnxTTumu5pGJjcZEsFiIfDUXNXg/UbCtiJ1FrSn4WYGa8Tuyu4yS49l+hX1Omrmr17x2bsGacc7+E2TV1pqrcv3wPOZcNsczEw7NMkWjeEEoa25Jla1e+zbEuaWKcWmna+TtwZribVnessXxRZsUsXCpHcnnfLx59Dp49Tjz0+Hlc+2K+O3NVWr7H4wldcnr5le/Dpj8Od22ur/APKFOphakWrwduDWZVtgy0n5qt0ZaWjpLzExaae681e7yz/aM5N4mJmO5Sd423c2btZXfQjE79me3dt4LBKNpvXVJ/lZ2NLo4pMZLft7KGXNv8sLGHSlXj/ZeT6cF8/oWsVYyaiPp1arTy45+reVQ66o7TA9MMAAAAAAAAAAAAAAAHjijLKOdBPgBSxGz4vgBl19mW0Rpy4KZY2tDZjy2xzvVm4nCzjwduhxtRw+9Y+XrDp4dZS3q6Sy5ytlx4/9HJtWYnZ0I2nqhVa2afa45ehqmPKfLv0loYHbG7k9O/6G7Dqb4f0VMuk5uzXobWhJZtJ8lmdKnEaWj5lG+lvWeiyqtOfFPoyx8bBkjvEtXLermNSnG6VlbkRrmwU3iNmZre3WVevjeEdeHU1zqJyfLTulGPl62WtnUnFXfvSzl9jq6TT/AAade891XNk556doalO5balmAEqAGGAAAAAAAAAAAAAAAAB40ZZcTpJgV6mET4AZ2L2HCfA1ZMGPJ66xLZTLenpnZjYn2Tl+SbXz+pQycJw29O8f79VynEste8RKhU9l8QtGn8ipbg0/lv8Aws14rH5q/wAoV7O4tflX+T+xqng2X3j+Wz/umGfE/wALVHYeN4tLrqZrwbJ5tDTfiGGe1ZXaHs9Xfv1Mv7Vb5lrHwakeu0z/AAr312/prs18HsSMOrOniwY8UbUjZTvktefmlp08KkbkE0aYHaRhh6AAAAAAAAAAAAAAAAAAAAAAsB5YBugN1AN0BYD0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//Z">
-			  </ion-thumbnail>
-			  <h2>Suco</h2>
-			</ion-item>
-			<ion-item>
-			  <ion-thumbnail item-start>
-				<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnWkre5yEHFHDOJoPFOLk7zxBVReHIaSblRdGsm2lHB76iwyO9">
-			  </ion-thumbnail>
-			  <h2>Vinho</h2>
-			</ion-item>
-		  </ion-list>
-  
-	  <ion-list *ngSwitchCase="'sobremesas'">
-		<ion-item>
-		  <ion-thumbnail item-start>
-			<img src="http://www.tudogostoso.com.br/images/recipes/000/160/714/118255/118255_original.jpg">
-		  </ion-thumbnail>
-		  <h2>Mousse de morango</h2>
-		</ion-item>
-		<ion-item>
-		  <ion-thumbnail item-start>
-			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfvjaLRUJIBQ2X170XYW_8hQrwkaStM2XqeExeOFB0CO36hk-n">
-		  </ion-thumbnail>
-		  <h2>Torta de morango</h2>
-		</ion-item>
-		<ion-item>
-		  <ion-thumbnail item-start>
-			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4cQW2A6_4mDVEUoxiSoZewwrO6331rHzPUPe_jqzheE4xc5F7OQ">
-		  </ion-thumbnail>
-		  <h2>Torta de chocolate</h2>
-		</ion-item>
-		<ion-item>
-		  <ion-thumbnail item-start>
-			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvmOxmQhKoOJF_xjsOEyJDtjEfkYgrCm20TjuxMclmPSLli737">
-		  </ion-thumbnail>
-		  <h2>Sorvete de Frutas</h2>
-		</ion-item>
-	  </ion-list>
-	</div>
-  </ion-content>
+
+<ion-content padding>
+	<style>
+		#imgcomida {
+			width: 125px;
+			height: 75px;
+			resize: both;
+			overflow: auto;
+			margin: auto;
+			border: 2px;
+			float:left;
+			background-color: grey;
+			left: -20px;
+		}
+	</style>
+	<img src="http://s.glbimg.com/po/rc/media/2012/11/19/16_26_25_11_destaque_05_02_2010.jpg" id="imgcomida">
+	<br>Lasanha<br>R$ 16,00<br><br><br><br>
+	<img src="https://static.vix.com/pt/sites/default/files/styles/large/public/bdm/receita/escondidinho-de-carne-seca.jpg?itok=3niJFcfV" id="imgcomida">
+	<br>Escondidinho de carne seca<br>R$ 15,00<br><br><br><br>
+	<img src="http://brcdn.ar-cdn.com/recipes/xlarge/1f0370d1-162a-46a6-af9b-1ec414b20d19.jpg" id="imgcomida">
+	<br>Rocambole de Arroz<br>R$ 15,00<br><br><br><br>
+	<img src="https://www.saboresajinomoto.com.br/uploads/images/panqueca-de-frango.jpg" id="imgcomida">
+	<br>Panqueca de frango<br>R$ 14,00<br><br><br><br>
+</ion-content>

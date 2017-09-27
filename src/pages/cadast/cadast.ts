@@ -24,7 +24,9 @@ export class CadastPage {
 		senha: '',
 	};
 	
-  constructor(public navCtrl: NavController, public navParams: NavParams, ) {
+  constructor(
+		public navCtrl: NavController, 
+		public navParams: NavParams, ) {
   }
 
 	/*
@@ -36,8 +38,10 @@ export class CadastPage {
 		});
 	}
 */
-  ionViewDidLoad() {
+  public ionViewDidLoad() {
     console.log('ionViewDidLoad CadastPage');
   }
-
+	public moveTo(){
+    this.navCtrl.push(PerfilPage)
+  }
 }

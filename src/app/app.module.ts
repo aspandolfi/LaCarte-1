@@ -19,7 +19,6 @@ import { RestProvider } from '../providers/rest/rest';
 @NgModule({
   declarations: [
     MyApp,
-		//HomePage
   ],
   imports: [
     BrowserModule,  
