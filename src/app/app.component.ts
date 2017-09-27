@@ -3,12 +3,10 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-//import { HomePage } from '../pages/home/home';
 import { CadastPage } from '../pages/cadast/cadast';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { LoginPage } from '../pages/login/login';
 import { CardapioPage } from '../pages/cardapio/cardapio';
-import { Cardapio2Page } from '../pages/cardapio2/cardapio2';
 
 @Component({
   templateUrl: 'app.html'
@@ -29,7 +27,6 @@ export class MyApp {
       { title: 'Cadastrar', component: CadastPage },
 			{ title: 'Perfil', component: PerfilPage },
 			{ title: 'Cardapio', component: CardapioPage },
-			{ title: 'Cardapio2', component: Cardapio2Page }
     ];
 
   }

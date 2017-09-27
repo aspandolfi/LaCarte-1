@@ -2,13 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PerfilPage } from '../perfil/perfil';
 
-
-/**
- * Generated class for the CadastPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { User } from './../../class/User';
+import { RestProvider } from './../../providers/rest/rest';
 
 @IonicPage()
 @Component({
@@ -17,31 +12,24 @@ import { PerfilPage } from '../perfil/perfil';
 })
 
 export class CadastPage {
-	dadosUsuario = {
-		nome: '',
-		email: '',
-		telefone: '',
-		senha: '',
-	};
 	
-  constructor(
-		public navCtrl: NavController, 
-		public navParams: NavParams, ) {
-  }
 
-	/*
-	saveUser() {
-		this.restapiService.saveUser(this.dadosUsuario).then((result) => {
-			console.log(result);
-		}, (err) => {
-			console.log(err);
-		});
+	usuarios = {};
+	public user = new User();
+
+  constructor(public navCtrl: NavController, private rest: RestProvider) {
+		this.rest.getUsers().subscribe((data)=> {
+			this.usuarios = data;
+		})
 	}
-*/
-  public ionViewDidLoad() {
+	
+  ionViewDidLoad() {
     console.log('ionViewDidLoad CadastPage');
   }
-	public moveTo(){
-    this.navCtrl.push(PerfilPage)
-  }
+
+	public salvar(){
+		console.log(this.user);
+		this.rest.addUser(this.user);
+	}
+
 }

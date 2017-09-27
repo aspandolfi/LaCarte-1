@@ -9,12 +9,12 @@
 
 
 <ion-content padding>
-	
-		<p>Nome: {{ obj_usuario.nome }}</p><br>
-		<p>Sobrenome: {{ obj_usuario.sobrenome }}</p><br>
-		<p>E-mail: {{ obj_usuario.email }} </p><br>
-		<p>Telefone: {{ obj_usuario.telefone }}</p><br>
-		<p>CPF: {{ obj_usuario.cpf }}</p><br>
-
-
+	<ion-list inset>
+		<ion-item *ngFor="let user of usuarios.savedUsuarios">
+			<h2>{{user.name}}</h2>
+			<h2>{{user.email}}</h2>
+			<h2>{{user.telefone}}</h2>
+			<h2>{{user.cpf}}</h2>
+		</ion-item>
+	</ion-list>
 </ion-content>
