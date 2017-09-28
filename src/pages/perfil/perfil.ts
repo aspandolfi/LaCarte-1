@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController/*, NavParams*/ } from 'ionic-angular';
 import { RestProvider } from './../../providers/rest/rest';
 //import { UsuarioProvider } from '../../providers/usuario/usuario';
 

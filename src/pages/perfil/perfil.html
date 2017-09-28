@@ -10,19 +10,25 @@
 
 <ion-content padding>
 	<style> 
-			#campos {
-				font-size: 20px;
-				line-height: 2;
-			}
-		</style>	
+		#campos {
+			font-size: 20px;
+			line-height: 2;
+		}
+	</style>	
 
-		<ion-list inset>
-			<ion-item *ngFor="let user of usuarios.savedUsuarios">
-				<h2>{{user.name}}</h2>
-				<h2>{{user.email}}</h2>
-				<h2>{{user.telefone}}</h2>
-				<h2>{{user.cpf}}</h2>
-			</ion-item>
-		</ion-list>
+	<ion-list inset *ngFor="let user of usuarios.savedUsuarios">
+		<ion-item>
+			<ion-input value="{{user.name}}"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-input value="{{user.email}}"></ion-input>			
+		</ion-item>
+		<ion-item>
+			<ion-input value="{{user.telefone}}"></ion-input>
+		</ion-item>	
+		<ion-item>
+			<ion-input value="{{user.cpf}}"></ion-input>
+		</ion-item>
+	</ion-list>
 
 </ion-content>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { PerfilPage } from '../perfil/perfil';
+import { IonicPage, NavController/*, NavParams*/ } from 'ionic-angular';
+//import { PerfilPage } from '../perfil/perfil';
 import { User } from './../../class/User';
 import { RestProvider } from './../../providers/rest/rest';
 
