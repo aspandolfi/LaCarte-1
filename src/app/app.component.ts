@@ -7,7 +7,6 @@ import { CadastPage } from '../pages/cadast/cadast';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { LoginPage } from '../pages/login/login';
 import { CardapioPage } from '../pages/cardapio/cardapio';
-import { QrCodePage } from '../pages/qr-code/qr-code';
 
 @Component({
   templateUrl: 'app.html'
@@ -28,7 +27,7 @@ export class MyApp {
       { title: 'Cadastrar', component: CadastPage },
 			{ title: 'Perfil', component: PerfilPage },
       { title: 'Cardapio', component: CardapioPage },
-      { title: 'Mesa', component: QrCodePage },
+  
     ];
 
   }

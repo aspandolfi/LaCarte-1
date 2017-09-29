@@ -1,8 +1,7 @@
+import { User } from './../../class/User';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RestProvider } from './../../providers/rest/rest';
-
-
 
 @IonicPage()
 @Component({
@@ -13,14 +12,20 @@ import { RestProvider } from './../../providers/rest/rest';
 })
 
 export class PerfilPage {
+  user = {};
 
-	usuarios = {};
 	constructor(public navCtrl: NavController, private rest: RestProvider) {
-			this.rest.getUsers().subscribe((data)=> {
-			this.usuarios = data;
-		});
-	
+    this.getData();
 	}
+
+  getData(){
+    this.rest.getUser(1).subscribe(data=>
+      {
+        console.log(data);
+        this.user = data;
+      }
+    );
+  }
 
   ionViewDidLoad() {
 
