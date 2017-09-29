@@ -15,15 +15,29 @@ export class RestProvider {
     console.log("Hello RestProvider Provider");
   }
 
-  public getUser(id: any) {
+  public getUser(id: any) { // pegando usuario 
     return this.http.get(this.apiUrl + "/" + id).map(res => res);
     // .catch(error => console.log(error)
   }
 
-  addUser(myData) {
+  addUser(myData) { //adicionar usuario
     //var teste = JSON.stringify({name: this.})
     this.http.post(this.apiUrl + "/save", myData).subscribe(data => {
       console.log(data);
+      localStorage.setItem('userData', JSON.stringify(data));
+    });
+  }
+
+  editUser(myData){ //editar usuario
+    console.log(myData);
+    this.http.post(this.apiUrl + "/edit", myData).subscribe(data => {
+    console.log(data);
+    });
+  }
+
+  deleteUser(myData){ //deletar usuario
+    this.http.post(this.apiUrl + "/delete", myData).subscribe(data => {
+    console.log(data);
     });
   }
 }

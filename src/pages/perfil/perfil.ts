@@ -1,7 +1,8 @@
-import { User } from './../../class/User';
+import { User } from '../../class/User';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, AlertController } from 'ionic-angular';
 import { RestProvider } from './../../providers/rest/rest';
+import { EditarPage } from '../editar/editar';
 
 @IonicPage()
 @Component({
@@ -13,8 +14,9 @@ import { RestProvider } from './../../providers/rest/rest';
 
 export class PerfilPage {
   user = {};
-
-	constructor(public navCtrl: NavController, private rest: RestProvider) {
+  userData = {"name": "","email": "", "telefone": "","cpf": "","senha": ""};
+  public usuarios = new User();
+	constructor(public navCtrl: NavController, private rest: RestProvider, public alertCtrl: AlertController) {
     this.getData();
 	}
 
@@ -23,8 +25,14 @@ export class PerfilPage {
       {
         console.log(data);
         this.user = data;
+        localStorage.setItem('userData',JSON.stringify(this.user))
+        console.log(localStorage);
       }
     );
+  }
+
+  mudarPage(){
+    this.navCtrl.push(EditarPage);
   }
 
   ionViewDidLoad() {

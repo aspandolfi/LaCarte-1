@@ -8,25 +8,26 @@
 </ion-header>
 
 <ion-content id="logo2" padding>
-	
+
 	<h1 align="center" id="titulo">La Carte</h1>
 	<div id="logo">
 
 		<img src="https://i.imgur.com/pgvFcvy.png" />
 	</div>
 	<ion-item>
-		<ion-input placeholder="Email" type="text"></ion-input>
+
+		<ion-input [(ngModel)]="usuarioLogin.email" placeholder="email" type="text"></ion-input>
 	</ion-item>
 	<div>
 		<br>
-	</div>	
+	</div>
 	<ion-item>
-		<ion-input placeholder="Senha" type="password"></ion-input>
+		<ion-input [(ngModel)]="usuarioLogin.senha" placeholder="Senha" type="password"></ion-input>
 	</ion-item>
 	<br>
 	<div align="center">
 
-		<button ion-button color="light">Entrar</button><br>
+		<button ion-button (click)="Validar()" color="light">Entrar</button><br>
 		<button ion-button>Entrar com Facebook</button><br>
 		<button ion-button color="danger">Entrar com o Google+</button><br>
 		<br>----------------------------- OU ------------------------------<br>
