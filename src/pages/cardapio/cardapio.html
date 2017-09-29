@@ -9,29 +9,109 @@
 
 
 <ion-content padding>
-	<style>
-		#imgcomida {
-			width: 125px;
-			height: 75px;
-			resize: both;
-			overflow: auto;
-			margin: auto;
-			border: 2px;
-			float:left;
-			background-color: grey;
-			left: -20px;
-		}
-	</style>
-	<a nav-transition="none" href="#/cardapio2/cardapio2"><img src="http://s.glbimg.com/po/rc/media/2012/11/19/16_26_25_11_destaque_05_02_2010.jpg" id="imgcomida"></a>
-	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lasanha
-	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R$ 16,00<br><br><br><br>
-	<img src="https://static.vix.com/pt/sites/default/files/styles/large/public/bdm/receita/escondidinho-de-carne-seca.jpg?itok=3niJFcfV" id="imgcomida">
-	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Escondidinho de &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;carne seca
-	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R$ 15,00<br><br><br><br>
-	<img src="http://brcdn.ar-cdn.com/recipes/xlarge/1f0370d1-162a-46a6-af9b-1ec414b20d19.jpg" id="imgcomida">
-	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rocambole de Arroz
-	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R$ 15,00<br><br><br><br>
-	<img src="https://www.saboresajinomoto.com.br/uploads/images/panqueca-de-frango.jpg" id="imgcomida">
-	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Panqueca de frango
-	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R$ 14,00<br><br><br><br>
+	<ion-toolbar no-border-top>
+		<ion-segment [(ngModel)]="cardapio">
+		  <ion-segment-button value="comidas">
+			Comida
+		  </ion-segment-button>
+		  <ion-segment-button value="bebidas">
+			Bebidas
+		  </ion-segment-button>
+		  <ion-segment-button value="sobremesas">
+			Sobrenomes
+		  </ion-segment-button>
+		</ion-segment>
+	</ion-toolbar>
+	
+	<div [ngSwitch]="cardapio">
+		<ion-list *ngSwitchCase="'comidas'">
+			<ion-item>
+				<ion-thumbnail item-start>
+					<a href="#/cardapio2/cardapio2"><img src="https://i.imgur.com/Q5ISx1U.jpg"></a>
+				</ion-thumbnail>
+				<ion-card-header>
+					<h2>Lasanha</h2>
+					<P>15.90</P>
+				</ion-card-header>
+			</ion-item>
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img src="https://i.imgur.com/Aa8Mipw.jpg">
+				</ion-thumbnail>
+				<ion-card-header>
+					<h2>Escondidinho de carne seca</h2>
+					<p>16.90</p>
+				</ion-card-header>
+			</ion-item>
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img src="https://i.imgur.com/fhn2PLF.jpg">
+				</ion-thumbnail>
+				<ion-card-header>
+					<h2>Rocambole de Arroz</h2>
+					<p>17.00</p>
+				</ion-card-header>
+			</ion-item>
+		</ion-list>
+	
+		<ion-list *ngSwitchCase="'bebidas'">
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img src="https://i.imgur.com/AQO74jY.jpg">
+				</ion-thumbnail>
+				<ion-card-header>
+					<h2>Agua</h2>
+					<p>2.50</p>
+			   	</ion-card-header>
+			</ion-item>
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img src="https://i.imgur.com/LfWVgWT.jpg">
+				</ion-thumbnail>
+				<ion-card-header>
+					<h2>Suco</h2>
+					<p>5.90</p>
+				</ion-card-header>
+			</ion-item>
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img src="https://i.imgur.com/cIoJJTy.jpg">
+				</ion-thumbnail>
+				<ion-card-header>
+					<h2>Vinho na Taça</h2>
+					<p>8.90</p>
+				</ion-card-header>
+			</ion-item>
+		</ion-list>
+	
+		<ion-list *ngSwitchCase="'sobremesas'">
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img src="https://i.imgur.com/ifeDJ5i.jpg">
+				</ion-thumbnail>
+				<ion-card-header>
+					<h2>Torta de limão</h2>
+					<p>10.50</p>
+				</ion-card-header>
+			</ion-item>
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img src="https://i.imgur.com/kgP6SRX.jpg">
+				</ion-thumbnail>
+				<ion-card-header>
+					<h2>Torta de Morango</h2>
+					<p>12.50</p>
+				</ion-card-header>
+			</ion-item>
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img src="https://i.imgur.com/U6tP94D.jpg">
+				</ion-thumbnail>
+				<ion-card-header>
+					<h2>Torta de Chocolate</h2>
+					<p>11.99</p>
+				</ion-card-header>
+			</ion-item>
+		</ion-list>
+	</div>
 </ion-content>

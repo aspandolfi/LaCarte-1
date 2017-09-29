@@ -7,6 +7,7 @@ import { CardapioPage } from './cardapio';
     CardapioPage,
   ],
   imports: [
+    
     IonicPageModule.forChild(CardapioPage),
   ],
 })

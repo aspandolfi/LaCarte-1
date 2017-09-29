@@ -6,5 +6,6 @@ import { LoginPage } from './login';
   declarations: [ LoginPage],
 	imports: [IonicPageModule.forChild(LoginPage)],
 	entryComponents: [LoginPage]
+
 })
 export class LoginPageModule {}

@@ -1,3 +1,4 @@
+//
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -13,15 +14,16 @@ import { PerfilPageModule } from '../pages/perfil/perfil.module';
 import { CardapioPageModule } from '../pages/cardapio/cardapio.module';
 import { Cardapio2PageModule } from '../pages/cardapio2/cardapio2.module';
 import { LoginPageModule } from '../pages/login/login.module';
+
 import { HttpModule } from "@angular/http";
-import { UsuarioProvider } from '../providers/usuario/usuario';
 import { RestProvider } from '../providers/rest/rest';
+
 
 @NgModule({
   declarations: [
     MyApp,
-		//HomePage
   ],
+  
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
@@ -32,7 +34,9 @@ import { RestProvider } from '../providers/rest/rest';
 		Cardapio2PageModule,
 		HttpClientModule,
 		HttpModule
+
   ],
+
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
@@ -41,8 +45,9 @@ import { RestProvider } from '../providers/rest/rest';
   providers: [
     StatusBar,
     SplashScreen,
+    
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UsuarioProvider,
+
     RestProvider
   ]
 })
