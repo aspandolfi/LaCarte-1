@@ -24,7 +24,10 @@ export class CadastPage {
   ) {
     this.formCadastro = this.formBuilder.group({
       nome: ["", Validators.required],
-      cpf: ["", Validators.required]
+      cpf: ["", Validators.required],
+      telefone: ["", Validators.required],
+      email: ["", Validators.required],
+      senha: ["", Validators.required]
     });
   }
 
