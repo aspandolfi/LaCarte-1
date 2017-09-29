@@ -8,7 +8,9 @@ import 'rxjs/add/operator/map';
 export class RestProvider {
 	private apiUrl = 'http://172.16.108.1:3000/banco';
 
-  constructor(public http: HttpClient) {
+    public user = { };    
+
+    constructor(public http: HttpClient) {
     console.log('Hello RestProvider Provider');
 	}
 	
@@ -18,7 +20,14 @@ export class RestProvider {
     .map((res : Response ) => res);
     // .catch(error => console.log(error)
 	}
-	
+    
+    public getUser() {
+        return  this.http.get(this.apiUrl + "/1")
+        // .do((res : Response ) => console.log(res));
+        .map((res : Response ) => res);
+        // .catch(error => console.log(error)
+    }
+    
 	addUser(myData) {
     //var teste = JSON.stringify({name: this.})
     this.http.post(this.apiUrl + "/save", myData)

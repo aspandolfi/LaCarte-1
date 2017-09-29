@@ -13,11 +13,13 @@ import { RestProvider } from './../../providers/rest/rest';
 })
 
 export class PerfilPage {
+
 	usuarios = {};
 	constructor(public navCtrl: NavController, private rest: RestProvider) {
-		this.rest.getUsers().subscribe((data)=> {
+			this.rest.getUsers().subscribe((data)=> {
 			this.usuarios = data;
-		})
+		});
+	
 	}
 
   ionViewDidLoad() {

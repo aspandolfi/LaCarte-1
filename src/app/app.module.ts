@@ -14,9 +14,10 @@ import { PerfilPageModule } from '../pages/perfil/perfil.module';
 import { CardapioPageModule } from '../pages/cardapio/cardapio.module';
 import { Cardapio2PageModule } from '../pages/cardapio2/cardapio2.module';
 import { LoginPageModule } from '../pages/login/login.module';
-
+import { QrCodePageModule } from '../pages/qr-code/qr-code.module';
 import { HttpModule } from "@angular/http";
 import { RestProvider } from '../providers/rest/rest';
+import { Camera } from '@ionic-native/camera';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { RestProvider } from '../providers/rest/rest';
 		LoginPageModule,
 		CardapioPageModule,
 		Cardapio2PageModule,
-		HttpClientModule,
+    HttpClientModule,
+    QrCodePageModule,
 		HttpModule
 
   ],
@@ -45,7 +47,7 @@ import { RestProvider } from '../providers/rest/rest';
   providers: [
     StatusBar,
     SplashScreen,
-    
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
 
     RestProvider
