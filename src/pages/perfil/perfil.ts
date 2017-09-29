@@ -21,9 +21,9 @@ export class PerfilPage {
   getData(){
     this.rest.getUser(1).subscribe(data=>
       {
-
         console.log(data);
         this.user = data;
+        localStorage.setItem('userData', JSON.stringify(this.user));
         console.log(localStorage);
       }
     );

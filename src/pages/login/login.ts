@@ -22,15 +22,18 @@ export class LoginPage {
   responseData: any;
   public usuarioLogin = new User();
   public data1 = JSON.parse(localStorage.getItem('userData'))
+  userData = {"name": "","email": "", "telefone": "","cpf": "","senha": ""}; // apenas pra teste
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider) {
-    // console.log(data1);
-    // this.userDetails = data1.userData;
-    // console.log(data1.email);
-    // console.log(data1.senha);
-    // this.userPostData.email = this.userDetails.email;
-    // this.userPostData.senha = this.userDetails.senha;
-    // console.log(this.userPostData.senha)
+    this.rest.getUser(1).subscribe(data=>
+      {
+        console.log(data);
+        this.user = data;
+        localStorage.setItem('userData', JSON.stringify(this.user)); // APENAS PARA TESTE
+        console.log(localStorage);
+      }
+    );
+
   }
 
 	soontm(){
