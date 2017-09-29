@@ -6,15 +6,15 @@
 		<ion-title>cadastro</ion-title>
 	</ion-navbar>
 </ion-header>
-	
-	
+
+
 <ion-content padding>
 	<ion-list>
 		<ion-item>
 			<ion-label floating>Nome</ion-label>
-			<ion-input type="text" [(ngModel)]="user.name" ></ion-input>
+			<ion-input type="text" [(ngModel)]="user.name" aria-placeholder="asdas"></ion-input>
 		</ion-item>
-		<!-- <ion-item> 
+		<!-- <ion-item>
 			<ion-label floating>Sobrenome</ion-label>
 			<ion-input type="text"></ion-input>
 		</ion-item>-->
@@ -30,7 +30,7 @@
 			<ion-label floating>Email</ion-label>
 			<ion-input type="email" [(ngModel)]="user.email"></ion-input>
 		</ion-item>
-		<!-- <ion-item> 
+		<!-- <ion-item>
 			<ion-label floating>Confirmar Email</ion-label>
 			<ion-input type="email"></ion-input>
 
@@ -46,8 +46,8 @@
 	</ion-list>
 
 	<div padding>
-		<a nav-transition="none" href="#/login/login">
+		<!-- <a nav-transition="none" href="#/login/login"> -->
 			<button (click)="salvar()" class="button button-positive" ion-button>Confirmar</button>
-		</a>
+		<!-- </a> -->
 	</div>
 </ion-content>

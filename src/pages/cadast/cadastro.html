@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>cadastro</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <form [formGroup]="formCadastro" (ngSubmit)="salvar()">
+    <ion-item>
+      <ion-label floating>Nome</ion-label>
+      <ion-input type="text" formControlName="nome" [(ngModel)]="user.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>CPF</ion-label>
+      <ion-textarea formControlName="cpf" [(ngModel)]="user.cpf"></ion-textarea>
+    </ion-item>
+    <div padding>
+      <button type="submit" class="button button-positive" [disabled]="!formCadastro.valid" ion-button>Confirmar</button>
+    </div>
+  </form>
+</ion-content>

@@ -3,17 +3,17 @@
 		<button ion-button menuToggle>
 			<ion-icon name="menu"></ion-icon>
 		</button>
-		<ion-title>perfil</ion-title>
+    <ion-title>perfil</ion-title>
+
 	</ion-navbar>
 </ion-header>
 
 <ion-content padding>
-	<ion-list inset>
-		<ion-item *ngFor="let user of usuarios.savedUsuarios">
-			<h2>{{user.name}}</h2>
-			<h2>{{user.email}}</h2>
-			<h2>{{user.telefone}}</h2>
-			<h2>{{user.cpf}}</h2>
-		</ion-item>
-	</ion-list>
+    <!-- <h2>{{user.name}}</h2> -->
+        <ion-item >
+            <h2>{{user.name}}</h2>
+            <h2>{{user.email}}</h2>
+            <h2>{{user.telefone}}</h2>
+            <h2>{{user.cpf}}</h2>
+          </ion-item>
 </ion-content>
