@@ -30,5 +30,12 @@ export class EditarPage {
     this.navCtrl.push(EditarPage);
   }
 
+  excluir(){    // Função para alterar dados do usuarios
+    console.log(this.user.name);
+    this.rest.deleteUser(this.user);
+    this.navCtrl.push(EditarPage);
+  }
+  
+
 }
  
