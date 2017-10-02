@@ -22,6 +22,7 @@ export class RestProvider {
     //var teste = JSON.stringify({name: this.})
     this.http.post(this.apiUrl + "/save", myData).subscribe(data => {
       console.log(data);
+      localStorage.setItem('userData', JSON.stringify(data));
     });
   }
 }

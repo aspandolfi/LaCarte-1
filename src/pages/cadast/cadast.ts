@@ -1,9 +1,7 @@
-
+import { LoginPage } from './../login/login';
 import { Component } from "@angular/core";
 import { Validators, FormBuilder, FormGroup } from "@angular/forms";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
-import { PerfilPage } from "../perfil/perfil";
-
+import { IonicPage, NavController } from "ionic-angular";
 import { User } from "./../../class/User";
 import { RestProvider } from "./../../providers/rest/rest";
 
@@ -37,7 +35,8 @@ export class CadastPage {
   }
 
   public salvar() {
-    console.log(this.user);
+    console.log(this.user.name);
     this.rest.addUser(this.user);
+    this.navCtrl.push(LoginPage);
   }
 }
