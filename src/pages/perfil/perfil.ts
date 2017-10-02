@@ -1,7 +1,8 @@
 import { User } from '../../class/User';
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, AlertController } from 'ionic-angular';
 import { RestProvider } from './../../providers/rest/rest';
+import { EditarPage } from '../editar/editar';
 
 @IonicPage()
 @Component({
@@ -13,20 +14,31 @@ import { RestProvider } from './../../providers/rest/rest';
 
 export class PerfilPage {
   user = {};
-  userData = {"name": "","email": "", "telefone": "","cpf": "","senha": ""};
-	constructor(public navCtrl: NavController, private rest: RestProvider) {
+  userData = {"name": "","email": "", "telefone": "","cpf": "","senha": "", "id": ""};
+  public usuarios = new User();
+	constructor(public navCtrl: NavController, private rest: RestProvider, public alertCtrl: AlertController) {
     this.getData();
 	}
 
   getData(){
-    this.rest.getUser(1).subscribe(data=>
+    this.rest.getUser(6).subscribe(data=>
       {
         console.log(data);
         this.user = data;
-        localStorage.setItem('userData', JSON.stringify(this.user));
+        localStorage.setItem('userData',JSON.stringify(this.user))
         console.log(localStorage);
       }
     );
+  }
+
+  excluir(){    // Função para alterar dados do usuarios
+    console.log(this.user);
+    this.rest.deleteUser(this.user);
+    this.navCtrl.push(EditarPage);
+  }
+
+  mudarPage(){
+    this.navCtrl.push(EditarPage);
   }
 
   ionViewDidLoad() {

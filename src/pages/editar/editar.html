@@ -1,0 +1,37 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>editar</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <form>
+        <ion-item>
+          <ion-label floating>Nome</ion-label>
+          <ion-input type="text" name="nome" [(ngModel)]="user.name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>CPF</ion-label>
+          <ion-textarea name="cpf" [(ngModel)]="user.cpf"></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>telefone</ion-label>
+          <ion-textarea name="telefone" [(ngModel)]="user.telefone"></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>email</ion-label>
+          <ion-textarea name="email" [(ngModel)]="user.email"></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>senha</ion-label>
+          <ion-input type="password" name="senha" [(ngModel)]="user.senha"></ion-input>
+        </ion-item>
+      </form>
+
+      <div padding>
+        <button (click)="salvar()" type="submit" class="button button-positive" ion-button>Confirmar</button>
+      </div>
+</ion-content>
