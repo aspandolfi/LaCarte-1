@@ -9,12 +9,14 @@
 </ion-header>
 
 <ion-content padding>
-		<ion-item >
-			<h2>nome: {{user.name}}</h2>
-			<h2>mail: {{user.email}}</h2>
-			<h2>tel: {{user.telefone}}</h2>
-			<h2>cpf: {{user.cpf}}</h2>
-			<br>
-			<button ion-button (click)="showPrompt()">Alterar Dados</button>
-		</ion-item>
+
+    <ion-item>
+        <h2>{{user.name}}</h2>
+        <h2>{{user.email}}</h2>
+        <h2>{{user.telefone}}</h2>
+        <h2>{{user.cpf}}</h2>
+
+        <button ion-button color="danger" (click)="mudarPage()">Editar</button>
+        <button ion-button color="dark" (click)="excluir()" >Excluir</button>
+    </ion-item>
 </ion-content>

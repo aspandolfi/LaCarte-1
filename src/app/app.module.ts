@@ -14,9 +14,10 @@ import { PerfilPageModule } from '../pages/perfil/perfil.module';
 import { CardapioPageModule } from '../pages/cardapio/cardapio.module';
 import { Cardapio2PageModule } from '../pages/cardapio2/cardapio2.module';
 import { LoginPageModule } from '../pages/login/login.module';
-
+import { EditarPageModule } from '../pages/editar/editar.module';
 import { HttpModule } from "@angular/http";
 import { RestProvider } from '../providers/rest/rest';
+import { MesaPageModule } from '../pages/mesa/mesa.module';
 
 
 @NgModule({
@@ -32,7 +33,9 @@ import { RestProvider } from '../providers/rest/rest';
 		LoginPageModule,
 		CardapioPageModule,
 		Cardapio2PageModule,
-		HttpClientModule,
+    HttpClientModule,
+		EditarPageModule,
+		MesaPageModule,
 		HttpModule
 
   ],
@@ -45,7 +48,6 @@ import { RestProvider } from '../providers/rest/rest';
   providers: [
     StatusBar,
     SplashScreen,
-    
     {provide: ErrorHandler, useClass: IonicErrorHandler},
 
     RestProvider
