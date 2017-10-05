@@ -1,22 +1,27 @@
 <ion-header>
-		<ion-navbar>
-				<button ion-button menuToggle>
-					<ion-icon name="menu"></ion-icon>
-				</button>
-			<ion-title>mesa</ion-title>
-		</ion-navbar>
-	</ion-header>
+	<ion-navbar>
+			<button ion-button menuToggle>
+				<ion-icon name="menu"></ion-icon>
+			</button>
+		<ion-title>mesa</ion-title>
+	</ion-navbar>
+</ion-header>
 	
-	<ion-content padding>
-		<div id="qrcode">
-			(QR CODE AQUI)
-		</div>
+<ion-content padding>
+	<div id="qrcode">
+		(QR CODE AQUI)
+	</div>
+	<br>
+	<div id="codeInput">
+		<form>
+			<input [(ngModel)]="mesaBuffer.codigo" name="codigo" type="text" style="width: 200px">
+			<button type="submit" style="width: 75px; height: 30px;" (click)="showAlert()">Enviar</button>
+		</form>
 		<br>
-		<div id="codeInput">
-			<form>
-				<input type="text" style="width: 60%">
-				<input type="submit" style="width: 37%">
-			</form>
-		</div>
-	</ion-content>
-	
+		<p style="text-align: center; font-size: 16px;">
+			Pressione a câmera e escaneie o código qr
+			para acessar o cardápio. Alternativamente,
+			insira o código da mesa.
+		</p>
+	</div>
+</ion-content>

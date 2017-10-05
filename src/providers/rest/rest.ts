@@ -13,7 +13,7 @@ export class RestProvider {
   public teste: Array<{}>;
 	userData = {"name": "", "email": "", "telefone": "", "cpf": "", "senha": "", "id": ""};
 	emprData = {"nome": "", "email": "", "endereco": "", "telefone": "", "cnpj": ""};
-	mesaData = {"nome": "", "id": ""};
+	mesaData = {"numero": "", "codigo": "", "qrcode": "", "restaurante": ""};
 
   constructor(public http: HttpClient) {
     console.log("Hello RestProvider Provider");
