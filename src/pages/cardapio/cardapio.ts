@@ -21,10 +21,10 @@ export class CardapioPage {
   Produto={"name": "Lasanha","simbolo": "R$", "valor": "16.00"}; // MOC do cardápio
  
   constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform,private rest: RestProvider) {
-    
+    this.getData();
   }
 
-  getProduto(){ // função que permite mostrar na página os produtos do cardápio.
+  getData(){ // função que permite mostrar na página os produtos do cardápio.
     this.rest.getProduto(1).subscribe(data=>
       {
         console.log(data);
