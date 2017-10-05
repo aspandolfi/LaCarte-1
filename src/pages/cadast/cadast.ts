@@ -35,7 +35,7 @@ export class CadastPage {
   }
 
   public salvar() {
-    console.log(this.user.name);
+    console.log(this.user.nome);
     this.rest.addUser(this.user);
     this.navCtrl.push(LoginPage);
   }

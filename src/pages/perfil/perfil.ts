@@ -13,10 +13,14 @@ import { EditarPage } from '../editar/editar';
 })
 
 export class PerfilPage {
+  
+  public user1 = new User();
+
   user = {};
   userData = {"name": "","email": "", "telefone": "","cpf": "","senha": ""};
   public usuarios = new User();
-	constructor(public navCtrl: NavController, private rest: RestProvider, public alertCtrl: AlertController) {
+  
+  constructor(public navCtrl: NavController, private rest: RestProvider, public alertCtrl: AlertController) {
     this.getData();
 	}
 
@@ -34,7 +38,12 @@ export class PerfilPage {
   mudarPage(){
     this.navCtrl.push(EditarPage);
   }
-
+ 
+  excluir(){    // Função para excluir o usuario
+    console.log(this.user1.nome);
+    this.rest.deleteUser(this.user1);
+    this.navCtrl.push(EditarPage);
+  }
   ionViewDidLoad() {
 
   }
