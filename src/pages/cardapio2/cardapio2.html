@@ -14,30 +14,19 @@
 	<h2>{{Produto.name}}</h2>
 	<P>{{Produto.valor}}</P>
 	<p>{{Produto.descricao}}</p><hr>
-
-	<div> 
-		<table class="alinhado">
-			<tr>
-				<td><ion-checkbox [(ngModel)]="a"></ion-checkbox></td>
-				<td class="alinhando">Bacon</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td>R$2,50</td>
-			</tr>
-			<tr>
-				<td><ion-checkbox [(ngModel)]="b"></ion-checkbox></td>
-				<td>Uva passas</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td>R$ 0,50</td>
-			</tr>
-		</table>
-	</div>
+	
+	<form>
+		<ion-item>
+			<input name="a" type="checkbox" [(ngModel)]="a">
+			Bacon
+		</ion-item>
+		<ion-item>
+			<input name="a" type="checkbox" [(ngModel)]="a">
+			Uva Passas
+		</ion-item>>
+	</form>
 <br>
 <textarea class="text" placeholder="Observacao" id="caixinha"></textarea>
-<br><br><hr>
 <p>Total: </p>
 <p>R$ 16,00</p>
 <br><div align="center"><a nav-transition="none" href="#/cardapio/cardapio"><button ion-button color="secondary">Adicionar ao carrinho</button></a></div>
