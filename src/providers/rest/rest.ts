@@ -47,7 +47,7 @@ export class RestProvider {
   //=============== trabalhando com os itens do cardápio. ================= 
  
   public getProduto(id: any) { // função que mostra os produtos no cardápio.
-    return this.http.get(this.apiUrl + "/" + id).map(res => res);
+    return this.http.get(this.apiUrl + "/prod/" + id).map(res => res);
     // .catch(error => console.log(error)
   }
 
