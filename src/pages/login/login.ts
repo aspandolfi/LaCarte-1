@@ -24,13 +24,6 @@ export class LoginPage {
   userData = {"name": "","email": "", "telefone": "","cpf": "","senha": ""}; // apenas pra teste
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider,public alertCtrl: AlertController) {
-    // console.log(data1);
-    // this.userDetails = data1.userData;
-    // console.log(data1.email);
-    // console.log(data1.senha);
-    // this.userPostData.email = this.userDetails.email;
-    // this.userPostData.senha = this.userDetails.senha;
-    // console.log(this.userPostData.senha)
   }
 
 	soontm(){
@@ -49,6 +42,17 @@ export class LoginPage {
     }
   }
 
+	getData(){
+    this.rest.getUser(1).subscribe(data=>
+      {
+        console.log(data);
+        this.user = data;
+        localStorage.setItem('userData',JSON.stringify(this.user))
+        console.log(localStorage);
+      }
+    );
+	}
+	
   showAlert() { // alerta para erro de login
     let alert = this.alertCtrl.create({
       title: 'Erro',

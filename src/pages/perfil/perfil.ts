@@ -8,8 +8,6 @@ import { EditarPage } from '../editar/editar';
 @Component({
   selector: 'page-perfil',
 	templateUrl: 'perfil.html',
-
-	//providers:[ UsuarioProvider ]
 })
 
 export class PerfilPage {

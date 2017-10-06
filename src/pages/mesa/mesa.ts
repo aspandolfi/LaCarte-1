@@ -13,17 +13,29 @@ import { RestProvider } from '../../providers/rest/rest';
 export class MesaPage {
 	
 	public mesaBuffer = new Mesa();
+	public mesa ={};
 	public data = JSON.parse(localStorage.getItem('mesaBuffer'));
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, public alertCtrl: AlertController) {
   }
 
 	Validar(){ //verifica se a mesa se encontra no banco.
-    if(this.mesaBuffer.codigo === this.data.email){
+    if(this.mesaBuffer.codigo === this.data.numeroMesa){
       this.navCtrl.push(CardapioPage)
     }else{
       this.showAlert();
     }
+	}
+
+	getData(){
+    this.rest.getMesa(1).subscribe(data=>
+      {
+        console.log(data);
+        this.mesa = data;
+        localStorage.setItem('mesaData',JSON.stringify(this.mesa))
+        console.log(localStorage);
+      }
+    );
 	}
 	
   showAlert() { // alerta para erro de codigo de mesa
