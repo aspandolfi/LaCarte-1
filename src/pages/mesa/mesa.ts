@@ -20,7 +20,7 @@ export class MesaPage {
   }
 
 	Validar(){ //verifica se a mesa se encontra no banco.
-    if(this.mesaBuffer.codigo === this.data.numeroMesa){
+    if(this.mesaBuffer.codigo === this.data.id){
       this.navCtrl.push(CardapioPage)
     }else{
       this.showAlert();
@@ -28,7 +28,7 @@ export class MesaPage {
 	}
 
 	getData(){
-    this.rest.getMesa(1).subscribe(data=>
+    this.rest.getMesa(123).subscribe(data=>
       {
         console.log(data);
         this.mesa = data;
