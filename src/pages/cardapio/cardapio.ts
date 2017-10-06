@@ -15,10 +15,10 @@ export class CardapioPage {
  
   cardapio: string = "comidas"; //mostra a pagina de comida 
 
-  public produto = new Produto(); 
- 
   pro={}
-  Produto={"name": "Lasanha","simbolo": "R$", "valor": "16.00"}; // MOC do cardápio
+  
+  produtoData={"nome": " ", "valor": " "}; // MOC do cardápio
+  //Produto={"name": "Lasanha", "valor": "16.00"}; // MOC do cardápio
  
   constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform,private rest: RestProvider) {
     this.getData();
@@ -43,8 +43,4 @@ export class CardapioPage {
     this.navCtrl.push(Cardapio2Page)
   }
 
-
-    private newFunction() {
-        return this.produto;
-    }
 }

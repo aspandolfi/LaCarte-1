@@ -18,7 +18,7 @@ export class PerfilPage {
 
   user = {};
   userData = {"name": "","email": "", "telefone": "","cpf": "","senha": ""};
-  public usuarios = new User();
+ 
   
   constructor(public navCtrl: NavController, private rest: RestProvider, public alertCtrl: AlertController) {
     this.getData();
@@ -40,7 +40,7 @@ export class PerfilPage {
   }
  
   excluir(){    // Função para excluir o usuario
-    console.log(this.user1.nome);
+    console.log(this.user1.name);
     this.rest.deleteUser(this.user1);
     this.navCtrl.push(EditarPage);
   }
