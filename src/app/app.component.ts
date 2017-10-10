@@ -6,7 +6,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { CadastPage } from '../pages/cadast/cadast';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { LoginPage } from '../pages/login/login';
-import { EditarPage } from '../pages/editar/editar';
+// import { EditarPage } from '../pages/editar/editar';
+import { MesaPage } from '../pages/mesa/mesa';
 import { CardapioPage } from '../pages/cardapio/cardapio';
 
 @Component({
@@ -27,8 +28,8 @@ export class MyApp {
       { title: 'Login', component: LoginPage },
       { title: 'Cadastrar', component: CadastPage },
 			{ title: 'Perfil', component: PerfilPage },
-      { title: 'Cardapio', component: CardapioPage },
-  
+			{ title: 'Cardapio', component: CardapioPage },
+			{ title: 'Mesa', component: MesaPage },
     ];
 
   }

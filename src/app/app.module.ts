@@ -17,6 +17,7 @@ import { LoginPageModule } from '../pages/login/login.module';
 import { EditarPageModule } from '../pages/editar/editar.module';
 import { HttpModule } from "@angular/http";
 import { RestProvider } from '../providers/rest/rest';
+import { MesaPageModule } from '../pages/mesa/mesa.module';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { RestProvider } from '../providers/rest/rest';
 		CardapioPageModule,
 		Cardapio2PageModule,
     HttpClientModule,
-    EditarPageModule,
+		EditarPageModule,
+		MesaPageModule,
 		HttpModule
 
   ],

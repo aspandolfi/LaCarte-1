@@ -25,10 +25,9 @@ export class EditarPage {
   }
 
   salvar(){    // Função para alterar dados do usuarios
-    console.log(this.user.name);
+    console.log(this.user.cpf);
     this.rest.editUser(this.user);
     this.navCtrl.push(EditarPage);
   }
-  
+
 }
- 
