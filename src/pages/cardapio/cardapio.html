@@ -1,154 +1,154 @@
 <ion-header>
-		<ion-navbar no-border-bottom>
-				<button ion-button menuToggle>
-						<ion-icon name="menu"></ion-icon>
-					</button>
-		  <ion-title>
-			cardápio
-		  </ion-title>
-		</ion-navbar>
+	<ion-navbar no-border-bottom>
+			<button ion-button menuToggle>
+					<ion-icon name="menu"></ion-icon>
+				</button>
+	  <ion-title>
+		cardápio
+	  </ion-title>
+	</ion-navbar>
 
-		<ion-toolbar no-border-top>
-		  <ion-segment [(ngModel)]="cardapio">
-			<ion-segment-button value="Comidas">
-			  Comidas
-			</ion-segment-button>
-			<ion-segment-button value="Bebidas">
-			  Bebidas
-			</ion-segment-button>
-			<ion-segment-button value="Sobremesas">
-			  Sobremesas
-			</ion-segment-button>
-		  </ion-segment>
-		</ion-toolbar> 
-	  </ion-header>
+	<ion-toolbar no-border-top>
+	  <ion-segment [(ngModel)]="cardapio">
+		<ion-segment-button value="Comidas">
+		  Comidas
+		</ion-segment-button>
+		<ion-segment-button value="Bebidas">
+		  Bebidas
+		</ion-segment-button>
+		<ion-segment-button value="Sobremesas">
+		  Sobremesas
+		</ion-segment-button>
+	  </ion-segment>
+	</ion-toolbar>
+  </ion-header>
 <ion-content>
-	<div [ngSwitch]="cardapio">
-		<ion-list *ngSwitchCase="'comidas'" >
-			<ion-item>
-				<ion-thumbnail item-start>
-					<img (click)="moveTo()" src="https://i.imgur.com/Q5ISx1U.jpg">
-				</ion-thumbnail>
-				<h2>{{pro.nome}}</h2>
-				<h2>R${{pro.valor}}</h2>
-			</ion-item>
-			<ion-item>
-				<ion-thumbnail item-start>
-					<img src="https://i.imgur.com/Aa8Mipw.jpg">
-				</ion-thumbnail>
-				<h2>Escondidinho de carne</h2>
-				<h2>R${{pro.valor}}</h2>
-			</ion-item>
-			<ion-item>
-				<ion-thumbnail item-start>
-					<img src="https://i.imgur.com/fhn2PLF.jpg">
-				</ion-thumbnail>
-				<h2>Rocambole de carne</h2>
-				<h2>R${{pro.valor}}</h2>
-			</ion-item>
-		</ion-list>
+<div [ngSwitch]="cardapio">
+	<ion-list *ngSwitchCase="'comidas'" >
+		<ion-item>
+			<ion-thumbnail item-start>
+				<img (click)="moveTo()" src="https://i.imgur.com/Q5ISx1U.jpg">
+			</ion-thumbnail>
+			<h2>{{pro.nome}}</h2>
+			<h2>R${{pro.valor}}</h2>
+		</ion-item>
+		<ion-item>
+			<ion-thumbnail item-start>
+				<img src="https://i.imgur.com/Aa8Mipw.jpg">
+			</ion-thumbnail>
+			<h2>Escondidinho de carne</h2>
+			<h2>R${{pro.valor}}</h2>
+		</ion-item>
+		<ion-item>
+			<ion-thumbnail item-start>
+				<img src="https://i.imgur.com/fhn2PLF.jpg">
+			</ion-thumbnail>
+			<h2>Rocambole de carne</h2>
+			<h2>R${{pro.valor}}</h2>
+		</ion-item>
+	</ion-list>
 
-		<ion-list *ngSwitchCase="'Bebidas'">
-			<ion-item>
-				<ion-thumbnail item-start>
-					<img src="https://i.imgur.com/AQO74jY.jpg">
-				</ion-thumbnail>
-				<h2>Água</h2>
-				<h2>R${{pro.valor}}</h2>
-			</ion-item>
-			<ion-item>
-				<ion-thumbnail item-start>
-					<img src="https://i.imgur.com/LfWVgWT.jpg">
-				</ion-thumbnail>
-				<h2>Suco</h2>
-				<h2>R${{pro.valor}}</h2>
-			</ion-item>
-			<ion-item>
-				<ion-thumbnail item-start>
-					<img src="https://i.imgur.com/cIoJJTy.jpg">
-				</ion-thumbnail>
-				<h2>Vinho</h2>
-				<h2>R${{pro.valor}}</h2>
-			</ion-item>
-		</ion-list>
+	<ion-list *ngSwitchCase="'Bebidas'">
+		<ion-item>
+			<ion-thumbnail item-start>
+				<img src="https://i.imgur.com/AQO74jY.jpg">
+			</ion-thumbnail>
+			<h2>Água</h2>
+			<h2>R${{pro.valor}}</h2>
+		</ion-item>
+		<ion-item>
+			<ion-thumbnail item-start>
+				<img src="https://i.imgur.com/LfWVgWT.jpg">
+			</ion-thumbnail>
+			<h2>Suco</h2>
+			<h2>R${{pro.valor}}</h2>
+		</ion-item>
+		<ion-item>
+			<ion-thumbnail item-start>
+				<img src="https://i.imgur.com/cIoJJTy.jpg">
+			</ion-thumbnail>
+			<h2>Vinho</h2>
+			<h2>R${{pro.valor}}</h2>
+		</ion-item>
+	</ion-list>
 
-		<ion-list *ngSwitchCase="'Sobremesas'">
-			<ion-item>
-				<ion-thumbnail item-start>
-					<img src="https://i.imgur.com/ifeDJ5i.jpg">
-				</ion-thumbnail>
-				<h2>Torta de limão</h2>
-				<h2>R${{pro.valor}}</h2>
-			</ion-item>
-			<ion-item>
-				<ion-thumbnail item-start>
-					<img src="https://i.imgur.com/kgP6SRX.jpg">
-				</ion-thumbnail>
-				<h2>Torta de morango</h2>
-				<h2>R${{pro.valor}}</h2>
-			</ion-item>
-			<ion-item>
-				<ion-thumbnail item-start>
-					<img src="https://i.imgur.com/U6tP94D.jpg">
-				</ion-thumbnail>
-				<h2>Torta de chocolate</h2>
-				<h2>R${{pro.valor}}</h2>
-			</ion-item>
-		</ion-list>
+	<ion-list *ngSwitchCase="'Sobremesas'">
+		<ion-item>
+			<ion-thumbnail item-start>
+				<img src="https://i.imgur.com/ifeDJ5i.jpg">
+			</ion-thumbnail>
+			<h2>Torta de limão</h2>
+			<h2>R${{pro.valor}}</h2>
+		</ion-item>
+		<ion-item>
+			<ion-thumbnail item-start>
+				<img src="https://i.imgur.com/kgP6SRX.jpg">
+			</ion-thumbnail>
+			<h2>Torta de morango</h2>
+			<h2>R${{pro.valor}}</h2>
+		</ion-item>
+		<ion-item>
+			<ion-thumbnail item-start>
+				<img src="https://i.imgur.com/U6tP94D.jpg">
+			</ion-thumbnail>
+			<h2>Torta de chocolate</h2>
+			<h2>R${{pro.valor}}</h2>
+		</ion-item>
+	</ion-list>
 
-		<ion-list *ngSwitchDefault>
-			<ion-item>
-				<ion-thumbnail item-start>
-					<img href="#/carpio2/cardapio2" src="https://i.imgur.com/Q5ISx1U.jpg">
-				</ion-thumbnail>
+	<ion-list *ngSwitchDefault>
+		<ion-item>
+			<ion-thumbnail item-start>
+				<img href="#/carpio2/cardapio2" src="https://i.imgur.com/Q5ISx1U.jpg">
+			</ion-thumbnail>
+			<h2>Lasanha</h2>
+			<h2>R${{pro.valor}}</h2>
+		</ion-item>
+		<ion-item>
+			<ion-thumbnail item-start>
+				<img src="https://i.imgur.com/Aa8Mipw.jpg">
+			</ion-thumbnail>
+			<h2>Escondidinho de carne</h2>
+			<h2>R${{pro.valor}}</h2>
+		</ion-item>
+		<ion-item>
+			<ion-thumbnail item-start>
+				<img src="https://i.imgur.com/fhn2PLF.jpg">
+			</ion-thumbnail>
+			<h2>Rocambole de carne</h2>
+			<h2>R${{pro.valor}}</h2>
+		</ion-item>
+</ion-list>
+
+<ion-list *ngSwitchDefault >
+		<ion-item>
+			<ion-thumbnail item-start>
+				<a href="#/cardapio2/cardapio2"><img src="https://i.imgur.com/Q5ISx1U.jpg"></a>
+			</ion-thumbnail>
+			<ion-card-header>
 				<h2>Lasanha</h2>
-				<h2>R${{pro.valor}}</h2>
-			</ion-item>
-			<ion-item>
-				<ion-thumbnail item-start>
-					<img src="https://i.imgur.com/Aa8Mipw.jpg">
-				</ion-thumbnail>
-				<h2>Escondidinho de carne</h2>
-				<h2>R${{pro.valor}}</h2>
-			</ion-item>
-			<ion-item>
-				<ion-thumbnail item-start>
-					<img src="https://i.imgur.com/fhn2PLF.jpg">
-				</ion-thumbnail>
-				<h2>Rocambole de carne</h2>
-				<h2>R${{pro.valor}}</h2>
-			</ion-item>
-    </ion-list>
+				<P>15.90</P>
+			</ion-card-header>
+		</ion-item>
+		<ion-item>
+			<ion-thumbnail item-start>
+				<img src="https://i.imgur.com/Aa8Mipw.jpg">
+			</ion-thumbnail>
+			<ion-card-header>
+				<h2>Escondidinho de carne seca</h2>
+				<p>16.90</p>
+			</ion-card-header>
+		</ion-item>
+		<ion-item>
+			<ion-thumbnail item-start>
+				<img src="https://i.imgur.com/fhn2PLF.jpg">
+			</ion-thumbnail>
+			<ion-card-header>
+				<h2>Rocambole de Arroz</h2>
+				<p>17.00</p>
+			</ion-card-header>
+		</ion-item>
+</ion-list>
 
-    <ion-list *ngSwitchDefault >
-			<ion-item>
-				<ion-thumbnail item-start>
-					<a href="#/cardapio2/cardapio2"><img src="https://i.imgur.com/Q5ISx1U.jpg"></a>
-				</ion-thumbnail>
-				<ion-card-header>
-					<h2>Lasanha</h2>
-					<P>15.90</P>
-				</ion-card-header>
-			</ion-item>
-			<ion-item>
-				<ion-thumbnail item-start>
-					<img src="https://i.imgur.com/Aa8Mipw.jpg">
-				</ion-thumbnail>
-				<ion-card-header>
-					<h2>Escondidinho de carne seca</h2>
-					<p>16.90</p>
-				</ion-card-header>
-			</ion-item>
-			<ion-item>
-				<ion-thumbnail item-start>
-					<img src="https://i.imgur.com/fhn2PLF.jpg">
-				</ion-thumbnail>
-				<ion-card-header>
-					<h2>Rocambole de Arroz</h2>
-					<p>17.00</p>
-				</ion-card-header>
-			</ion-item>
-    </ion-list>
-
-	</div>
+</div>
 </ion-content>

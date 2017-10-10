@@ -3,4 +3,5 @@ export class Produto{
 	url: string;
 	valor: number;
 	descricao: string;
+	tipo:number;
 }
