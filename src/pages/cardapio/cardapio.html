@@ -22,9 +22,9 @@
 		  </ion-segment-button>
 		</ion-segment>
 	</ion-toolbar>
-	
+
 	<div [ngSwitch]="cardapio">
-		<ion-list *ngSwitchCase="'comidas'">
+		<ion-list *ngSwitchCase="'comidas'" >
 			<ion-item>
 				<ion-thumbnail item-start>
 					<a href="#/cardapio2/cardapio2"><img src="https://i.imgur.com/Q5ISx1U.jpg"></a>
@@ -53,7 +53,7 @@
 				</ion-card-header>
 			</ion-item>
 		</ion-list>
-	
+
 		<ion-list *ngSwitchCase="'bebidas'">
 			<ion-item>
 				<ion-thumbnail item-start>
@@ -83,7 +83,7 @@
 				</ion-card-header>
 			</ion-item>
 		</ion-list>
-	
+
 		<ion-list *ngSwitchCase="'sobremesas'">
 			<ion-item>
 				<ion-thumbnail item-start>
@@ -112,6 +112,37 @@
 					<p>11.99</p>
 				</ion-card-header>
 			</ion-item>
-		</ion-list>
+    </ion-list>
+
+    <ion-list *ngSwitchDefault >
+			<ion-item>
+				<ion-thumbnail item-start>
+					<a href="#/cardapio2/cardapio2"><img src="https://i.imgur.com/Q5ISx1U.jpg"></a>
+				</ion-thumbnail>
+				<ion-card-header>
+					<h2>Lasanha</h2>
+					<P>15.90</P>
+				</ion-card-header>
+			</ion-item>
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img src="https://i.imgur.com/Aa8Mipw.jpg">
+				</ion-thumbnail>
+				<ion-card-header>
+					<h2>Escondidinho de carne seca</h2>
+					<p>16.90</p>
+				</ion-card-header>
+			</ion-item>
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img src="https://i.imgur.com/fhn2PLF.jpg">
+				</ion-thumbnail>
+				<ion-card-header>
+					<h2>Rocambole de Arroz</h2>
+					<p>17.00</p>
+				</ion-card-header>
+			</ion-item>
+    </ion-list>
+
 	</div>
 </ion-content>

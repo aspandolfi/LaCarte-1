@@ -21,7 +21,7 @@ export class PerfilPage {
 	}
 
   getData(){
-    this.rest.getUser(6).subscribe(data=>
+    this.rest.getUser(1).subscribe(data=>
       {
         console.log(data);
         this.user = data;

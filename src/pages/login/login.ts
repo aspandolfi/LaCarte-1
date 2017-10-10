@@ -44,16 +44,27 @@ export class LoginPage {
 
   Validar(){ //verifica se o usuario se encontra no banco.
     if(this.usuarioLogin.email === this.data1.email && this.usuarioLogin.senha === this.data1.senha){
+      this.showAlertOn();
       this.navCtrl.push(PerfilPage)
+
     }else{
-      this.showAlert();
+      this.showAlertOFF();
     }
   }
 
-  showAlert() { // alerta para erro de login
+  showAlertOFF() { // alerta para erro de login
     let alert = this.alertCtrl.create({
       title: 'Erro',
       subTitle: 'Não foi possivel logar, login ou senha incorreto!',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  showAlertOn() { // alerta para erro de login
+    let alert = this.alertCtrl.create({
+      title: 'La Carte',
+      subTitle: 'Bem vindo ao La Carte! Desejamos uma boa refeição!',
       buttons: ['OK']
     });
     alert.present();
