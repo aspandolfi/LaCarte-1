@@ -8,8 +8,6 @@ import { EditarPage } from '../editar/editar';
 @Component({
   selector: 'page-perfil',
 	templateUrl: 'perfil.html',
-
-	//providers:[ UsuarioProvider ]
 })
 
 export class PerfilPage {
@@ -29,6 +27,46 @@ export class PerfilPage {
         console.log(localStorage);
       }
     );
+	}
+	
+	showPrompt() {
+    let prompt = this.alertCtrl.create({
+      title: 'Editar Dados',
+      message: "Edite os dados que quiser ou deixe em branco para não haver alterações",
+      inputs: [
+        {
+          name: 'name',
+          placeholder: 'Nome'
+        },
+        {
+          name: 'email',
+          placeholder: 'Email'
+        },
+        {
+          name: 'tel',
+          placeholder: 'Telefone'
+        },
+        {
+          name: 'senha',
+          placeholder: 'Senha'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            console.log('Saved clicked');
+          }
+        }
+      ]
+    });
+    prompt.present();
   }
 
   excluir(){    // Função para alterar dados do usuarios
@@ -42,7 +80,6 @@ export class PerfilPage {
   }
 
   ionViewDidLoad() {
-
   }
 
 }
