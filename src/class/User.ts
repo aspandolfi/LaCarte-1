@@ -5,3 +5,4 @@ export class User {
 	cpf: number;
 	senha: string;
 }
+

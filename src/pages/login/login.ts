@@ -44,9 +44,6 @@ export class LoginPage {
     }
   }
 
-<<<<<<< HEAD
-  showAlertOFF() { // alerta para erro de login
-=======
 	getData(){
     this.rest.getUser(1).subscribe(data=>
       {
@@ -57,9 +54,8 @@ export class LoginPage {
       }
     );
 	}
-	
+
   showAlert() { // alerta para erro de login
->>>>>>> 2b744c7567195565198903a066864c7d7edd6b22
     let alert = this.alertCtrl.create({
       title: 'Erro',
       subTitle: 'Não foi possivel logar, login ou senha incorreto!',

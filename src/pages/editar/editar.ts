@@ -30,5 +30,4 @@ export class EditarPage {
     this.navCtrl.push(EditarPage);
   }
 
-
 }

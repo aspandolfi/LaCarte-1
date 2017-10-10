@@ -11,10 +11,14 @@ import { EditarPage } from '../editar/editar';
 })
 
 export class PerfilPage {
+
+  public user1 = new User();
+
   user = {};
-  userData = {"name": "","email": "", "telefone": "","cpf": "","senha": "", "id": ""};
-  public usuarios = new User();
-	constructor(public navCtrl: NavController, private rest: RestProvider, public alertCtrl: AlertController) {
+  userData = {"name": "","email": "", "telefone": "","cpf": "","senha": ""};
+
+
+  constructor(public navCtrl: NavController, private rest: RestProvider, public alertCtrl: AlertController) {
     this.getData();
 	}
 
@@ -28,7 +32,7 @@ export class PerfilPage {
       }
     );
 	}
-	
+
 	showPrompt() {
     let prompt = this.alertCtrl.create({
       title: 'Editar Dados',
@@ -79,6 +83,11 @@ export class PerfilPage {
     this.navCtrl.push(EditarPage);
   }
 
+  excluir(){    // Função para excluir o usuario
+    console.log(this.user1.name);
+    this.rest.deleteUser(this.user1);
+    this.navCtrl.push(EditarPage);
+  }
   ionViewDidLoad() {
   }
 
