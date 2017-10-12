@@ -9,6 +9,7 @@ import { LoginPage } from '../pages/login/login';
 // import { EditarPage } from '../pages/editar/editar';
 import { MesaPage } from '../pages/mesa/mesa';
 import { CardapioPage } from '../pages/cardapio/cardapio';
+import { CarrinhoPage } from '../pages/carrinho/carrinho';
 
 @Component({
   templateUrl: 'app.html'

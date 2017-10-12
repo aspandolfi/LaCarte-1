@@ -18,6 +18,7 @@ import { EditarPageModule } from '../pages/editar/editar.module';
 import { HttpModule } from "@angular/http";
 import { RestProvider } from '../providers/rest/rest';
 import { MesaPageModule } from '../pages/mesa/mesa.module';
+import { CarrinhoPageModule } from '../pages/carrinho/carrinho.module';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { MesaPageModule } from '../pages/mesa/mesa.module';
     HttpClientModule,
 		EditarPageModule,
 		MesaPageModule,
-		HttpModule
+    HttpModule,
+    CarrinhoPageModule
 
   ],
 

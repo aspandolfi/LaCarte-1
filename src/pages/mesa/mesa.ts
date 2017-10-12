@@ -15,7 +15,7 @@ export class MesaPage {
 	public mesaBuffer = new Mesa();
 	public mesa ={};
 	public data = JSON.parse(localStorage.getItem('mesaBuffer'));
-
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, public alertCtrl: AlertController) {
   }
 

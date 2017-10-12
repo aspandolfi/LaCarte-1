@@ -18,5 +18,8 @@ export class Cardapio2Page {
   ionViewDidLoad() {
     console.log('ionViewDidLoad Cardapio2Page');
   }
+  public moveTo(){ // uma simples função que esta sendo chamada pela primeira imagem do cardapio para poder visualizar a descrição da comida.
+    this.navCtrl.push(Cardapio2Page)
+  }
 
 }

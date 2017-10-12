@@ -5,8 +5,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { CadastPage } from '../cadast/cadast';
-
-
+import { SqliteServe } from '../../class/SqliteServe';
 
 @IonicPage()
 @Component({
