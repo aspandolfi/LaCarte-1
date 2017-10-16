@@ -6,7 +6,6 @@
 		<ion-title>cardapio</ion-title>
 	</ion-navbar>
 </ion-header>
-
 <ion-content padding>
 	<ion-thumbnail item-start>
 		<img src={{Produto.url}}>
@@ -23,11 +22,11 @@
 		<ion-item>
 			<input name="a" type="checkbox" [(ngModel)]="a">
 			Uva Passas
-		</ion-item>>
+		</ion-item>
 	</form>
-<br>
-<textarea class="text" placeholder="Observacao" id="caixinha"></textarea>
-<p>Total: </p>
-<p>R$ 16,00</p>
-<br><div align="center"><a nav-transition="none" href="#/carrinho/carrinho"><button ion-button color="secondary">Adicionar ao carrinho</button></a></div>
+	<br>
+	<textarea class="text" placeholder="Observacao" id="caixinha" href="#/carrinho/carrinho"></textarea>
+	<p>Total: </p>
+	<p>R$ 16,00</p>
+	<br><div align="center"><a nav-transition="none" href="#/carrinho/carrinho" ><button ion-button color="secondary">Adicionar ao carrinho</button></a></div>
 </ion-content>
