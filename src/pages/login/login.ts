@@ -70,6 +70,7 @@ export class LoginPage {
       buttons: ['OK']
     });
     alert.present();
+    
   }
 
   public moveTo(){

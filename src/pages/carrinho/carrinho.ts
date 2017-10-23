@@ -16,7 +16,7 @@ export class CarrinhoPage {
   pro={};
   produtoData={"nome": " ", "valor": " "};
   
-  getData(){ // função que permite mostrar na página os produtos do cardápio.
+  getData(){
     this.rest.getProduto(1).subscribe(data=>
       {
         console.log(data);
@@ -25,6 +25,10 @@ export class CarrinhoPage {
         console.log(localStorage);
       }
     );
+  }
+
+ moveTo(){
+    this.navCtrl.push(CardapioPage);
   }
 
 
