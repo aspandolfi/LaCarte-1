@@ -20,4 +20,4 @@ script:
 
 
 notifications:
-slack: leds:ecBlZedCK8tpP1X5uygKMS8q
+slack: 
