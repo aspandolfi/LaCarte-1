@@ -19,6 +19,7 @@ import { HttpModule } from "@angular/http";
 import { RestProvider } from '../providers/rest/rest';
 import { MesaPageModule } from '../pages/mesa/mesa.module';
 import { CarrinhoPageModule } from '../pages/carrinho/carrinho.module';
+import { CardapioTestPageModule } from '../pages/cardapio-test/cardapio-test.module';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { CarrinhoPageModule } from '../pages/carrinho/carrinho.module';
 		EditarPageModule,
 		MesaPageModule,
     HttpModule,
-    CarrinhoPageModule
+    CarrinhoPageModule,
+    CardapioTestPageModule
 
   ],
 

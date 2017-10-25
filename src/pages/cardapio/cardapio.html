@@ -1,130 +1,54 @@
 <ion-header>
 	<ion-navbar no-border-bottom>
-			<button ion-button menuToggle>
+		<button ion-button menuToggle>
 					<ion-icon name="menu"></ion-icon>
 				</button>
-	  <ion-title>
-		cardápio
-	  </ion-title>
+		<ion-title>
+			cardápio
+		</ion-title>
 	</ion-navbar>
-
 	<ion-toolbar no-border-top>
-	  <ion-segment [(ngModel)]="cardapio">
-		<ion-segment-button value="Comidas">
-		  Comidas
-		</ion-segment-button>
-		<ion-segment-button value="Bebidas">
-		  Bebidas
-		</ion-segment-button>
-		<ion-segment-button value="Sobremesas">
-		  Sobremesas
-		</ion-segment-button>
-	  </ion-segment>
+		<ion-segment [(ngModel)]="cardapio">
+			<ion-segment-button value="comidas">
+				Comidas
+			</ion-segment-button>
+			<ion-segment-button value="bebidas">
+				Bebidas
+			</ion-segment-button>
+			<ion-segment-button value="sobremesas">
+				Sobremesas
+			</ion-segment-button>
+		</ion-segment>
 	</ion-toolbar>
-  </ion-header>
-<ion-content>
-<div [ngSwitch]="cardapio">
-	<ion-list *ngSwitchCase="'comidas'" >
-		<ion-item>
-			<ion-thumbnail item-start>
-				<img (click)="moveTo()" src="https://i.imgur.com/Q5ISx1U.jpg">
-			</ion-thumbnail>
-			<h2>{{pro.nome}}</h2>
-			<h2>R${{pro.valor}}</h2>
-		</ion-item>
-		<ion-item>
-			<ion-thumbnail item-start>
-				<img src="https://i.imgur.com/Aa8Mipw.jpg">
-			</ion-thumbnail>
-			<h2>Escondidinho de carne</h2>
-			<h2>R${{pro.valor}}</h2>
-		</ion-item>
-		<ion-item>
-			<ion-thumbnail item-start>
-				<img src="https://i.imgur.com/fhn2PLF.jpg">
-			</ion-thumbnail>
-			<h2>Rocambole de carne</h2>
-			<h2>R${{pro.valor}}</h2>
-		</ion-item>
-	</ion-list>
-
-	<ion-list *ngSwitchCase="'Bebidas'">
-		<ion-item>
-			<ion-thumbnail item-start>
-				<img src="https://i.imgur.com/AQO74jY.jpg">
-			</ion-thumbnail>
-			<h2>Água</h2>
-			<h2>R${{pro.valor}}</h2>
-		</ion-item>
-		<ion-item>
-			<ion-thumbnail item-start>
-				<img src="https://i.imgur.com/LfWVgWT.jpg">
-			</ion-thumbnail>
-			<h2>Suco</h2>
-			<h2>R${{pro.valor}}</h2>
-		</ion-item>
-		<ion-item>
-			<ion-thumbnail item-start>
-				<img src="https://i.imgur.com/cIoJJTy.jpg">
-			</ion-thumbnail>
-			<h2>Vinho</h2>
-			<h2>R${{pro.valor}}</h2>
-		</ion-item>
-	</ion-list>
-
-	<ion-list *ngSwitchCase="'Sobremesas'">
-		<ion-item>
-			<ion-thumbnail item-start>
-				<img src="https://i.imgur.com/ifeDJ5i.jpg">
-			</ion-thumbnail>
-			<h2>Torta de limão</h2>
-			<h2>R${{pro.valor}}</h2>
-		</ion-item>
-		<ion-item>
-			<ion-thumbnail item-start>
-				<img src="https://i.imgur.com/kgP6SRX.jpg">
-			</ion-thumbnail>
-			<h2>Torta de morango</h2>
-			<h2>R${{pro.valor}}</h2>
-		</ion-item>
-		<ion-item>
-			<ion-thumbnail item-start>
-				<img src="https://i.imgur.com/U6tP94D.jpg">
-			</ion-thumbnail>
-			<h2>Torta de chocolate</h2>
-			<h2>R${{pro.valor}}</h2>
-		</ion-item>
-	</ion-list>
-
-	<ion-list *ngSwitchDefault >
-		<ion-item>
-			<ion-thumbnail item-start>
-				<a href="#/cardapio2/cardapio2"><img src="https://i.imgur.com/Q5ISx1U.jpg"></a>
-			</ion-thumbnail>
-			<ion-card-header>
-				<h2>{{pro.nome}}</h2>
-				<P>R${{pro.valor}}</P>
-			</ion-card-header>
-		</ion-item>
-		<ion-item>
-			<ion-thumbnail item-start>
-				<img src="https://i.imgur.com/Aa8Mipw.jpg">
-			</ion-thumbnail>
-			<ion-card-header>
-				<h2>Escondidinho de carne seca</h2>
-				<p>R${{pro.valor}}</p>
-			</ion-card-header>
-		</ion-item>
-		<ion-item>
-			<ion-thumbnail item-start>
-				<img src="https://i.imgur.com/fhn2PLF.jpg">
-			</ion-thumbnail>
-			<ion-card-header>
-				<h2>Rocambole de Arroz</h2>
-				<p>R${{pro.valor}}</p>
-			</ion-card-header>
-		</ion-item>
-</ion-list>
-
-</div>
-</ion-content>
+</ion-header>
+<!-- <ion-content>
+	<div [ngSwitch]="cardapio">
+		<ion-list *ngSwitchCase="'comidas'" *ngFor="let item of items">
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img (click)="moveTo()" src="comida.urlImage">
+				</ion-thumbnail>
+				<h2>{{comida.nome}}</h2>
+				<h2>R${{comida.valor}}</h2>
+			</ion-item>
+		</ion-list>
+		<ion-list *ngSwitchCase="'bebidas'" *ngFor="let bebida of bebidas">
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img (click)="moveTo()" src="bebida.urlImage">
+				</ion-thumbnail>
+				<h2>{{bebida.nome}}</h2>
+				<h2>R${{bebida.valor}}</h2>
+			</ion-item>
+		</ion-list>
+		<ion-list *ngSwitchCase="'sobremesas'" *ngFor="let sobremesa of sobremesas">
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img (click)="moveTo()" src="sobremesa.urlImage">
+				</ion-thumbnail>
+				<h2>{{sobremesa.nome}}</h2>
+				<h2>R${{sobremesa.valor}}</h2>
+			</ion-item>
+		</ion-list>
+	</div>
+</ion-content> -->

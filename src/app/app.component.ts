@@ -10,6 +10,7 @@ import { LoginPage } from '../pages/login/login';
 import { MesaPage } from '../pages/mesa/mesa';
 import { CardapioPage } from '../pages/cardapio/cardapio';
 import { CarrinhoPage } from '../pages/carrinho/carrinho';
+import { CardapioTestPage } from '../pages/cardapio-test/cardapio-test';
 
 @Component({
   templateUrl: 'app.html'
@@ -31,6 +32,7 @@ export class MyApp {
 			{ title: 'Perfil', component: PerfilPage },
 			{ title: 'Cardapio', component: CardapioPage },
 			{ title: 'Mesa', component: MesaPage },
+			{ title: 'CardapioTest', component: CardapioTestPage },
     ];
 
   }

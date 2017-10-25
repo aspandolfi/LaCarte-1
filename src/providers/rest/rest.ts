@@ -31,22 +31,22 @@ export class RestProvider {
     });
   }
 
-  editUser(myData){ //função que permite editar um usuário.
+  editUser(myData) { //função que permite editar um usuário.
     console.log(myData);
     this.http.post(this.apiUrl + "/users/edit", myData).subscribe(data => {
-    console.log(data);
+      console.log(data);
     });
   }
 
-  deleteUser(myData){ //função que permite deletar um usuário.
+  deleteUser(myData) { //função que permite deletar um usuário.
     this.http.post(this.apiUrl + "/users/delete", myData).subscribe(data => {
-    console.log(data);
+      console.log(data);
     });
-	}
+  }
 
-	// ==================================================
+  // ==================================================
 
-	public getMesa(id: any) { // pegando mesa
+  public getMesa(id: any) { // pegando mesa
     return this.http.get(this.apiUrl + "/mesa/" + id).map(res => res);
     // .catch(error => console.log(error)
   }
