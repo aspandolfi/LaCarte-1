@@ -10,8 +10,7 @@ import "rxjs/add/operator/map";
 
 export class RestProvider {
 
-  private apiUrl = "http://lacarte-api.azurewebsites.net/"; // link para acessa o banco de dados.
-  //private apiUrl = "http://172.16.108.1:3000"; // link para acessa o banco de dados.
+  private apiUrl = "http://lacarte-api.azurewebsites.net/api/v1"; // link para acessa o banco de dados.
 
   constructor(public http: HttpClient) {
     console.log("Hello RestProvider Provider");
@@ -20,26 +19,26 @@ export class RestProvider {
   // =========================== trabalhando com os  usuarios ===========================
 
   public getUser(id: any) { // função que imprime o usuário na tela.
-    return this.http.get(this.apiUrl + "/users/" + id).map(res => res);
+    return this.http.get(this.apiUrl + "/user/" + id).map(res => res);
     // .catch(error => console.log(error)
   }
 
   addUser(myData) { //função que adiciona um usuário ao banco de dados.
 
-    this.http.post(this.apiUrl + "/users/save", myData).subscribe(data => {
+    this.http.post(this.apiUrl + "/user/save", myData).subscribe(data => {
       console.log(data);
     });
   }
 
   editUser(myData){ //função que permite editar um usuário.
     console.log(myData);
-    this.http.post(this.apiUrl + "/users/edit", myData).subscribe(data => {
+    this.http.post(this.apiUrl + "/user/edit", myData).subscribe(data => {
     console.log(data);
     });
   }
 
   deleteUser(myData){ //função que permite deletar um usuário.
-    this.http.post(this.apiUrl + "/users/delete", myData).subscribe(data => {
+    this.http.post(this.apiUrl + "/user/delete", myData).subscribe(data => {
     console.log(data);
     });
 	}

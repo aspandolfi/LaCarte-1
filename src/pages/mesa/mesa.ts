@@ -12,15 +12,16 @@ import { RestProvider } from '../../providers/rest/rest';
 })
 export class MesaPage {
 	
-	public mesaBuffer = new Mesa();
+	public mesaLogin = new Mesa();
 	public mesa ={};
-	public data = JSON.parse(localStorage.getItem('mesaBuffer'));
+  public data = JSON.parse(localStorage.getItem('mesaData'));
+  mesaData = {"restaurante": "", "numero": "", "codigo": "", "qrcode": ""};
   
   constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, public alertCtrl: AlertController) {
   }
 
 	Validar(){ //verifica se a mesa se encontra no banco.
-    if(this.mesaBuffer.codigo === this.data.id){
+    if(this.mesaLogin.codigo === this.data.id){
       this.navCtrl.push(CardapioPage)
     }else{
       this.showAlert();
