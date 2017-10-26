@@ -8,25 +8,25 @@
 </ion-header>
 <ion-content padding>
 	<ion-thumbnail item-start>
-		<img src={{Produto.url}}>
+		<img src="{{produto.urlImage}}">
 	</ion-thumbnail>
-	<h2>{{Produto.name}}</h2>
-	<P>{{Produto.valor}}</P>
-	<p>{{Produto.descricao}}</p><hr>
-	
+	<h2>{{produto.nome}}</h2>
+	<P>{{produto.valor}}</P>
+	<p>{{produto.descricao}}</p>
+	<hr>
+
 	<form>
 		<ion-item>
-			<input name="a" type="checkbox" [(ngModel)]="a">
-			Bacon
+			<input name="a" type="checkbox" [(ngModel)]="a"> Bacon
 		</ion-item>
 		<ion-item>
-			<input name="a" type="checkbox" [(ngModel)]="a">
-			Uva Passas
+			<input name="b" type="checkbox" [(ngModel)]="b"> Uva Passas
 		</ion-item>
 	</form>
 	<br>
 	<textarea class="text" placeholder="Observacao" id="caixinha" href="#/carrinho/carrinho"></textarea>
 	<p>Total: </p>
 	<p>R$ 16,00</p>
-	<br><div align="center"><a nav-transition="none" href="#/carrinho/carrinho" ><button ion-button color="secondary">Adicionar ao carrinho</button></a></div>
+	<br>
+	<div align="center"><a nav-transition="none" href="#/carrinho/carrinho"><button ion-button color="secondary">Adicionar ao carrinho</button></a></div>
 </ion-content>

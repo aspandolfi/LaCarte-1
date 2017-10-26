@@ -8,17 +8,19 @@ import { Produto } from '../../class/produtos';
   templateUrl: 'cardapio2.html',
 })
 export class Cardapio2Page {
-  public produto = new Produto();
-  
-  Produto={"name": "Lasanha","simbolo": "R$", "valor": "16.00","url":"https://i.imgur.com/Q5ISx1U.jpg" ,"descricao":"Massa caseira, molho a bolonhesa, presunto, queijo mussarela, molho branco."};
-  
+  produto: any;
+
+  Produto = { "name": "Lasanha", "simbolo": "R$", "valor": "16.00", "url": "https://i.imgur.com/Q5ISx1U.jpg", "descricao": "Massa caseira, molho a bolonhesa, presunto, queijo mussarela, molho branco." };
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.produto = navParams.data;
+    console.log(this.produto);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Cardapio2Page');
   }
-  public moveTo(){ // uma simples função que esta sendo chamada pela primeira imagem do cardapio para poder visualizar a descrição da comida.
+  public moveTo() { // uma simples função que esta sendo chamada pela primeira imagem do cardapio para poder visualizar a descrição da comida.
     this.navCtrl.push(Cardapio2Page)
   }
 

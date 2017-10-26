@@ -1,0 +1,60 @@
+<!--
+  Generated template for the CardapioListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <ion-title>Cardápio</ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="selectedItem">
+      <ion-segment-button value="comidas">
+        Comidas
+      </ion-segment-button>
+      <ion-segment-button value="bebidas">
+        Bebidas
+      </ion-segment-button>
+      <ion-segment-button value="sobremesas">
+        sobremesas
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div [ngSwitch]="selectedItem">
+    <ion-list *ngSwitchCase="'comidas'">
+      <ion-item *ngFor="let item of comidas">
+        <ion-thumbnail item-start>
+          <img (click)="moveTo(item)" src="{{item.urlImage}}">
+        </ion-thumbnail>
+        <h2>{{item.nome}}</h2>
+        <h2>{{item.valor}}</h2>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div [ngSwitch]="selectedItem">
+    <ion-list *ngSwitchCase="'bebidas'">
+      <ion-item *ngFor="let item of bebidas">
+        <ion-thumbnail item-start>
+          <img (click)="moveTo(item)" src="{{item.urlImage}}">
+        </ion-thumbnail>
+        <h2>{{item.nome}}</h2>
+        <h2>{{item.valor}}</h2>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div [ngSwitch]="selectedItem">
+    <ion-list *ngSwitchCase="'sobremesas'">
+      <ion-item *ngFor="let item of sobremesas">
+        <ion-thumbnail item-start>
+          <img (click)="moveTo(item)" src="{{item.urlImage}}">
+        </ion-thumbnail>
+        <h2>{{item.nome}}</h2>
+        <h2>{{item.valor}}</h2>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

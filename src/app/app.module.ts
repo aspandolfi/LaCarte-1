@@ -19,7 +19,7 @@ import { HttpModule } from "@angular/http";
 import { RestProvider } from '../providers/rest/rest';
 import { MesaPageModule } from '../pages/mesa/mesa.module';
 import { CarrinhoPageModule } from '../pages/carrinho/carrinho.module';
-import { CardapioTestPageModule } from '../pages/cardapio-test/cardapio-test.module';
+import { CardapioListPageModule } from '../pages/cardapio-list/cardapio-list.module';
 
 
 @NgModule({
@@ -40,8 +40,7 @@ import { CardapioTestPageModule } from '../pages/cardapio-test/cardapio-test.mod
 		MesaPageModule,
     HttpModule,
     CarrinhoPageModule,
-    CardapioTestPageModule
-
+    CardapioListPageModule
   ],
 
   bootstrap: [IonicApp],
