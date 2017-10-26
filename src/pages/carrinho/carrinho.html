@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar no-border-bottom>
       <button ion-button menuToggle>
-					<ion-icon name="menu"></ion-icon>
+				<ion-icon name="menu"></ion-icon>
 			</button>
        <ion-title>carrinho</ion-title>
   </ion-navbar>
@@ -14,9 +14,13 @@
       </ion-thumbnail>
       <h2>{{pro.nome}}</h2>
       <h2>R${{pro.valor}}</h2>
-    </ion-item>   
+    </ion-item>
+
     <ion-fab right bottom id="botaoAdd">
       <button mini ion-fab color="danger" (click)="moveTo()"><ion-icon name="add"></ion-icon></button>
     </ion-fab>
-    <br><div id="finalPage"><button ion-button color="secondary" >Finalizar Pedido</button></div>
+    <br>
+    <div id="finalPage">
+      <button ion-button color="secondary" >Finalizar Pedido</button>
+    </div>
 </ion-content>
