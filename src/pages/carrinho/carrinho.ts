@@ -9,12 +9,13 @@ import { RestProvider } from './../../providers/rest/rest';
   templateUrl: 'carrinho.html',
 })
 export class CarrinhoPage {
+  pro={};
+  produtoData={"nome": " ", "valor": " "};
+  total: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private rest: RestProvider) {
     this.getData();
   }
-  pro={};
-  produtoData={"nome": " ", "valor": " "};
   
   getData(){
     this.rest.getProduto(1).subscribe(data=>

@@ -11,6 +11,8 @@ import { CarrinhoPage } from '../carrinho/carrinho';
 
 export class Cardapio2Page {
   public produto = new Produto();
+  public total = 0.0;
+  public obs: string;
   
   Produto = {
     "nome": "Lasanha", "valor": 16.00, "url": "https://i.imgur.com/Q5ISx1U.jpg", "descricao": "Massa caseira, molho a bolonhesa, presunto, queijo mussarela, molho branco."
@@ -18,7 +20,7 @@ export class Cardapio2Page {
 
   adicionais = [
     {"nome": "Bacon", "id": "1", "quantidade": 0, "valor": 2},
-    {"nome": "Uva Passas", "id": "2", "quantidade": 0, "valor": 1.5},
+    {"nome": "Queijo extra", "id": "2", "quantidade": 0, "valor": 1.5},
     {"nome": "Cebola extra", "id": "3", "quantidade": 0, "valor": 1}
   ]
   
@@ -27,25 +29,19 @@ export class Cardapio2Page {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Cardapio2Page');
+    this.total = this.Produto.valor;
   }
 
-  public mudaQuantia(adic: any, val: number){
-    if(adic.quantidade + val >= 0){
-      adic.quantidade += val;
+  public mudaQuantia(adic: any, sinal: number){
+    if(adic.quantidade + sinal >= 0){
+      adic.quantidade += sinal;
+      this.total += sinal * adic.valor;
     }
   }
 
-  public calculaTotal(){
-    var i:number = 0;
-    var soma:number = this.Produto.valor;
-    for(i=0; i<3; i++){
-      soma += this.adicionais[i].valor * this.adicionais[i].quantidade;
-    }
-    return soma;
-  }
-
-  public moveTo(){ // uma simples função que esta sendo chamada pela primeira imagem do cardapio para poder visualizar a descrição da comida.
-    this.navCtrl.push(CarrinhoPage)
+  public moveTo(total:number){ // uma simples função que esta sendo chamada pela primeira imagem do cardapio para poder visualizar a descrição da comida.
+    console.log(total);
+    this.navCtrl.push(CarrinhoPage, total);
   }
 
 }

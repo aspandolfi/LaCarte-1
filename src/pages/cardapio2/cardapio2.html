@@ -35,9 +35,9 @@
 	<div align="center">
 		<textarea class="text" placeholder="Observacao" id="caixinha" rows="2" cols="30"></textarea>
 	</div>
-	<h4>TOTAL: R$ {{ calculaTotal() | number:'1.2-2' }}</h4>
+	<h4>TOTAL: R$ {{ total | number:'1.2-2' }}</h4>
 	<br>
 	<div align="center">
-		<button ion-button color="secondary" (click)="moveTo()">Adicionar ao carrinho</button>
+		<button ion-button color="secondary" (click)="moveTo(total)">Adicionar ao carrinho</button>
 	</div>
 </ion-content>
