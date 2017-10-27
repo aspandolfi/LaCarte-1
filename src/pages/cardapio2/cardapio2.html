@@ -14,19 +14,51 @@
 	<P>{{produto.valor}}</P>
 	<p>{{produto.descricao}}</p>
 	<hr>
+	<ion-grid>
+		<ion-row>
+			<ion-col class="adicionais" col-6>
+				<div>Adicionais</div>
+			</ion-col>
+			<ion-col>
+				<div>
+					Quantidade
+				</div>
+			</ion-col>
+			<ion-col>
+				Total
+			</ion-col>
+		</ion-row>
+		<ion-row *ngFor="let item of adicionais">
+			<ion-col class="adicionais" col-6>
+				<div>{{item.nome}}</div>
+			</ion-col>
+			<ion-col>
+				<div>
+					<ion-icon name="add-circle" (click)="mudaQuantia(item, 1)"></ion-icon>
+					{{item.quantidade}}
+					<ion-icon name="remove-circle" (click)="mudaQuantia(item, -1)"></ion-icon>
+				</div>
+			</ion-col>
+			<ion-col>
+				{{item.total}}
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+	<!-- <ion-list>
+		<ion-item *ngFor="let item of adicionais">
 
-	<form>
-		<ion-item>
-			<input name="a" type="checkbox" [(ngModel)]="a"> Bacon
+			{{item.nome}}
+			<ion-icon name="add-circle" (click)="mudaQuantia(item, 1)"></ion-icon>
+			{{item.quantidade}}
+			<ion-icon name="remove-circle" (click)="mudaQuantia(item, -1)"></ion-icon>
 		</ion-item>
-		<ion-item>
-			<input name="b" type="checkbox" [(ngModel)]="b"> Uva Passas
-		</ion-item>
-	</form>
-	<br>
-	<textarea class="text" placeholder="Observacao" id="caixinha" href="#/carrinho/carrinho"></textarea>
-	<p>Total: </p>
-	<p>R$ 16,00</p>
-	<br>
-	<div align="center"><a nav-transition="none" href="#/carrinho/carrinho"><button ion-button color="secondary">Adicionar ao carrinho</button></a></div>
+	</ion-list> -->
+	<ion-item>
+		<ion-textarea type="textarea" placeholder="Observação"></ion-textarea>
+	</ion-item>
+	<div align="center">
+		<a nav-transition="none" href="#/carrinho/carrinho">
+			<button ion-button color="secondary">Adicionar ao carrinho</button>
+		</a>
+	</div>
 </ion-content>

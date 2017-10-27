@@ -13,46 +13,45 @@ import { SqliteServe } from '../../class/SqliteServe';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-	usuarios: string[];
-	errorMessage: string;
-  public user ={};
-  userDetails : any;
+  usuarios: string[];
+  errorMessage: string;
+  public user = {};
+  userDetails: any;
   responseData: any;
   public usuarioLogin = new User();
   public data1 = JSON.parse(localStorage.getItem('userData'))
-  userData = {"name": "","email": "", "telefone": "","cpf": "","senha": ""}; // apenas pra teste
+  userData = { "name": "", "email": "", "telefone": "", "cpf": "", "senha": "" }; // apenas pra teste
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider,public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, public alertCtrl: AlertController) {
   }
 
-	soontm(){
-		alert("Essa opção estará disponível em breve!");
-	}
+  soontm() {
+    alert("Essa opção estará disponível em breve!");
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  Validar(){ //verifica se o usuario se encontra no banco.
-    if(this.usuarioLogin.email === this.data1.email && this.usuarioLogin.senha === this.data1.senha){
+  Validar() { //verifica se o usuario se encontra no banco.
+    if (this.usuarioLogin.email === this.data1.email && this.usuarioLogin.senha === this.data1.senha) {
       this.showAlertOn();
       this.navCtrl.push(PerfilPage)
 
-    }else{
+    } else {
       this.showAlert();
     }
   }
 
-	getData(){
-    this.rest.getUser(1).subscribe(data=>
-      {
-        console.log(data);
-        this.user = data;
-        localStorage.setItem('userData',JSON.stringify(this.user))
-        console.log(localStorage);
-      }
+  getData() {
+    this.rest.getUser(1).subscribe(data => {
+      console.log(data);
+      this.user = data;
+      localStorage.setItem('userData', JSON.stringify(this.user))
+      console.log(localStorage);
+    }
     );
-	}
+  }
 
   showAlert() { // alerta para erro de login
     let alert = this.alertCtrl.create({
@@ -70,10 +69,10 @@ export class LoginPage {
       buttons: ['OK']
     });
     alert.present();
-    
+
   }
 
-  public moveTo(){
+  public moveTo() {
     this.navCtrl.push(CadastPage);
   }
 

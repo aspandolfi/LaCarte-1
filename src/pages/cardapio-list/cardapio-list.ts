@@ -16,7 +16,7 @@ import { Cardapio2Page } from '../cardapio2/cardapio2';
 })
 export class CardapioListPage {
 
-  selectedItem: any = {};
+  selectedItem: any = "comidas";
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
