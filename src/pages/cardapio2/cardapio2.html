@@ -12,19 +12,22 @@
 		<img src={{Produto.url}}>
 	</ion-thumbnail>
 	<h2>{{Produto.nome}}</h2>
-	<P>R$ {{Produto.valor}}</P>
+	<P style="font-weight: bold;">R$ {{Produto.valor | number:'1.2-2'}}</P>
 	<p>{{Produto.descricao}}</p>
 	<hr>
 	
 	<form>
+		<h2>Adicionais</h2>
 		<ion-item *ngFor="let item of adicionais">
-			<div align="">
-				{{ item.nome }}
-			</div>
-			<div align="right">
-				<ion-icon name="add-circle" (click)="mudaQuantia(item, 1)"></ion-icon>
-				{{item.quantidade}}
-				<ion-icon name="remove-circle" (click)="mudaQuantia(item, -1)"></ion-icon>
+			<div style="display: flex;">
+				<div>
+					{{ item.nome }} (R$ {{ item.valor | number:'1.2-2' }})
+				</div>
+				<div style="margin-left: auto">
+					<ion-icon name="add-circle" (click)="mudaQuantia(item, 1)"></ion-icon>
+					{{item.quantidade}}
+					<ion-icon name="remove-circle" (click)="mudaQuantia(item, -1)"></ion-icon>
+				</div>
 			</div>
 		</ion-item>
 	</form>
@@ -32,7 +35,7 @@
 	<div align="center">
 		<textarea class="text" placeholder="Observacao" id="caixinha" rows="2" cols="30"></textarea>
 	</div>
-	<h4>Total: R$ 16,00</h4>
+	<h4>TOTAL: R$ {{ calculaTotal() | number:'1.2-2' }}</h4>
 	<br>
 	<div align="center">
 		<button ion-button color="secondary" (click)="moveTo()">Adicionar ao carrinho</button>

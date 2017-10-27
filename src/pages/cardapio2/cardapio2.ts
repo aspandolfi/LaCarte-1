@@ -13,13 +13,13 @@ export class Cardapio2Page {
   public produto = new Produto();
   
   Produto = {
-    "nome": "Lasanha", "valor": "16,00", "url": "https://i.imgur.com/Q5ISx1U.jpg", "descricao": "Massa caseira, molho a bolonhesa, presunto, queijo mussarela, molho branco."
+    "nome": "Lasanha", "valor": 16.00, "url": "https://i.imgur.com/Q5ISx1U.jpg", "descricao": "Massa caseira, molho a bolonhesa, presunto, queijo mussarela, molho branco."
   };
 
   adicionais = [
-    {"nome": "Bacon", "id": "1", "quantidade": 0},
-    {"nome": "Uva Passas", "id": "2", "quantidade": 0},
-    {"nome": "Cebola extra", "id": "3", "quantidade": 0}
+    {"nome": "Bacon", "id": "1", "quantidade": 0, "valor": 2},
+    {"nome": "Uva Passas", "id": "2", "quantidade": 0, "valor": 1.5},
+    {"nome": "Cebola extra", "id": "3", "quantidade": 0, "valor": 1}
   ]
   
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -30,7 +30,18 @@ export class Cardapio2Page {
   }
 
   public mudaQuantia(adic: any, val: number){
-    adic.quantidade += val;
+    if(adic.quantidade + val >= 0){
+      adic.quantidade += val;
+    }
+  }
+
+  public calculaTotal(){
+    var i:number = 0;
+    var soma:number = this.Produto.valor;
+    for(i=0; i<3; i++){
+      soma += this.adicionais[i].valor * this.adicionais[i].quantidade;
+    }
+    return soma;
   }
 
   public moveTo(){ // uma simples função que esta sendo chamada pela primeira imagem do cardapio para poder visualizar a descrição da comida.
