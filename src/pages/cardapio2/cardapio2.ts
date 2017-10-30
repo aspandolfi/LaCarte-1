@@ -46,8 +46,4 @@ export class Cardapio2Page {
     this.navCtrl.push(CarrinhoPage, total);
   }
 
-  public mudaQuantia(adic: any, val: number) {
-    adic.quantidade += val;
-  }
-
 }

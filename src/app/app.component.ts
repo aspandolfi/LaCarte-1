@@ -30,9 +30,8 @@ export class MyApp {
       { title: 'Login', component: LoginPage },
       { title: 'Cadastrar', component: CadastPage },
 			{ title: 'Perfil', component: PerfilPage },
-			{ title: 'Cardapio', component: CardapioPage },
+			{ title: 'Cardapio', component: CardapioListPage },
 			{ title: 'Mesa', component: MesaPage },
-			{ title: 'Cardapio List', component: CardapioListPage },
     ];
 
   }
@@ -45,7 +44,7 @@ export class MyApp {
   }
 
   openPage(page) {
-  
+
     this.nav.setRoot(page.component);
   }
 }
