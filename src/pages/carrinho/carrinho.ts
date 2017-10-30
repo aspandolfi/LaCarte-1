@@ -9,22 +9,24 @@ import { RestProvider } from './../../providers/rest/rest';
   templateUrl: 'carrinho.html',
 })
 export class CarrinhoPage {
+  pro={};
+  produtoData={"nome": " ", "valor": " "};
+  total: any;
 
   itensPedidos: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private rest: RestProvider) {
     this.itensPedidos = navParams.data;
   }
-  pro = {};
-  produtoData = { "nome": " ", "valor": " " };
 
-  getData() {
-    this.rest.getProduto(1).subscribe(data => {
-      console.log(data);
-      this.pro = data;
-      localStorage.setItem('proData', JSON.stringify(this.pro))
-      console.log(localStorage);
-    }
+  getData(){
+    this.rest.getProduto(1).subscribe(data=>
+      {
+        console.log(data);
+        this.pro = data;
+        localStorage.setItem('proData',JSON.stringify(this.pro))
+        console.log(localStorage);
+      }
     );
   }
 
