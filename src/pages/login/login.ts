@@ -1,11 +1,11 @@
 import { PerfilPage } from './../perfil/perfil';
 import { User } from './../../class/User';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { CadastPage } from '../cadast/cadast';
-import { SqliteServe } from '../../class/SqliteServe';
+// import { SqliteServe } from '../../class/SqliteServe';
 
 @IonicPage()
 @Component({
@@ -22,7 +22,9 @@ export class LoginPage {
   public data1 = JSON.parse(localStorage.getItem('userData'))
   userData = { "name": "", "email": "", "telefone": "", "cpf": "", "senha": "" }; // apenas pra teste
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, public alertCtrl: AlertController) {
+  constructor(public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, public alertCtrl: AlertController) {
+    this.usuarioLogin.email = "";
+    this.usuarioLogin.senha = "";
   }
 
   soontm() {
@@ -34,12 +36,30 @@ export class LoginPage {
   }
 
   Validar() { //verifica se o usuario se encontra no banco.
-    if (this.usuarioLogin.email === this.data1.email && this.usuarioLogin.senha === this.data1.senha) {
-      this.showAlertOn();
-      this.navCtrl.push(PerfilPage)
+    let loading = this.loadingCtrl.create({
+      content: 'Fetching content...'
+    });
 
-    } else {
+    if (this.usuarioLogin.email === "") {
+      console.log(this.usuarioLogin.email)
       this.showAlert();
+    } else {
+      this.rest.getUserEmail(this.usuarioLogin.email).subscribe(data => {
+        loading.present();
+        console.log(data);
+        this.user = data;
+        loading.dismiss();
+        localStorage.setItem('userData', JSON.stringify(this.user))
+        console.log(localStorage);
+      }
+      );
+
+      if (this.usuarioLogin.email === this.data1.email && this.usuarioLogin.senha === this.data1.senha) {
+        this.showAlertOn();
+        this.navCtrl.push(PerfilPage)
+      } else {
+        this.showAlert();
+      }
     }
   }
 

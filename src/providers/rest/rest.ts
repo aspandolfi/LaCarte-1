@@ -23,6 +23,11 @@ export class RestProvider {
     // .catch(error => console.log(error)
   }
 
+  public getUserEmail(email: any) { // função que imprime o usuário na tela.
+    return this.http.get(this.apiUrl + "/user/email/" + email).map(res => res);
+    // .catch(error => console.log(error)
+  }
+
   addUser(myData) { //função que adiciona um usuário ao banco de dados.
 
     this.http.post(this.apiUrl + "/user/save", myData).subscribe(data => {
