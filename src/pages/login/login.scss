@@ -6,15 +6,14 @@ page-login {
     font-style: italic;
     font-size: 250%;
   }
-  .logo2 {
+  .background {
     background-image: url("../../assets/imagens/wallpaper4.png");
     background-repeat: no-repeat;
     background-size: cover;
   }
 
-  // .logo2{
-  //   background: linear-gradient(to top, black 0%, rgb(228, 7, 7) 100%);
-  //   background-color: green !important;
+  // .background{
+  //   background: linear-gradient(to bottom, black 0%, rgb(228, 7, 7) 100%);
   // }
 
   #logo {
@@ -25,8 +24,7 @@ page-login {
 
   .scroll-content {
     align-content: center;
-    display: flex;
-    flex-direction: column;
+    display: inline-block;
     justify-content: center;
     text-align: center;
   }
@@ -49,28 +47,28 @@ page-login {
     margin-bottom: 10px;
     background: rgba(255, 255, 255, 0.5);
     border: medium none;
-    .text-input, {
-			color: #fff;
-		}
+    .text-input {
+      color: #fff;
+    }
 
-		input::-moz-placeholder  {
-			color: #fff!important;
-		}
+    input::-moz-placeholder {
+      color: #fff !important;
+    }
 
-		input:-moz-placeholder {
-			color: #fff!important;
-		}
+    input:-moz-placeholder {
+      color: #fff !important;
+    }
 
-		*::-webkit-input-placeholder  {
-			color: #fff!important;
-		}
+    *::-webkit-input-placeholder {
+      color: #fff !important;
+    }
 
-		*:-ms-input-placeholder  {
-			color: #fff!important;
-		}
+    *:-ms-input-placeholder {
+      color: #fff !important;
+    }
 
-		*:-moz-placeholder  {
-			color: #fff!important;
-		}
+    *:-moz-placeholder {
+      color: #fff !important;
+    }
   }
 }

@@ -7,7 +7,7 @@
 	</ion-navbar> -->
 </ion-header>
 
-<ion-content padding class="logo2">
+<ion-content padding class="background">
   <ion-card>
     <ion-card-content>
       <h1 id="titulo">La Carte</h1>
@@ -16,16 +16,16 @@
         <br>
       </div>
       <ion-item>
-        <ion-input [(ngModel)]="usuarioLogin.email" placeholder="Email" type="text"></ion-input>
+        <ion-input [(ngModel)]="usuarioLogin.email" placeholder="Email" type="email" (keyup.enter)="Validar()"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input [(ngModel)]="usuarioLogin.senha" placeholder="Senha" type="password"></ion-input>
+        <ion-input [(ngModel)]="usuarioLogin.senha" placeholder="Senha" type="password" (keyup.enter)="Validar()"></ion-input>
       </ion-item>
       <button ion-button (click)="Validar()" color="light">Entrar</button>
       <button ion-button>Entrar com Facebook</button>
       <button ion-button color="danger">Entrar com o Google+</button>
       <br>
-      <a>----------------------------- OU ------------------------------</a>
+      <a> OU </a>
       <br>
       <button ion-button (click)="moveTo()" color="light">Cadastre-se Aqui</button>
 

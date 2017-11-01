@@ -1,12 +1,7 @@
 import { PerfilPage } from "./../perfil/perfil";
 import { User } from "./../../class/User";
 import { Component } from "@angular/core";
-import {
-  IonicPage,
-  NavController,
-  NavParams,
-  LoadingController
-} from "ionic-angular";
+import { IonicPage, LoadingController, MenuController, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from "ionic-angular";
 import { RestProvider } from "../../providers/rest/rest";
 import { CadastPage } from "../cadast/cadast";
@@ -32,7 +27,8 @@ export class LoginPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public rest: RestProvider,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    private menu: MenuController
   ) {
     this.usuarioLogin.email = "";
     this.usuarioLogin.senha = "";
@@ -43,6 +39,7 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
+    this.menu.swipeEnable(false);
     console.log("ionViewDidLoad LoginPage");
   }
 
@@ -56,7 +53,6 @@ export class LoginPage {
       loading.dismiss();
       this.showAlert();
     } else {
-      console.log(this.rest.getUserEmail(this.usuarioLogin.email));
       this.rest.getUserEmail(this.usuarioLogin.email).subscribe(data => {
         this.user = data;
         localStorage.setItem("userData", JSON.stringify(this.user));
@@ -67,10 +63,13 @@ export class LoginPage {
           this.usuarioLogin.senha === this.data1.senha
         ) {
           this.showAlertOn();
-          this.navCtrl.push(PerfilPage);
+          this.navCtrl.setRoot(PerfilPage);
         } else {
           this.showAlert();
         }
+      }, err => {
+        loading.dismiss();
+        this.showAlert();
       });
     }
   }

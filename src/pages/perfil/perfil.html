@@ -1,26 +1,31 @@
 <ion-header>
-	<ion-navbar>
-		<button ion-button menuToggle>
-			<ion-icon name="menu"></ion-icon>
-		</button>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>perfil</ion-title>
-    </ion-navbar>
+  </ion-navbar>
 
 </ion-header>
 
-<ion-content padding>
-
-    <ion-item>
-
+<ion-content padding class="background">
+  <ion-card >
+    <ion-card-content >
+      <ion-item>
         <h2>Nome: {{user.nome}}</h2>
-        <br>
+      </ion-item>
+      <ion-item>
         <h2>E-mail: {{user.email}}</h2>
-        <br>
+      </ion-item>
+      <ion-item>
         <h2>Telefone: {{user.telefone}}</h2>
-        <br>
+      </ion-item>
+      <ion-item>
         <h2>CPF: {{user.cpf}}</h2>
-
-        <br>
-        <button ion-button color="danger" (click)="mudarPage()">Editar</button>
-    </ion-item>
+      </ion-item>
+      <ion-item>
+        <button ion-button block outline color="danger" (click)="mudarPage()">Editar</button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

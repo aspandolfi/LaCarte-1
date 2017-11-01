@@ -1,6 +1,35 @@
 page-perfil {
-    #campos {
-        font-size: 20px;
-        line-height: 2;
-    }
+  #campos {
+    font-size: 20px;
+    line-height: 2;
+  }
+
+  .background {
+    background: rgba(246, 248, 248, 0.685);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  ion-item {
+    background: transparent !important;
+  }
+  h2 {
+    color: #fff !important;
+  }
+  ion-card.card {
+    box-shadow: none;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+  }
+  .toolbar-background {
+    background-color: red;
+  }
+
+  .toolbar-title{
+    color: #fff !important;
+  }
+
+  .bar-button-default{
+    color: #fff;
+  }
 }
