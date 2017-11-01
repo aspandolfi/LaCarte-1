@@ -1,3 +1,17 @@
 page-cardapio-list {
+  .toolbar-background {
+    background-color: rgb(211, 12, 12);
+  }
 
+  .toolbar-title,
+  ion-segment-button {
+    color: #fff !important;
+  }
+
+  .bar-button-default {
+    color: #fff;
+  }
+  ion-segment {
+    color: #fff !important;
+  }
 }
