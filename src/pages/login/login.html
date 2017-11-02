@@ -1,17 +1,17 @@
 <ion-header>
-	<ion-navbar>
-			<button ion-button menuToggle>
-					<ion-icon name="menu"></ion-icon>
-				</button>
+	<!-- <ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
 		<ion-title>login</ion-title>
-	</ion-navbar>
+	</ion-navbar> -->
 </ion-header>
 
 <ion-content id="logo2" padding>
 
 	<h1 align="center" id="titulo">La Carte</h1>
 	<div id="logo">
-		<img src="https://i.imgur.com/pgvFcvy.png"/>
+		<img src="https://i.imgur.com/pgvFcvy.png" />
 	</div>
 	<ion-item>
 		<ion-input [(ngModel)]="usuarioLogin.email" placeholder="email" type="text"></ion-input>
@@ -24,10 +24,14 @@
 	</ion-item>
 	<br>
 	<div align="center">
-		<button ion-button (click)="Validar()" color="light">Entrar</button><br>
-		<button ion-button>Entrar com Facebook</button><br>
-		<button ion-button color="danger">Entrar com o Google+</button><br>
-		<br>----------------------------- OU ------------------------------<br>
+		<button ion-button (click)="Validar()" color="light">Entrar</button>
+		<br>
+		<button ion-button>Entrar com Facebook</button>
+		<br>
+		<button ion-button color="danger">Entrar com o Google+</button>
+		<br>
+		<br>----------------------------- OU ------------------------------
+		<br>
 		<button ion-button (click)="moveTo()" color="light">Cadastre-se Aqui</button>
 	</div>
 </ion-content>

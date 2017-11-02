@@ -11,6 +11,7 @@
 				</button>
     <ion-title>Cardápio</ion-title>
   </ion-navbar>
+
   <ion-toolbar no-border-top>
     <ion-segment [(ngModel)]="selectedItem">
       <ion-segment-button value="comidas">
@@ -29,35 +30,35 @@
 <ion-content>
   <div [ngSwitch]="selectedItem">
     <ion-list *ngSwitchCase="'comidas'">
-      <ion-item *ngFor="let item of comidas">
+      <button ion-item *ngFor="let item of comidas" (click)="moveTo(item)">
         <ion-thumbnail item-start>
-          <img (click)="moveTo(item)" src="{{item.urlImage}}">
+          <img src="{{item.urlImage}}">
         </ion-thumbnail>
         <h2>{{item.nome}}</h2>
         <h2>{{item.valor}}</h2>
-      </ion-item>
+      </button>
     </ion-list>
   </div>
   <div [ngSwitch]="selectedItem">
     <ion-list *ngSwitchCase="'bebidas'">
-      <ion-item *ngFor="let item of bebidas">
+      <button ion-item *ngFor="let item of bebidas" (click)="moveTo(item)">
         <ion-thumbnail item-start>
-          <img (click)="moveTo(item)" src="{{item.urlImage}}">
+          <img src="{{item.urlImage}}">
         </ion-thumbnail>
         <h2>{{item.nome}}</h2>
         <h2>{{item.valor}}</h2>
-      </ion-item>
+      </button>
     </ion-list>
   </div>
   <div [ngSwitch]="selectedItem">
     <ion-list *ngSwitchCase="'sobremesas'">
-      <ion-item *ngFor="let item of sobremesas">
+      <button ion-item *ngFor="let item of sobremesas" (click)="moveTo(item)">
         <ion-thumbnail item-start>
-          <img (click)="moveTo(item)" src="{{item.urlImage}}">
+          <img src="{{item.urlImage}}">
         </ion-thumbnail>
         <h2>{{item.nome}}</h2>
         <h2>{{item.valor}}</h2>
-      </ion-item>
+      </button>
     </ion-list>
   </div>
 </ion-content>

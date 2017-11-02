@@ -2,9 +2,10 @@ import { PerfilPage } from './../perfil/perfil';
 import { User } from './../../class/User';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
+import { AlertController, ModalController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { CadastPage } from '../cadast/cadast';
+import { CardapioListPage } from '../cardapio-list/cardapio-list';
 // import { SqliteServe } from '../../class/SqliteServe';
 
 @IonicPage()
@@ -22,9 +23,14 @@ export class LoginPage {
   public data1 = JSON.parse(localStorage.getItem('userData'))
   userData = { "name": "", "email": "", "telefone": "", "cpf": "", "senha": "" }; // apenas pra teste
 
-  constructor(public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, public alertCtrl: AlertController) {
+  constructor(public modalCtrl: ModalController, public loadingCtrl: LoadingController, public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, public alertCtrl: AlertController) {
     this.usuarioLogin.email = "";
     this.usuarioLogin.senha = "";
+  }
+
+  presentModal() {
+    let modal = this.modalCtrl.create(CardapioListPage);
+    modal.present();
   }
 
   soontm() {
@@ -40,27 +46,30 @@ export class LoginPage {
       content: 'Fetching content...'
     });
 
-    if (this.usuarioLogin.email === "") {
-      console.log(this.usuarioLogin.email)
-      this.showAlert();
-    } else {
-      this.rest.getUserEmail(this.usuarioLogin.email).subscribe(data => {
-        loading.present();
-        console.log(data);
-        this.user = data;
-        loading.dismiss();
-        localStorage.setItem('userData', JSON.stringify(this.user))
-        console.log(localStorage);
-      }
-      );
+    this.presentModal();
 
-      if (this.usuarioLogin.email === this.data1.email && this.usuarioLogin.senha === this.data1.senha) {
-        this.showAlertOn();
-        this.navCtrl.push(PerfilPage)
-      } else {
-        this.showAlert();
-      }
-    }
+
+    // if (this.usuarioLogin.email === "") {
+    //   console.log(this.usuarioLogin.email)
+    //   this.showAlert();
+    // } else {
+    //   this.rest.getUserEmail(this.usuarioLogin.email).subscribe(data => {
+    //     loading.present();
+    //     console.log(data);
+    //     this.user = data;
+    //     loading.dismiss();
+    //     localStorage.setItem('userData', JSON.stringify(this.user))
+    //     console.log(localStorage);
+    //   }
+    //   );
+
+    //   if (this.usuarioLogin.email === this.data1.email && this.usuarioLogin.senha === this.data1.senha) {
+    //     this.showAlertOn();
+    //     this.navCtrl.push(PerfilPage)
+    //   } else {
+    //     this.showAlert();
+    //   }
+    // }
   }
 
   getData() {
