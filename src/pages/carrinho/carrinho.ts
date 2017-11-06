@@ -1,3 +1,4 @@
+import { CardapioListPage } from './../cardapio-list/cardapio-list';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CardapioPage } from '../cardapio/cardapio';
@@ -31,7 +32,7 @@ export class CarrinhoPage {
   }
 
   moveTo() {
-    this.navCtrl.push(CardapioPage);
+    this.navCtrl.push(CardapioListPage);
   }
 
 

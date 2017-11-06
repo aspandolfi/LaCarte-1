@@ -1,19 +1,48 @@
 page-mesa {
-	#corpo{
-		background-color: lightgray;
-		width: 85%;
-		height: 100%;
-		margin: 0 auto;
-	}
-	
-	#qrcode{
-		background-color: gray;
-		width: 80%;
-		height: 150px;
-		margin: 0 auto;
-	}
+  .background {
+    background: url("../../assets/imagens/qrcode.jpg");
+    width: 80%;
+    height: 200px;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  #corpo {
+    background-color: lightgray;
+    width: 85%;
+    height: 100%;
+    margin: 0 auto;
+  }
 
-	#codeInput{
-		margin: 0 left;
-	}
+  .buttomColor{
+    background: rgb(211, 12, 12);
+  }
+
+  .scroll-content {
+    align-content: center;
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+  }
+
+  #codeInput {
+    margin: 0 left;
+  }
+
+  .toolbar-background {
+    background-color: rgb(211, 12, 12);
+  }
+
+  .toolbar-title,
+  ion-segment-button {
+    color: #fff !important;
+    text-align: center;
+  }
+
+  .bar-button-default {
+    color: #fff;
+  }
+  ion-segment {
+    color: #fff !important;
+  }
 }

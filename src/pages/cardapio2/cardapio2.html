@@ -1,43 +1,47 @@
 <ion-header>
-	<ion-navbar>
-		<button ion-button menuToggle>
-			<ion-icon name="menu"></ion-icon>
-		</button>
-		<ion-title>cardapio</ion-title>
-	</ion-navbar>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>cardapio</ion-title>
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-	<ion-thumbnail item-start>
-		<img src="{{produto.urlImage}}">
-	</ion-thumbnail>
-	<h2>{{Produto.nome}}</h2>
-	<P style="font-weight: bold;">R$ {{Produto.valor | number:'1.2-2'}}</P>
-	<p>{{Produto.descricao}}</p>
-	<hr>
+  <ion-card-content>
+    <ion-thumbnail item-start>
+      <img src="http://www.pifpaf.com.br/img/000000000000050138006.JPG">
+    </ion-thumbnail>
+    <h2>{{Produto.nome}}</h2>
+    <P style="font-weight: bold;">R$ {{Produto.valor | number:'1.2-2'}}</P>
+    <p>{{Produto.descricao}}</p>
+    <hr>
 
-	<form>
-		<h2>Adicionais</h2>
-		<ion-item *ngFor="let item of adicionais">
-			<div style="display: flex;">
-				<div>
-					{{ item.nome }} (R$ {{ item.valor | number:'1.2-2' }})
-				</div>
-				<div style="margin-left: auto">
-					<ion-icon name="add-circle" (click)="mudaQuantia(item, 1)"></ion-icon>
-					{{item.quantidade}}
-					<ion-icon name="remove-circle" (click)="mudaQuantia(item, -1)"></ion-icon>
-				</div>
-			</div>
-		</ion-item>
-	</form>
-	<br>
-	<div align="center">
-		<textarea class="text" placeholder="Observacao" id="caixinha" rows="2" cols="30"></textarea>
-	</div>
-	<h4>TOTAL: R$ {{ total | number:'1.2-2' }}</h4>
-	<br>
-	<div align="center">
-		<button ion-button color="secondary" (click)="moveTo(total)">Adicionar ao carrinho</button>
-	</div>
+    <form>
+      <h2>Adicionais</h2>
+      <ion-item *ngFor="let item of adicionais">
+        <div style="display: flex;">
+          <div>
+            {{ item.nome }} (R$ {{ item.valor | number:'1.2-2' }})
+          </div>
+          <div style="margin-left: auto">
+            <ion-icon name="add-circle" class="addButtom" (click)="mudaQuantia(item, 1)"></ion-icon>
+            {{item.quantidade}}
+            <ion-icon name="remove-circle" class="addButtom" (click)="mudaQuantia(item, -1)"></ion-icon>
+          </div>
+        </div>
+      </ion-item>
+    </form>
+    <br>
+    <ion-card>
+      <ion-item>
+        <ion-textarea placeholder="Observacao" rows="6" cols="30"></ion-textarea>
+      </ion-item>
+    </ion-card>
+    <h4>TOTAL: R$ {{ total | number:'1.2-2' }}</h4>
+    <br>
+    <div align="center">
+      <button ion-button class="buttom" (click)="moveTo(total)">Adicionar ao carrinho</button>
+    </div>
+  </ion-card-content>
 </ion-content>

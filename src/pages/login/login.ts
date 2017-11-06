@@ -1,3 +1,4 @@
+import { MesaPage } from '../mesa/mesa';
 import { PerfilPage } from "./../perfil/perfil";
 import { User } from "./../../class/User";
 import { Component } from "@angular/core";
@@ -61,7 +62,7 @@ export class LoginPage {
     loading.present();
     this.splashScreen.hide();
     //temporário
-    this.navCtrl.setRoot(CardapioListPage);
+    this.navCtrl.setRoot(MesaPage);
 
     // if (this.usuarioLogin.email === "" || this.usuarioLogin.senha === "") {
     //   loading.dismiss();
@@ -100,8 +101,8 @@ export class LoginPage {
   showAlert() {
     // alerta para erro de login
     let alert = this.alertCtrl.create({
-      title: "Erro",
-      subTitle: "Não foi possivel logar, login ou senha incorreto!",
+      title: "Usuário não encontrado",
+      subTitle: "Não foi possível logar, login ou senha incorreto!",
       buttons: ["OK"]
     });
     alert.present();

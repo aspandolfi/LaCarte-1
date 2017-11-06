@@ -6,9 +6,9 @@
 -->
 <ion-header>
   <ion-navbar no-border-bottom>
-      <button ion-button menuToggle>
-					<ion-icon name="menu"></ion-icon>
-				</button>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Cardápio</ion-title>
   </ion-navbar>
 
@@ -32,11 +32,15 @@
   <div [ngSwitch]="selectedItem">
     <ion-list *ngSwitchCase="'comidas'">
       <button ion-item *ngFor="let item of comidas" (click)="moveTo(item)">
-        <ion-thumbnail item-start>
-          <img src="{{item.urlImage}}">
-        </ion-thumbnail>
-        <h2>{{item.nome}}</h2>
-        <h2 item-end>{{item.valor}}</h2>
+        <ion-card>
+          <ion-item>
+            <ion-thumbnail item-start>
+              <img src="{{item.urlImage}}">
+            </ion-thumbnail>
+            <h2>{{item.nome}}</h2>
+            <h2 item-end>{{item.valor}}</h2>
+          </ion-item>
+        </ion-card>
       </button>
     </ion-list>
   </div>

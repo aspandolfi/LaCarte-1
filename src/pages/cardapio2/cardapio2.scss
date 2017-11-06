@@ -1,13 +1,38 @@
 page-cardapio2 {
-   ion-grid{
+  ion-grid {
     text-align: center;
-   }
-   
-   .adicionais{
-       text-align: left;
-   }
-   
-    /* #imgcomida {
+  }
+
+  .adicionais {
+    text-align: left;
+  }
+  .text {
+    border: think solid black;
+  }
+
+  .toolbar-background {
+    background-color: rgb(211, 12, 12);
+  }
+
+  .toolbar-title,
+  ion-segment-button {
+    color: #fff !important;
+  }
+
+  .bar-button-default {
+    color: #fff;
+  }
+  ion-segment {
+    color: #fff !important;
+  }
+
+  .addButtom {
+    color: rgba(182, 9, 9, 0.966);
+  }
+  .buttom {
+    background: rgb(211, 12, 12);
+  }
+  /* #imgcomida {
         width: 125px;
         height: 75px;
         resize: both;

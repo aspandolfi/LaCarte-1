@@ -1,14 +1,33 @@
 page-carrinho {
-    #finalPage {
-        position: absolute;
-        bottom: 0;
-        margin-bottom: 10px; 
-        margin-left: 75px;
-    }
-    #botaoAdd {
-        position: absolute;
-        bottom: 10%;
-        margin-bottom: 10px; 
-        margin-left: 75px;
-    }
+  #finalPage {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 10px;
+    margin-left: 75px;
+  }
+  #botaoAdd {
+    position: absolute;
+    bottom: 10%;
+    margin-bottom: 10px;
+    margin-left: 75px;
+  }
+
+  .toolbar-background {
+    background-color: rgb(211, 12, 12);
+  }
+
+  .toolbar-title,
+  ion-segment-button {
+    color: #fff !important;
+  }
+
+  .bar-button-default {
+    color: #fff;
+  }
+  ion-segment {
+    color: #fff !important;
+  }
+  .buttom {
+    background: rgb(211, 12, 12);
+  }
 }
