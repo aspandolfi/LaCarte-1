@@ -24,6 +24,7 @@
         sobremesas
       </ion-segment-button>
     </ion-segment>
+    <ion-searchbar (input)="getItems($event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -35,7 +36,7 @@
           <img src="{{item.urlImage}}">
         </ion-thumbnail>
         <h2>{{item.nome}}</h2>
-        <h2>{{item.valor}}</h2>
+        <h2 item-end>{{item.valor}}</h2>
       </button>
     </ion-list>
   </div>
@@ -46,7 +47,7 @@
           <img src="{{item.urlImage}}">
         </ion-thumbnail>
         <h2>{{item.nome}}</h2>
-        <h2>{{item.valor}}</h2>
+        <h2 item-end>{{item.valor}}</h2>
       </button>
     </ion-list>
   </div>
@@ -57,7 +58,7 @@
           <img src="{{item.urlImage}}">
         </ion-thumbnail>
         <h2>{{item.nome}}</h2>
-        <h2>{{item.valor}}</h2>
+        <h2 item-end>{{item.valor}}</h2>
       </button>
     </ion-list>
   </div>

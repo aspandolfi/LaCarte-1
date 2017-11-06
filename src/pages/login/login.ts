@@ -1,17 +1,18 @@
-import { PerfilPage } from './../perfil/perfil';
-import { User } from './../../class/User';
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-import { AlertController, ModalController } from 'ionic-angular';
-import { RestProvider } from '../../providers/rest/rest';
-import { CadastPage } from '../cadast/cadast';
-import { CardapioListPage } from '../cardapio-list/cardapio-list';
+import { PerfilPage } from "./../perfil/perfil";
+import { User } from "./../../class/User";
+import { Component } from "@angular/core";
+import { IonicPage, LoadingController, MenuController, NavController, NavParams } from 'ionic-angular';
+import { AlertController } from "ionic-angular";
+import { RestProvider } from "../../providers/rest/rest";
+import { CadastPage } from "../cadast/cadast";
+import { CardapioListPage } from "../cardapio-list/cardapio-list";
+import { SplashScreen } from "@ionic-native/splash-screen";
 // import { SqliteServe } from '../../class/SqliteServe';
 
 @IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
+  selector: "page-login",
+  templateUrl: "login.html"
 })
 export class LoginPage {
   usuarios: string[];
@@ -20,17 +21,25 @@ export class LoginPage {
   userDetails: any;
   responseData: any;
   public usuarioLogin = new User();
-  public data1 = JSON.parse(localStorage.getItem('userData'))
-  userData = { "name": "", "email": "", "telefone": "", "cpf": "", "senha": "" }; // apenas pra teste
+  public data1: any;
+  userData = { name: "", email: "", telefone: "", cpf: "", senha: "" }; // apenas pra teste
 
-  constructor(public modalCtrl: ModalController, public loadingCtrl: LoadingController, public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, public alertCtrl: AlertController) {
+  constructor(
+    public loadingCtrl: LoadingController,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public rest: RestProvider,
+    public alertCtrl: AlertController,
+    private menu: MenuController,
+    public splashScreen: SplashScreen
+  ) {
+    this.splashScreen.show();
     this.usuarioLogin.email = "";
     this.usuarioLogin.senha = "";
   }
 
   presentModal() {
-    let modal = this.modalCtrl.create(CardapioListPage);
-    modal.present();
+    this.navCtrl.setRoot(CardapioListPage);
   }
 
   soontm() {
@@ -38,71 +47,77 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    this.menu.swipeEnable(false);
+    console.log("ionViewDidLoad LoginPage");
   }
 
-  Validar() { //verifica se o usuario se encontra no banco.
+  Validar() {
+    //verifica se o usuario se encontra no banco.
     let loading = this.loadingCtrl.create({
-      content: 'Fetching content...'
+      content: "Fetching content...",
+      dismissOnPageChange: true,
+      spinner: "dots"
     });
+    loading.present();
+    this.splashScreen.hide();
+    //temporário
+    this.navCtrl.setRoot(CardapioListPage);
 
-    this.presentModal();
-
-
-    // if (this.usuarioLogin.email === "") {
-    //   console.log(this.usuarioLogin.email)
+    // if (this.usuarioLogin.email === "" || this.usuarioLogin.senha === "") {
+    //   loading.dismiss();
     //   this.showAlert();
     // } else {
     //   this.rest.getUserEmail(this.usuarioLogin.email).subscribe(data => {
-    //     loading.present();
-    //     console.log(data);
     //     this.user = data;
+    //     localStorage.setItem("userData", JSON.stringify(this.user));
+    //     this.data1 = JSON.parse(localStorage.getItem("userData"));
     //     loading.dismiss();
-    //     localStorage.setItem('userData', JSON.stringify(this.user))
-    //     console.log(localStorage);
-    //   }
-    //   );
-
-    //   if (this.usuarioLogin.email === this.data1.email && this.usuarioLogin.senha === this.data1.senha) {
-    //     this.showAlertOn();
-    //     this.navCtrl.push(PerfilPage)
-    //   } else {
+    //     if (
+    //       this.usuarioLogin.email === this.data1.email &&
+    //       this.usuarioLogin.senha === this.data1.senha
+    //     ) {
+    //       this.showAlertOn();
+    //       this.navCtrl.setRoot(PerfilPage);
+    //     } else {
+    //       this.showAlert();
+    //     }
+    //   }, err => {
+    //     loading.dismiss();
     //     this.showAlert();
-    //   }
+    //   });
     // }
   }
 
   getData() {
     this.rest.getUser(1).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.user = data;
-      localStorage.setItem('userData', JSON.stringify(this.user))
-      console.log(localStorage);
-    }
-    );
+      localStorage.setItem("userData", JSON.stringify(this.user));
+      // console.log(localStorage);
+    });
   }
 
-  showAlert() { // alerta para erro de login
+  showAlert() {
+    // alerta para erro de login
     let alert = this.alertCtrl.create({
-      title: 'Erro',
-      subTitle: 'Não foi possivel logar, login ou senha incorreto!',
-      buttons: ['OK']
+      title: "Erro",
+      subTitle: "Não foi possivel logar, login ou senha incorreto!",
+      buttons: ["OK"]
     });
     alert.present();
   }
 
-  showAlertOn() { // alerta para inicio do uso do app
+  showAlertOn() {
+    // alerta para inicio do uso do app
     let alert = this.alertCtrl.create({
-      title: 'La Carte',
-      subTitle: 'Bem vindo ao La Carte! Desejamos uma boa refeição!',
-      buttons: ['OK']
+      title: "La Carte",
+      subTitle: "Bem vindo ao La Carte! Desejamos uma boa refeição!",
+      buttons: ["OK"]
     });
     alert.present();
-
   }
 
   public moveTo() {
     this.navCtrl.push(CadastPage);
   }
-
 }

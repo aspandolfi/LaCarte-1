@@ -1,16 +1,74 @@
 page-login {
-    #titulo{
-		color:white;
-		font-weight: bold;
+  #titulo {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-style: italic;
+    font-size: 250%;
+  }
+  .background {
+    background-image: url("../../assets/imagens/wallpaper4.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
-	}
-	#logo2{
-		background-color: red;
-		
-	}	
-	#logo{
-		width: 75px;
-		height: auto;
-		margin: auto;
-	}
+  // .background{
+  //   background: linear-gradient(to bottom, black 0%, rgb(228, 7, 7) 100%);
+  // }
+
+  #logo {
+    width: 75px;
+    height: auto;
+    margin: auto;
+  }
+
+  .scroll-content {
+    align-content: center;
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+  }
+
+  ion-card.card {
+    box-shadow: none;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(228, 7, 7, 0.6) 100%);
+    border-radius: 5px;
+  }
+  a,
+  ion-card-header.card-header {
+    color: #fff;
+  }
+
+  .list > .item-block:first-child {
+    border: medium none;
+  }
+
+  .item {
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border: medium none;
+    .text-input {
+      color: #fff;
+    }
+
+    input::-moz-placeholder {
+      color: #fff !important;
+    }
+
+    input:-moz-placeholder {
+      color: #fff !important;
+    }
+
+    *::-webkit-input-placeholder {
+      color: #fff !important;
+    }
+
+    *:-ms-input-placeholder {
+      color: #fff !important;
+    }
+
+    *:-moz-placeholder {
+      color: #fff !important;
+    }
+  }
 }

@@ -21,6 +21,9 @@ import { MesaPageModule } from '../pages/mesa/mesa.module';
 import { CarrinhoPageModule } from '../pages/carrinho/carrinho.module';
 import { CardapioListPageModule } from '../pages/cardapio-list/cardapio-list.module';
 
+import { Geolocation } from '@ionic-native/geolocation';
+
+
 
 @NgModule({
   declarations: [
@@ -52,7 +55,7 @@ import { CardapioListPageModule } from '../pages/cardapio-list/cardapio-list.mod
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-
+    Geolocation,
     RestProvider
   ]
 })
