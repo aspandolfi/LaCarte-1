@@ -8,13 +8,15 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item>
-    <ion-thumbnail item-start>
-      <img (click)="moveTo()" src="https://i.imgur.com/Q5ISx1U.jpg">
-    </ion-thumbnail>
-    <h2>{{pro.nome}}</h2>
-    <h2>R${{total}}</h2>
-  </ion-item>
+  <ion-card>
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img (click)="moveTo()" src="https://i.imgur.com/Q5ISx1U.jpg">
+      </ion-thumbnail>
+      <h2>{{pro.nome}}</h2>
+      <h2>R${{total}}</h2>
+    </ion-item>
+  </ion-card>
 
   <ion-fab right bottom id="botaoAdd">
     <button mini ion-fab color="danger" (click)="moveTo()">
@@ -23,6 +25,6 @@
   </ion-fab>
   <br>
   <div id="finalPage">
-    <button ion-button class="buttom">Finalizar Pedido</button>
+    <button ion-button class="buttom">Realizar Pedido</button>
   </div>
 </ion-content>

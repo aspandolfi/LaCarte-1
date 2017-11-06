@@ -31,9 +31,9 @@
 <ion-content>
   <div [ngSwitch]="selectedItem">
     <ion-list *ngSwitchCase="'comidas'">
-      <button ion-item *ngFor="let item of comidas" (click)="moveTo(item)">
+      <button ion-item no-lines *ngFor="let item of comidas" (click)="moveTo(item)">
         <ion-card>
-          <ion-item>
+          <ion-item no-lines>
             <ion-thumbnail item-start>
               <img src="{{item.urlImage}}">
             </ion-thumbnail>
