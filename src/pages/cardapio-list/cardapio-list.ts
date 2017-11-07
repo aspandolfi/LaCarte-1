@@ -31,20 +31,14 @@ export class CardapioListPage {
   initializeItems() {
     this.produtos = [
       { nome: "Lasanha", urlImage: "http://www.pifpaf.com.br/img/000000000000050138006.JPG", valor: 10, tipo: 1},
-      { nome: "Comida 2", urlImage: "xxx", valor: 10, tipo: 1},
-      { nome: "Comida 3", urlImage: "xxx", valor: 10, tipo: 1},
-      { nome: "Comida 4", urlImage: "xxx", valor: 10, tipo: 1},
-      { nome: "Comida 5", urlImage: "xxx", valor: 10, tipo: 1},
-      { nome: "bebida 1", urlImage: "xxx", valor: 10, tipo: 2},
-      { nome: "bebida 2", urlImage: "xxx", valor: 10, tipo: 2},
-      { nome: "bebida 3", urlImage: "xxx", valor: 10, tipo: 2},
-      { nome: "bebida 4", urlImage: "xxx", valor: 10, tipo: 2},
-      { nome: "bebida 5", urlImage: "xxx", valor: 10, tipo: 2},
-      { nome: "sobremesa 1", urlImage: "xxx", valor: 10, tipo: 3},
-      { nome: "sobremesa 2", urlImage: "xxx", valor: 10, tipo: 3},
-      { nome: "sobremesa 3", urlImage: "xxx", valor: 10, tipo: 3},
-      { nome: "sobremesa 4", urlImage: "xxx", valor: 10, tipo: 3},
-      { nome: "sobremesa 5", urlImage: "xxx", valor: 10, tipo: 3}
+      { nome: "Hamburguer", urlImage: "https://www.designmaster.com.br/designmarketing/produtos/g_foto1_3246.jpg", valor: 10, tipo: 1},
+      { nome: "Macarrão", urlImage: "https://s3.amazonaws.com/midia.naminhapanela.com/wp-content/uploads/2016/08/14134251/amatriciana4.png", valor: 10, tipo: 1},
+      { nome: "Agua", urlImage: "http://www.flaska.com.br/documents/flaska.com.br/large/396.jpg", valor: 10, tipo: 2},
+      { nome: "Refrigerante", urlImage: "http://midias.gazetaonline.com.br/_midias/jpg/2017/06/20/refrigerante-5158046.jpg", valor: 10, tipo: 2},
+      { nome: "Suco de laranja", urlImage: "http://www.xando.com.br/images/itens/itemCopo.jpg", valor: 10, tipo: 2},
+      { nome: "Sorvete de chocolate", urlImage: "https://cptstatic.s3.amazonaws.com/imagens/enviadas/materias/materia11042/slide/sorvetes1-cursos-cpt.jpg", valor: 10, tipo: 3},
+      { nome: "Mousse de morango", urlImage: "https://www.embare.com.br/wp-content/uploads/2013/06/mousse-de-morango-receitas-embare.jpg", valor: 10, tipo: 3},
+      { nome: "Torta de limão", urlImage: "http://www.corpoealma.com/wp-content/uploads/2016/08/Receita-de-Torta-de-Lima%CC%83o-2.jpg", valor: 10, tipo: 3},
     ];
     this.separarCat();
   }
