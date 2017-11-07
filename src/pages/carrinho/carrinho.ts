@@ -1,3 +1,4 @@
+import { ComandaPage } from './../comanda/comanda';
 import { CardapioListPage } from './../cardapio-list/cardapio-list';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -11,7 +12,7 @@ import { RestProvider } from './../../providers/rest/rest';
 })
 export class CarrinhoPage {
   pro={};
-  produtoData={"nome": " ", "valor": " "};
+  public produtoData=[{"nome": "Lasanha", "valor": "10", "url": "http://www.pifpaf.com.br/img/000000000000050138006.JPG"}]
   total: any;
 
   itensPedidos: any;
@@ -31,10 +32,13 @@ export class CarrinhoPage {
     );
   }
 
-  moveTo() {
-    this.navCtrl.push(CardapioListPage);
+  public moveTo() {
+    this.navCtrl.push(ComandaPage);
   }
 
+  public removeItem(){
+    this.produtoData = []
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CarrinhoPage');

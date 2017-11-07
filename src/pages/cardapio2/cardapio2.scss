@@ -32,6 +32,12 @@ page-cardapio2 {
   .buttom {
     background: rgb(211, 12, 12);
   }
+  .button-ios.activated{
+    background-color: rgb(211, 12, 12) !important;
+  }
+  .button-md.activated{
+    background-color: rgb(211, 12, 12) !important;
+  }
   /* #imgcomida {
         width: 125px;
         height: 75px;

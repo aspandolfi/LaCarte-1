@@ -1,3 +1,4 @@
+import { ComandaPageModule } from './../pages/comanda/comanda.module';
 //
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -29,7 +30,7 @@ import { Geolocation } from '@ionic-native/geolocation';
   declarations: [
     MyApp,
   ],
-  
+
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
@@ -43,7 +44,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 		MesaPageModule,
     HttpModule,
     CarrinhoPageModule,
-    CardapioListPageModule
+    CardapioListPageModule,
+    ComandaPageModule
   ],
 
   bootstrap: [IonicApp],

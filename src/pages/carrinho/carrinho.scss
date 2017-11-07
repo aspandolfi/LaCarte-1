@@ -30,4 +30,13 @@ page-carrinho {
   .buttom {
     background: rgb(211, 12, 12);
   }
+  .button-ios.activated{
+    background-color: rgb(211, 12, 12) !important;
+  }
+  .button-md.activated{
+    background-color: rgb(211, 12, 12) !important;
+  }
+  .excluir{
+    color: rgb(0, 0, 0) !important;
+  }
 }
