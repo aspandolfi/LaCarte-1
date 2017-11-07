@@ -19,6 +19,7 @@ export class CardapioListPage {
   myLocation: any;
 
   searchQuery: string = "";
+  private produtos = [];
   private comidas = [];
   private bebidas = [];
   private sobremesas = [];
@@ -28,40 +29,46 @@ export class CardapioListPage {
   }
 
   initializeItems() {
-    this.bebidas = [
-      { nome: "bebidas 1", urlImage: "xxx", valor: 10 },
-      { nome: "bebidas2", urlImage: "xxx", valor: 10 },
-      { nome: "bebidas3", urlImage: "xxx", valor: 10 },
-      { nome: "bebidas4", urlImage: "xxx", valor: 10 },
-      { nome: "bebidas5", urlImage: "xxx", valor: 10 }
+    this.produtos = [
+      { nome: "Lasanha", urlImage: "http://www.pifpaf.com.br/img/000000000000050138006.JPG", valor: 10, tipo: 1},
+      { nome: "Comida 2", urlImage: "xxx", valor: 10, tipo: 1},
+      { nome: "Comida 3", urlImage: "xxx", valor: 10, tipo: 1},
+      { nome: "Comida 4", urlImage: "xxx", valor: 10, tipo: 1},
+      { nome: "Comida 5", urlImage: "xxx", valor: 10, tipo: 1},
+      { nome: "bebida 1", urlImage: "xxx", valor: 10, tipo: 2},
+      { nome: "bebida 2", urlImage: "xxx", valor: 10, tipo: 2},
+      { nome: "bebida 3", urlImage: "xxx", valor: 10, tipo: 2},
+      { nome: "bebida 4", urlImage: "xxx", valor: 10, tipo: 2},
+      { nome: "bebida 5", urlImage: "xxx", valor: 10, tipo: 2},
+      { nome: "sobremesa 1", urlImage: "xxx", valor: 10, tipo: 3},
+      { nome: "sobremesa 2", urlImage: "xxx", valor: 10, tipo: 3},
+      { nome: "sobremesa 3", urlImage: "xxx", valor: 10, tipo: 3},
+      { nome: "sobremesa 4", urlImage: "xxx", valor: 10, tipo: 3},
+      { nome: "sobremesa 5", urlImage: "xxx", valor: 10, tipo: 3}
     ];
-    this.comidas = [
-      {
-        nome: "Lasanha",
-        urlImage: "http://www.pifpaf.com.br/img/000000000000050138006.JPG",
-        valor: 10
-      },
-      { nome: "Comida 2", urlImage: "xxx", valor: 10 },
-      { nome: "Comida 3", urlImage: "xxx", valor: 10 },
-      { nome: "Comida 4", urlImage: "xxx", valor: 10 },
-      { nome: "Comida 5", urlImage: "xxx", valor: 10 }
-    ];
-    this.sobremesas = [
-      { nome: "sobremesas1", urlImage: "xxx", valor: 10 },
-      { nome: "sobremesas2", urlImage: "xxx", valor: 10 },
-      { nome: "sobremesas3", urlImage: "xxx", valor: 10 },
-      { nome: "sobremesas4", urlImage: "xxx", valor: 10 },
-      { nome: "sobremesas5", urlImage: "xxx", valor: 10 }
-    ];
+    this.separarCat();
+  }
+
+  separarCat(){
+    this.comidas = [];
+    this.bebidas = [];
+    this.sobremesas = [];
+    for(let i = 0; i < this.produtos.length; i++){
+      if(this.produtos[i].tipo==1) this.comidas.push(this.produtos[i]);
+      if(this.produtos[i].tipo==2) this.bebidas.push(this.produtos[i]);
+      if(this.produtos[i].tipo==3) this.sobremesas.push(this.produtos[i]);
+    }
   }
 
   getItems(ev: any) {
     this.initializeItems();
     let val = ev.target.value;
     if (val && val.trim() != "") {
-      this.comidas = this.comidas.filter(item => {
+      this.comidas = this.bebidas = this.sobremesas = this.produtos.filter(item => {
         return item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1;
       });
+    }else{
+      this.separarCat();
     }
   }
 
