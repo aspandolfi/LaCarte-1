@@ -9,12 +9,10 @@
 
 <ion-content padding>
   <ion-card-content>
-    <ion-thumbnail item-start>
-      <img src="http://www.pifpaf.com.br/img/000000000000050138006.JPG">
-    </ion-thumbnail>
-    <h2>{{Produto.nome}}</h2>
-    <P style="font-weight: bold;">R$ {{Produto.valor | number:'1.2-2'}}</P>
-    <p>{{Produto.descricao}}</p>
+    <img class="produtoImagem" src="{{produto.url}}">
+    <h2>{{produto.nome}}</h2>
+    <P class="negrito">R$ {{produto.valor | number:'1.2-2'}}</P>
+    <p>{{produto.descricao}}</p>
     <hr>
 
     <form>
