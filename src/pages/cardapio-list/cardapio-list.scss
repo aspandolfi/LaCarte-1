@@ -1,6 +1,18 @@
 page-cardapio-list {
+  // .input-wrapper{
+  //   background-color: rgb(94, 92, 92);
+  // }
+
+  .produto{
+    background: #fff !important;
+  }
+
   .toolbar-background {
     background-color: rgb(211, 12, 12);
+  }
+
+  .segment-button{
+    border-bottom-color: #fff !important;
   }
 
   .toolbar-title,
@@ -13,6 +25,13 @@ page-cardapio-list {
   }
   ion-segment {
     color: #fff !important;
+  }
+
+  .buttom{
+    margin-bottom: -22px;
+    padding: 0;
+    padding-right: 0;
+    padding-left: 0;
   }
 
   // .item {

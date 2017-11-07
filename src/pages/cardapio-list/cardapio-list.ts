@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Cardapio2Page } from '../cardapio2/cardapio2';
-import { Geolocation } from '@ionic-native/geolocation';
 
 /**
  * Generated class for the CardapioListPage page.
@@ -20,24 +19,28 @@ export class CardapioListPage {
   selectedItem: any = "comidas";
   myLocation: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation) {
-    this.geolocation.getCurrentPosition().then((resp) => {
-      console.log(resp.coords.latitude);
-      console.log(resp.coords.longitude);
-    }).catch((error) => {
-      console.log('Error getting location', error);
-    });
+  searchQuery: string = '';
 
-    let watch = this.geolocation.watchPosition();
-    watch.subscribe((data) => {
-      // data can be a set of coordinates, or an error (if an error occurred).
-      // data.coords.latitude
-      // data.coords.longitude
-    });
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    // this.geolocation.getCurrentPosition().then((resp) => {
+    //   console.log(resp.coords.latitude);
+    //   console.log(resp.coords.longitude);
+    // }).catch((error) => {
+    //   console.log('Error getting location', error);
+    // });
+
+    // let watch = this.geolocation.watchPosition();
+    // watch.subscribe((data) => {
+    //   // data can be a set of coordinates, or an error (if an error occurred).
+    //   // data.coords.latitude
+    //   // data.coords.longitude
+    // });
+
   }
 
   private comidas = [
-    { nome: "Comida 1", urlImage: "xxx", valor: 10 },
+    { nome: "Lasanha", urlImage: "http://www.pifpaf.com.br/img/000000000000050138006.JPG", valor: 10 },
     { nome: "Comida 2", urlImage: "xxx", valor: 10 },
     { nome: "Comida 3", urlImage: "xxx", valor: 10 },
     { nome: "Comida 4", urlImage: "xxx", valor: 10 },
@@ -59,6 +62,21 @@ export class CardapioListPage {
     { nome: "sobremesas4", urlImage: "xxx", valor: 10 },
     { nome: "sobremesas5", urlImage: "xxx", valor: 10 }
   ];
+
+  getItems(ev: any) {
+    let val = ev.target.value;
+    if (val && val.trim() != '') {
+      this.comidas = this.comidas.filter((item) => {
+        return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+      this.sobremesas = this.sobremesas.filter((item) => {
+        return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+      this.bebidas = this.bebidas.filter((item)=> {
+        return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CardapioListPage');

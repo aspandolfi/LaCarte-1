@@ -24,14 +24,29 @@
         sobremesas
       </ion-segment-button>
     </ion-segment>
-    <ion-searchbar (input)="getItems($event)"></ion-searchbar>
+    <ion-searchbar (ionInput)="getItems($event)" placeholder="Nome do produto"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
+  <div [ngSwitch]="selectedItem" >
+    <ion-list *ngSwitchCase="'comidas'" >
+      <button ion-item no-lines class="buttom" *ngFor="let item of comidas" (click)="moveTo(item)">
+        <ion-card >
+          <ion-item no-lines >
+            <ion-thumbnail item-start>
+              <img src="{{item.urlImage}}">
+            </ion-thumbnail>
+            <h2>{{item.nome}}</h2>
+            <h2 item-end>{{item.valor}}</h2>
+          </ion-item>
+        </ion-card>
+      </button>
+    </ion-list>
+  </div>
   <div [ngSwitch]="selectedItem">
-    <ion-list *ngSwitchCase="'comidas'">
-      <button ion-item no-lines *ngFor="let item of comidas" (click)="moveTo(item)">
+    <ion-list *ngSwitchCase="'bebidas'">
+      <button ion-item no-lines class="buttom" *ngFor="let item of bebidas" (click)="moveTo(item)">
         <ion-card>
           <ion-item no-lines>
             <ion-thumbnail item-start>
@@ -45,24 +60,17 @@
     </ion-list>
   </div>
   <div [ngSwitch]="selectedItem">
-    <ion-list *ngSwitchCase="'bebidas'">
-      <button ion-item *ngFor="let item of bebidas" (click)="moveTo(item)">
-        <ion-thumbnail item-start>
-          <img src="{{item.urlImage}}">
-        </ion-thumbnail>
-        <h2>{{item.nome}}</h2>
-        <h2 item-end>{{item.valor}}</h2>
-      </button>
-    </ion-list>
-  </div>
-  <div [ngSwitch]="selectedItem">
     <ion-list *ngSwitchCase="'sobremesas'">
-      <button ion-item *ngFor="let item of sobremesas" (click)="moveTo(item)">
-        <ion-thumbnail item-start>
-          <img src="{{item.urlImage}}">
-        </ion-thumbnail>
-        <h2>{{item.nome}}</h2>
-        <h2 item-end>{{item.valor}}</h2>
+      <button ion-item no-lines class="buttom" *ngFor="let item of sobremesas" (click)="moveTo(item)">
+        <ion-card>
+          <ion-item no-lines>
+            <ion-thumbnail item-start>
+              <img src="{{item.urlImage}}">
+            </ion-thumbnail>
+            <h2>{{item.nome}}</h2>
+            <h2 item-end>{{item.valor}}</h2>
+          </ion-item>
+        </ion-card>
       </button>
     </ion-list>
   </div>
