@@ -3,6 +3,15 @@ page-cardapio2 {
     text-align: center;
   }
 
+  .produtoImagem {
+    width: 300px;
+    height: 250px;
+  }
+
+  .negrito {
+    font-weight: bold;
+  }
+
   .adicionais {
     text-align: left;
   }
@@ -14,14 +23,14 @@ page-cardapio2 {
     background-color: rgb(211, 12, 12);
   }
 
-  .toolbar-title,
-  ion-segment-button {
+  .toolbar-title, ion-segment-button {
     color: #fff !important;
   }
 
   .bar-button-default {
     color: #fff;
   }
+
   ion-segment {
     color: #fff !important;
   }
@@ -29,6 +38,7 @@ page-cardapio2 {
   .addButtom {
     color: rgba(182, 9, 9, 0.966);
   }
+
   .buttom {
     background: rgb(211, 12, 12);
   }

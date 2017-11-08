@@ -6,6 +6,13 @@ page-login {
     font-style: italic;
     font-size: 250%;
   }
+
+  #logo {
+    width: 75px;
+    height: auto;
+    margin: auto;
+  }
+
   .background {
     background-image: url("../../assets/imagens/wallpaper4.png");
     background-repeat: no-repeat;
@@ -16,10 +23,8 @@ page-login {
   //   background: linear-gradient(to bottom, black 0%, rgb(228, 7, 7) 100%);
   // }
 
-  #logo {
-    width: 75px;
-    height: auto;
-    margin: auto;
+  .entrarCom{
+    width: 80%;
   }
 
   .scroll-content {
@@ -34,8 +39,8 @@ page-login {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(228, 7, 7, 0.6) 100%);
     border-radius: 5px;
   }
-  a,
-  ion-card-header.card-header {
+
+  a, ion-card-header.card-header {
     color: #fff;
   }
 
@@ -50,25 +55,21 @@ page-login {
     .text-input {
       color: #fff;
     }
-
     input::-moz-placeholder {
       color: #fff !important;
     }
-
     input:-moz-placeholder {
       color: #fff !important;
     }
-
     *::-webkit-input-placeholder {
       color: #fff !important;
     }
-
     *:-ms-input-placeholder {
       color: #fff !important;
     }
-
     *:-moz-placeholder {
       color: #fff !important;
     }
   }
+
 }

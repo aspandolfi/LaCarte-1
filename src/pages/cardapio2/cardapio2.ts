@@ -14,10 +14,6 @@ export class Cardapio2Page {
   public total = 0.0;
   public obs: string;
 
-  Produto = {
-    "nome": "Lasanha", "valor": 16.00, "url": "https://i.imgur.com/Q5ISx1U.jpg", "descricao": "Massa caseira, molho a bolonhesa, presunto, queijo mussarela, molho branco."
-  };
-
   adicionais = [
     {"nome": "Bacon", "id": "1", "quantidade": 0, "valor": 2},
     {"nome": "Queijo extra", "id": "2", "quantidade": 0, "valor": 1.5},
@@ -26,12 +22,21 @@ export class Cardapio2Page {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.produto = navParams.data;
-    console.log(this.produto);
+    /*
+    OBS: Não é necessário atribuir individualmente se os nomes estiverem batendo
+    (ao contrário da url != urlImage por exemplo)
+
+    this.produto.nome = this.navParams.get('nome');
+    this.produto.url = this.navParams.get('urlImage');
+    this.produto.valor = this.navParams.get('valor');
+    this.produto.tipo = this.navParams.get('tipo');
+    this.produto.descricao = this.navParams.get('descricao');
+    */
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Cardapio2Page');
-    this.total = this.Produto.valor;
+    this.total = this.produto.valor;
   }
 
   public mudaQuantia(adic: any, sinal: number){
