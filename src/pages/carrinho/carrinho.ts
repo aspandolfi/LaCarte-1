@@ -31,6 +31,9 @@ export class CarrinhoPage {
       }
     );
   }
+  public addItem() {
+    this.navCtrl.push(CardapioListPage);
+  }
 
   public moveTo() {
     this.navCtrl.push(ComandaPage);

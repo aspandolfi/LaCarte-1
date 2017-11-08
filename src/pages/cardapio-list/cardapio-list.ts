@@ -48,7 +48,7 @@ export class CardapioListPage {
     this.adicional = [
       {id: 1, nome: "Bacon"},
       {id: 2, nome: "Queijo"},
-      {id: 3, nome: "Cebola"}
+      {id: 3, nome: "Cebola"} 
     ];
     this.item_pedido_adicional = [
       {id: 1, adicional: 0, itemPedido: 0, quantidade: 0}
