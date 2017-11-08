@@ -7,24 +7,25 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-card>
-    <ion-item>
+    <ion-item *ngFor="let item of produtoData" >
       <ion-thumbnail item-start>
-        <img (click)="moveTo()" src="https://i.imgur.com/Q5ISx1U.jpg">
-      </ion-thumbnail>
-      <h2>{{pro.nome}}</h2>
-      <h2>R${{total}}</h2>
+          <img src="{{item.url}}">
+        </ion-thumbnail>
+        <h2>{{item.nome}}</h2>
+        <h2>{{item.valor}}</h2>
+        <ion-icon item-end name="trash" class="excluir" (click)="removeItem()"></ion-icon>
     </ion-item>
   </ion-card>
 
   <ion-fab right bottom id="botaoAdd">
-    <button mini ion-fab color="danger" (click)="moveTo()">
+    <button mini ion-fab color="danger" (click)="addItem()">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
   <br>
   <div id="finalPage">
-    <button ion-button class="buttom">Realizar Pedido</button>
+    <button ion-button class="buttom" (click)="moveTo()">Realizar Pedido</button>
   </div>
 </ion-content>

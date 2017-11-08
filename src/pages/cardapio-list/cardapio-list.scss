@@ -2,7 +2,9 @@ page-cardapio-list {
   // .input-wrapper{
   //   background-color: rgb(94, 92, 92);
   // }
-
+  .searchbar{
+    background: rgb(211, 12, 12);
+  }
   .produto{
     background: #fff !important;
   }
@@ -13,6 +15,10 @@ page-cardapio-list {
 
   .segment-button{
     border-bottom-color: #fff !important;
+    background-color: rgb(211, 12, 12) !important;
+    border-left-color: #fff !important;
+    border-right-color: #fff !important;
+    border-top-color: #fff !important;
   }
 
   .toolbar-title,
@@ -33,7 +39,10 @@ page-cardapio-list {
     padding-right: 0;
     padding-left: 0;
   }
-
+  .item-inner{
+    background-image: none !important;
+    padding-right: 0 !important;
+  }
   // .item {
   //   border: solid #dddddd;
   //   // border-radius: 2px;

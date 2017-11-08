@@ -4,4 +4,5 @@ export class Produto{
 	valor: number;
 	descricao: string;
 	tipo:number;
+	id:number;
 }

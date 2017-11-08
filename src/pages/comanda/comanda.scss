@@ -1,0 +1,37 @@
+page-comanda {
+  .toolbar-background {
+    background-color: rgb(211, 12, 12);
+  }
+
+  .toolbar-title,
+  ion-segment-button {
+    color: #fff !important;
+  }
+
+  .bar-button-default {
+    color: #fff;
+  }
+  ion-segment {
+    color: #fff !important;
+  }
+  .buttom {
+    background: rgb(211, 12, 12);
+  }
+  .button-ios.activated,
+  .button-md.activated {
+    background-color: rgb(211, 12, 12) !important;
+  }
+
+  #finalPage {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 10px;
+    margin-left: 20%;
+  }
+  .aceito {
+    color: rgb(38, 179, 10);
+  }
+  .recusado {
+    color: rgb(211, 12, 12) !important;
+  }
+}
