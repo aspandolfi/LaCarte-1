@@ -8,16 +8,24 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card-content>
+  <div align="center">
     <img class="produtoImagem" src="{{produto.url}}">
-    <h2>{{produto.nome}}</h2>
-    <P class="negrito">R$ {{produto.valor | number:'1.2-2'}}</P>
+  </div>
+  <br>
+  <div class="caixaGenerica">
+    <h2 style="text-align: center">{{produto.nome}}</h2>
+    <h3 style="text-align: center">R$ {{produto.valor | number:'1.2-2'}}</h3>
     <p>{{produto.descricao}}</p>
-    <hr>
+  </div>
+  <hr>
+
+  <div class="caixaGenerica">
+    <h2 style="text-align: center">
+      Adicionais
+    </h2>
 
     <form>
-      <h2>Adicionais</h2>
-      <ion-item *ngFor="let item of adicionais">
+      <ion-item *ngFor="let item of adicional">
         <div style="display: flex;">
           <div>
             {{ item.nome }} (R$ {{ item.valor | number:'1.2-2' }})
@@ -25,21 +33,19 @@
           <div style="margin-left: auto">
             <ion-icon name="add-circle" class="addButtom" (click)="mudaQuantia(item, 1)"></ion-icon>
             {{item.quantidade}}
-            <ion-icon name="remove-circle" class="addButtom" (click)="mudaQuantia(item, -1)"></ion-icon>
+            <ion-icon name="remove-circle" class="remButtom" (click)="mudaQuantia(item, -1)"></ion-icon>
           </div>
         </div>
       </ion-item>
-    </form>
-    <br>
-    <ion-card>
       <ion-item>
         <ion-textarea placeholder="Observacao" rows="6" cols="30"></ion-textarea>
       </ion-item>
-    </ion-card>
-    <h4>TOTAL: R$ {{ total | number:'1.2-2' }}</h4>
-    <br>
-    <div align="center">
-      <button ion-button class="buttom" (click)="moveTo(total)">Adicionar ao carrinho</button>
-    </div>
-</ion-card-content>
+    </form>
+  </div>
+
+  <h4 style="text-align: center;">TOTAL: R$ {{ total | number:'1.2-2' }}</h4>
+  <br>
+  <div align="center">
+    <button ion-button class="buttom" (click)="moveTo(total)">Adicionar ao carrinho</button>
+  </div>
 </ion-content>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Produto } from '../../class/produtos';
 import { CarrinhoPage } from '../carrinho/carrinho';
+import { Storage } from "@ionic/storage";
 
 @IonicPage()
 @Component({
@@ -14,29 +15,34 @@ export class Cardapio2Page {
   public total = 0.0;
   public obs: string;
 
-  adicionais = [
-    {"nome": "Bacon", "id": "1", "quantidade": 0, "valor": 2},
-    {"nome": "Queijo extra", "id": "2", "quantidade": 0, "valor": 1.5},
-    {"nome": "Cebola extra", "id": "3", "quantidade": 0, "valor": 1}
+  public produtos: any;
+  public item_pedido_adicional: any;
+
+  adicional = [
+    {"id": 1, "nome": "Bacon", "quantidade": 0, "valor": 2},
+    {"id": 2, "nome": "Queijo extra", "quantidade": 0, "valor": 1.5},
+    {"id": 3, "nome": "Cebola extra", "quantidade": 0, "valor": 1}
   ]
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.produto = navParams.data;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
+    this.storage.get("produto")
+      .then((data)=>{
+        this.produto = data[(navParams.data)-1];
+        this.total = this.produto.valor;
+      }
+    );
     /*
-    OBS: Não é necessário atribuir individualmente se os nomes estiverem batendo
-    (ao contrário da url != urlImage por exemplo)
-
-    this.produto.nome = this.navParams.get('nome');
-    this.produto.url = this.navParams.get('urlImage');
-    this.produto.valor = this.navParams.get('valor');
-    this.produto.tipo = this.navParams.get('tipo');
-    this.produto.descricao = this.navParams.get('descricao');
+    this.storage.get("adicional")
+      .then((data)=>{
+        this.adicional = data;
+        this.total = this.produto.valor;
+      }
+    );
     */
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Cardapio2Page');
-    this.total = this.produto.valor;
   }
 
   public mudaQuantia(adic: any, sinal: number){
@@ -46,8 +52,8 @@ export class Cardapio2Page {
     }
   }
 
-  public moveTo(total:number){ // uma simples função que esta sendo chamada pela primeira imagem do cardapio para poder visualizar a descrição da comida.
-    console.log(total);
+  public moveTo(total:number){
+    console.log("total = ", total);
     this.navCtrl.push(CarrinhoPage, total);
   }
 

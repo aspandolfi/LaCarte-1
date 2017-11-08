@@ -12,9 +12,19 @@ page-cardapio2 {
     font-weight: bold;
   }
 
-  .adicionais {
-    text-align: left;
+  /*
+  ion-textarea {
+    border: think solid black;
   }
+  */
+
+  .caixaGenerica {
+    text-align: left;
+    padding: 10px;
+    border:1px solid grey;
+    //box-shadow: 2px 2px 0px #888888;
+  }
+
   .text {
     border: think solid black;
   }
@@ -36,7 +46,13 @@ page-cardapio2 {
   }
 
   .addButtom {
-    color: rgba(182, 9, 9, 0.966);
+    color: green;
+  }
+  .remButtom {
+    color: rgb(180, 10, 10);
+  }
+  .addButtom, .remButtom {
+    font-size: 25px;
   }
 
   .buttom {

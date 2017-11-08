@@ -1,14 +1,13 @@
 import { CozinhaDetalhePageModule } from './../pages/cozinha-detalhe/cozinha-detalhe.module';
 import { CozinhaPageModule } from './../pages/cozinha/cozinha.module';
 import { ComandaPageModule } from './../pages/comanda/comanda.module';
-//
+
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-//import { HomePage } from '../pages/home/home';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,7 +24,7 @@ import { CarrinhoPageModule } from '../pages/carrinho/carrinho.module';
 import { CardapioListPageModule } from '../pages/cardapio-list/cardapio-list.module';
 
 import { Geolocation } from '@ionic-native/geolocation';
-
+import { IonicStorageModule } from '@ionic/storage';
 
 
 @NgModule({
@@ -49,7 +48,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     CardapioListPageModule,
     ComandaPageModule,
     CozinhaPageModule,
-    CozinhaDetalhePageModule
+    CozinhaDetalhePageModule,
+    IonicStorageModule.forRoot()
   ],
 
   bootstrap: [IonicApp],
