@@ -30,13 +30,19 @@ page-carrinho {
   .buttom {
     background: rgb(211, 12, 12);
   }
-  .button-ios.activated{
+  .button-ios.activated {
     background-color: rgb(211, 12, 12) !important;
   }
-  .button-md.activated{
+  .button-md.activated {
     background-color: rgb(211, 12, 12) !important;
   }
-  .excluir{
+  .excluir {
     color: rgb(0, 0, 0) !important;
+  }
+  .itemCardapio {
+    margin-bottom: -22px !important;
+    padding: 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
   }
 }

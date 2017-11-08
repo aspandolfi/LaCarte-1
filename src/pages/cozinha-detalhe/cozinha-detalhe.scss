@@ -1,0 +1,51 @@
+page-cozinha-detalhe {
+  .toolbar-background {
+    background-color: rgb(211, 12, 12);
+  }
+
+  .toolbar-title,
+  ion-segment-button {
+    color: #fff !important;
+  }
+
+  .bar-button-default {
+    color: #fff;
+  }
+  ion-segment {
+    color: #fff !important;
+  }
+  .buttom {
+    background: rgb(211, 12, 12);
+  }
+  .button-ios.activated {
+    background-color: rgb(211, 12, 12) !important;
+  }
+  .button-md.activated {
+    background-color: rgb(211, 12, 12) !important;
+  }
+  .confirma {
+    // display: block;
+    color: #fff !important;
+    background: rgb(38, 179, 10);
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin-left: 25%;
+    border: 1px solid rgb(0, 0, 0);
+    font-size: 30px;
+  }
+  .recusa {
+    // display: block;
+    color: #fff !important;
+    background: rgb(211, 12, 12) !important;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin-left: 15%;
+    border: 1px solid rgb(0, 0, 0);
+    font-size: 30px;
+  }
+  // .aceito{
+  //   font-size: 30px;
+  // }
+}

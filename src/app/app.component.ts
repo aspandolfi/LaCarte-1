@@ -1,3 +1,4 @@
+import { CozinhaPage } from './../pages/cozinha/cozinha';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -31,7 +32,8 @@ export class MyApp {
       { title: 'Cadastrar', component: CadastPage },
 			{ title: 'Perfil', component: PerfilPage },
 			{ title: 'Cardapio', component: CardapioListPage },
-			{ title: 'Mesa', component: MesaPage },
+      { title: 'Mesa', component: MesaPage },
+      { title: 'Cozinha', component: CozinhaPage }
     ];
 
   }

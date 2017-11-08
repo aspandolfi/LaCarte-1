@@ -1,3 +1,5 @@
+import { CozinhaDetalhePageModule } from './../pages/cozinha-detalhe/cozinha-detalhe.module';
+import { CozinhaPageModule } from './../pages/cozinha/cozinha.module';
 import { ComandaPageModule } from './../pages/comanda/comanda.module';
 //
 import { BrowserModule } from '@angular/platform-browser';
@@ -45,7 +47,9 @@ import { Geolocation } from '@ionic-native/geolocation';
     HttpModule,
     CarrinhoPageModule,
     CardapioListPageModule,
-    ComandaPageModule
+    ComandaPageModule,
+    CozinhaPageModule,
+    CozinhaDetalhePageModule
   ],
 
   bootstrap: [IonicApp],
