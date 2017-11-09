@@ -47,13 +47,17 @@ export class CarrinhoPage {
   }
 
   public moveTo() {
-    this.navCtrl.push(ComandaPage);
+    this.navCtrl.setRoot(ComandaPage);
   }
 
   public removeItem(item: any) {
     this.produtoData = this.produtoData.filter(item1 => {
       return item1.nome !== item.nome;
     });
+  }
+
+  addItem(){
+    this.navCtrl.setRoot(CardapioListPage);
   }
 
   ionViewDidLoad() {

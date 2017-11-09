@@ -45,6 +45,7 @@ export class Cardapio2Page {
         this.total = this.produto.valor;
       }
     );
+    console.log(this.adicional)
     /*
     this.storage.get("adicional")
       .then((data)=>{

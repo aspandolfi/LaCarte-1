@@ -19,29 +19,32 @@
   </div>
   <hr>
 
-  <div class="caixaGenerica">
-    <h2 style="text-align: center">
-      Adicionais
-    </h2>
-
-    <form>
-      <ion-item *ngFor="let item of adicional">
-        <div style="display: flex;">
-          <div>
-            {{ item.nome }} (R$ {{ item.valor | number:'1.2-2' }})
+  <div *ngIf="adicional.length !== 0; then addBlock else removeBlock"></div>
+  <ng-template #removeBlock></ng-template>
+  <ng-template #addBlock>
+    <div class="caixaGenerica">
+      <h2 style="text-align: center">
+        Adicionais
+      </h2>
+      <form>
+        <ion-item *ngFor="let item of adicional">
+          <div style="display: flex;">
+            <div>
+              {{ item.nome }} (R$ {{ item.valor | number:'1.2-2' }})
+            </div>
+            <div style="margin-left: auto">
+              <ion-icon name="add-circle" class="addButtom" (click)="mudaQuantia(item, 1)"></ion-icon>
+              {{item.quantidade}}
+              <ion-icon name="remove-circle" class="remButtom" (click)="mudaQuantia(item, -1)"></ion-icon>
+            </div>
           </div>
-          <div style="margin-left: auto">
-            <ion-icon name="add-circle" class="addButtom" (click)="mudaQuantia(item, 1)"></ion-icon>
-            {{item.quantidade}}
-            <ion-icon name="remove-circle" class="remButtom" (click)="mudaQuantia(item, -1)"></ion-icon>
-          </div>
-        </div>
-      </ion-item>
-      <ion-item>
-        <ion-textarea placeholder="Observacao" rows="6" cols="30"></ion-textarea>
-      </ion-item>
-    </form>
-  </div>
+        </ion-item>
+        <ion-item>
+          <ion-textarea placeholder="Observacao" rows="6" cols="30"></ion-textarea>
+        </ion-item>
+      </form>
+    </div>
+  </ng-template>
 
   <h4 style="text-align: center;">TOTAL: R$ {{ total | number:'1.2-2' }}</h4>
   <br>
