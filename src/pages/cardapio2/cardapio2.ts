@@ -4,6 +4,8 @@ import { Produto } from '../../class/produtos';
 import { CarrinhoPage } from '../carrinho/carrinho';
 import { Storage } from "@ionic/storage";
 
+// comentário só pra enviar outra vez pro git pq tenho medo de usar "git rm --cached"
+
 @IonicPage()
 @Component({
   selector: 'page-cardapio2',
