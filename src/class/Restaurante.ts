@@ -13,6 +13,7 @@ export class Mesa {
 	qrcode: string; // metodo 2 de achar a mesa no banco de dados
 }
 
+/*
 export class Produto {
 	restaurante: number; // relativo a qual restaurante
 	nome: string;
@@ -20,3 +21,4 @@ export class Produto {
 	preco: number;
 	descricao: string;
 }
+*/

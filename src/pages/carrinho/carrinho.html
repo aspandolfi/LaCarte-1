@@ -8,13 +8,13 @@
 </ion-header>
 
 <ion-content>
-  <ion-item no-lines class="itemCardapio" *ngFor="let item of produtoData">
+  <ion-item no-lines class="itemCardapio" *ngFor="let item of itemPedidoList">
     <ion-card>
       <ion-item>
         <ion-thumbnail item-start>
-          <img src="{{item.url}}">
+          <img src="{{item.produto.url}}">
         </ion-thumbnail>
-        <h2>{{item.nome}}</h2>
+        <h2>{{item.produto.nome}}</h2>
         <h2>{{item.valor}}</h2>
         <ion-icon item-end name="trash" class="excluir" (click)="removeItem(item)"></ion-icon>
       </ion-item>

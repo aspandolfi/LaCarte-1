@@ -1,10 +1,13 @@
+//Modulos
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Produto } from '../../class/produtos';
-import { CarrinhoPage } from '../carrinho/carrinho';
 import { Storage } from "@ionic/storage";
+//Paginas
+import { CarrinhoPage } from '../carrinho/carrinho';
+//Classes
+import { Produto } from '../../class/produtos';
+import { ItemPedido } from '../../class/ItemPedido';
 
-// comentário só pra enviar outra vez pro git pq tenho medo de usar "git rm --cached"
 
 @IonicPage()
 @Component({
@@ -14,45 +17,19 @@ import { Storage } from "@ionic/storage";
 
 export class Cardapio2Page {
   public produto = new Produto();
-  public total = 0.0;
-  public obs: string;
-
-  public produtos: any;
-  public adicional = [];
-
-  /*
-  adicional = [
-    {"id": 1, "nome": "Bacon", "quantidade": 0, "valor": 2},
-    {"id": 2, "nome": "Queijo", "quantidade": 0, "valor": 1.5},
-    {"id": 3, "nome": "Cebola", "quantidade": 0, "valor": 1}
-  ]
-  */
+  public itemPedido = new ItemPedido();
+  public itemPedidoList: Array<ItemPedido> = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
     this.storage.get("produto")
       .then((data)=>{
         let id_do_produto = navParams.data;
-        this.produtos = data[(id_do_produto)-1];
-
-        this.produto.id = this.produtos.id;
-        this.produto.nome = this.produtos.nome;
-        this.produto.url = this.produtos.url;
-        this.produto.valor = this.produtos.valor;
-        this.produto.tipo = this.produtos.tipo;
-        this.produto.descricao = this.produtos.descricao;
-
-        this.adicional = this.produtos.adicionais;
-        this.total = this.produto.valor;
+        this.produto = data[(id_do_produto)-1]; //TODO: Melhorar essa busca, esta passível de erro
+        this.itemPedido.produto = this.produto;
+        this.itemPedido.valor = this.produto.valor;
+        this.itemPedido.obs = "";
       }
     );
-    /*
-    this.storage.get("adicional")
-      .then((data)=>{
-        this.adicional = data;
-        this.total = this.produto.valor;
-      }
-    );
-    */
   }
 
   ionViewDidLoad() {
@@ -62,13 +39,24 @@ export class Cardapio2Page {
   public mudaQuantia(adic: any, sinal: number){
     if(adic.quantidade + sinal >= 0){
       adic.quantidade += sinal;
-      this.total += sinal * adic.valor;
+      this.itemPedido.valor += sinal * adic.valor;
     }
   }
 
-  public moveTo(total:number){
-    console.log("total = ", total);
-    this.navCtrl.push(CarrinhoPage, total);
+  updateStorageArray(keyName:string, keyValue:any){
+    this.storage.get(keyName).then((data)=>{
+      if(data){ // Se já tem conteudo
+        data.push(keyValue);
+        this.storage.set(keyName, data);
+      }else{ // senão
+        this.storage.set(keyName, keyValue);
+      }
+    });
   }
 
+  public moveTo(){
+    this.itemPedidoList.push(this.itemPedido);
+    this.storage.set("carrinho",this.itemPedidoList);
+    this.navCtrl.push(CarrinhoPage);
+  }
 }

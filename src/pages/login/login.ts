@@ -9,6 +9,7 @@ import { CadastPage } from "../cadast/cadast";
 import { CardapioListPage } from "../cardapio-list/cardapio-list";
 import { SplashScreen } from "@ionic-native/splash-screen";
 // import { SqliteServe } from '../../class/SqliteServe';
+import { Storage } from "@ionic/storage";
 
 @IonicPage()
 @Component({
@@ -32,11 +33,13 @@ export class LoginPage {
     public rest: RestProvider,
     public alertCtrl: AlertController,
     private menu: MenuController,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
+    public storage: Storage
   ) {
     this.splashScreen.show();
     this.usuarioLogin.email = "";
     this.usuarioLogin.senha = "";
+    this.storage.clear(); //TODO: remover isso, só pra teste
   }
 
   presentModal() {
@@ -44,7 +47,12 @@ export class LoginPage {
   }
 
   soontm() {
-    alert("Essa opção estará disponível em breve!");
+    // TODO: implementar api google e facebook
+    let alert = this.alertCtrl.create({
+      subTitle: "Essa opção estará disponível em breve!",
+      buttons: ["OK"]
+    });
+    alert.present();
   }
 
   ionViewDidLoad() {

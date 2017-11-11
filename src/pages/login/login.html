@@ -22,8 +22,8 @@
         <ion-input [(ngModel)]="usuarioLogin.senha" placeholder="Senha" type="password" (keyup.enter)="Validar()"></ion-input>
       </ion-item>
       <button ion-button (click)="Validar()" color="light">Entrar</button>
-      <button ion-button class="entrarCom">Entrar com Facebook</button>
-      <button ion-button class="entrarCom" color="danger">Entrar com o Google</button>
+      <button ion-button class="entrarCom" (click)="soontm()">Entrar com Facebook</button>
+      <button ion-button class="entrarCom" (click)="soontm()" color="danger">Entrar com o Google</button>
       <br><a> OU </a><br>
       <button ion-button class="entrarCom" outline (click)="moveTo()" color="light">Cadastre-se Aqui</button>
 

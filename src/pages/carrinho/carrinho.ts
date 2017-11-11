@@ -1,9 +1,13 @@
-import { ComandaPage } from "./../comanda/comanda";
-import { CardapioListPage } from "./../cardapio-list/cardapio-list";
+//Modulos
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
-import { CardapioPage } from "../cardapio/cardapio";
-import { RestProvider } from "./../../providers/rest/rest";
+import { Storage } from "@ionic/storage";
+//Paginas
+import { ComandaPage } from "./../comanda/comanda";
+import { CardapioListPage } from "./../cardapio-list/cardapio-list";
+//Classes
+import { ItemPedido } from "../../class/ItemPedido";
+
 
 @IonicPage()
 @Component({
@@ -11,52 +15,36 @@ import { RestProvider } from "./../../providers/rest/rest";
   templateUrl: "carrinho.html"
 })
 export class CarrinhoPage {
-  pro = {};
-  public produtoData = [
-    {
-      nome: "Lasanha",
-      valor: "10",
-      url: "http://www.pifpaf.com.br/img/000000000000050138006.JPG"
-    },
-    {
-      nome: "Hamburguer",
-      valor: "10",
-      url:
-        "https://www.designmaster.com.br/designmarketing/produtos/g_foto1_3246.jpg"
-    }
-  ];
-  total: any;
-
-  itensPedidos: any;
+  public itemPedidoList: Array<ItemPedido> = [];
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private rest: RestProvider
+    public storage: Storage
   ) {
-    this.itensPedidos = navParams.data;
-  }
-
-  getData() {
-    this.rest.getProduto(1).subscribe(data => {
-      console.log(data);
-      this.pro = data;
-      localStorage.setItem("proData", JSON.stringify(this.pro));
-      console.log(localStorage);
+    this.storage.get("carrinho").then((data)=>{
+      let teste = data;
+      console.log(teste);
+      this.itemPedidoList.push(teste);
+      console.log(this.itemPedidoList[0].produto.url);
     });
   }
 
-  public moveTo() {
-    this.navCtrl.push(ComandaPage);
+  public addItem(){
+    this.navCtrl.push(CardapioListPage);
   }
 
   public removeItem(item: any) {
-    this.produtoData = this.produtoData.filter(item1 => {
-      return item1.nome !== item.nome;
+    this.itemPedidoList = this.itemPedidoList.filter(item1 => {
+      return item1.produto.nome !== item.produto.nome;
     });
   }
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad CarrinhoPage");
+  }
+
+  public moveTo() {
+    this.navCtrl.push(ComandaPage);
   }
 }
