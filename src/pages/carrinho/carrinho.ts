@@ -24,14 +24,16 @@ export class CarrinhoPage {
   ) {
     this.itemPedidoList = navParams.data;
     this.loadCarrinho();
-    this.saveCarrinho();
   }
 
   loadCarrinho(){
     this.storage.get("carrinho")
-      .then((data)=>{
+      .then((data:Array<ItemPedido>)=>{
         if(data){ // Se já tem conteudo
+          let id = 1;
+          if(data.length != 0) id = data[0].id + 1;
           this.itemPedidoList = this.itemPedidoList.concat(data);
+          this.itemPedidoList[0].id = id; // TODO: pegar id pronto do banco
           this.saveCarrinho();
         }
       }
@@ -47,8 +49,8 @@ export class CarrinhoPage {
   }
 
   public removeItem(item: any) {
-    this.itemPedidoList = this.itemPedidoList.filter(item1 => {
-      return item1.produto.nome !== item.produto.nome;
+    this.itemPedidoList = this.itemPedidoList.filter(itemNaLista => {
+      return itemNaLista.id !== item.id;
     });
     this.saveCarrinho();
   }

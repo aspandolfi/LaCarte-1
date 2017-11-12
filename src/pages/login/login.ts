@@ -68,8 +68,7 @@ export class LoginPage {
       spinner: "dots"
     });
     loading.present();
-    this.splashScreen.hide();
-    //temporário
+    this.splashScreen.hide(); //TODO: temporário, modificar
     this.navCtrl.setRoot(MesaPage);
 
     // if (this.usuarioLogin.email === "" || this.usuarioLogin.senha === "") {
