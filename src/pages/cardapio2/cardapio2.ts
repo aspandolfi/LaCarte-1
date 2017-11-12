@@ -43,20 +43,8 @@ export class Cardapio2Page {
     }
   }
 
-  updateStorageArray(keyName:string, keyValue:any){
-    this.storage.get(keyName).then((data)=>{
-      if(data){ // Se já tem conteudo
-        data.push(keyValue);
-        this.storage.set(keyName, data);
-      }else{ // senão
-        this.storage.set(keyName, keyValue);
-      }
-    });
-  }
-
   public moveTo(){
     this.itemPedidoList.push(this.itemPedido);
-    this.storage.set("carrinho",this.itemPedidoList);
-    this.navCtrl.push(CarrinhoPage);
+    this.navCtrl.push(CarrinhoPage, this.itemPedidoList);
   }
 }

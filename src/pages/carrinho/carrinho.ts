@@ -22,12 +22,19 @@ export class CarrinhoPage {
     public navParams: NavParams,
     public storage: Storage
   ) {
-    this.storage.get("carrinho").then((data)=>{
-      let teste = data;
-      console.log(teste);
-      this.itemPedidoList.push(teste);
-      console.log(this.itemPedidoList[0].produto.url);
-    });
+    this.itemPedidoList = navParams.data;
+    this.getCarrinho();
+    this.storage.set("carrinho", this.itemPedidoList);
+  }
+
+  getCarrinho(){
+    this.storage.get("carrinho")
+      .then((data)=>{
+        if(data){ // Se já tem conteudo
+          this.itemPedidoList.concat(data);
+        }
+      }
+    );
   }
 
   public addItem(){

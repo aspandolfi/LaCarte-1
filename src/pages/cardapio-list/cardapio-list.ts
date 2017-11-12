@@ -127,7 +127,6 @@ export class CardapioListPage {
   }
 
   moveTo(item: any) {
-    console.log(item.id);
     this.navCtrl.push(Cardapio2Page, item.id);
   }
 }
