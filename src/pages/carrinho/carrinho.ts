@@ -23,18 +23,23 @@ export class CarrinhoPage {
     public storage: Storage
   ) {
     this.itemPedidoList = navParams.data;
-    this.getCarrinho();
-    this.storage.set("carrinho", this.itemPedidoList);
+    this.loadCarrinho();
+    this.saveCarrinho();
   }
 
-  getCarrinho(){
+  loadCarrinho(){
     this.storage.get("carrinho")
       .then((data)=>{
         if(data){ // Se já tem conteudo
-          this.itemPedidoList.concat(data);
+          this.itemPedidoList = this.itemPedidoList.concat(data);
+          this.saveCarrinho();
         }
       }
     );
+  }
+
+  saveCarrinho(){
+    this.storage.set("carrinho", this.itemPedidoList);
   }
 
   public addItem(){
@@ -45,6 +50,7 @@ export class CarrinhoPage {
     this.itemPedidoList = this.itemPedidoList.filter(item1 => {
       return item1.produto.nome !== item.produto.nome;
     });
+    this.saveCarrinho();
   }
 
   ionViewDidLoad() {
