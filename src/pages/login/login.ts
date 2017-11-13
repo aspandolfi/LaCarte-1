@@ -40,6 +40,7 @@ export class LoginPage {
     this.usuarioLogin.email = "";
     this.usuarioLogin.senha = "";
     this.storage.clear(); //TODO: remover isso, só pra teste
+    this.storage.set("comanda",[]);
   }
 
   presentModal() {

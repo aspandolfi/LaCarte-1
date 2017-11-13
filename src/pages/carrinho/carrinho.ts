@@ -1,12 +1,13 @@
 //Modulos
 import { Component } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
+import { IonicPage, NavController, NavParams, AlertController } from "ionic-angular";
 import { Storage } from "@ionic/storage";
 //Paginas
 import { ComandaPage } from "./../comanda/comanda";
 import { CardapioListPage } from "./../cardapio-list/cardapio-list";
 //Classes
 import { ItemPedido } from "../../class/ItemPedido";
+import { ItemComanda } from "../../class/ItemComanda";
 
 
 @IonicPage()
@@ -16,11 +17,14 @@ import { ItemPedido } from "../../class/ItemPedido";
 })
 export class CarrinhoPage {
   public itemPedidoList: Array<ItemPedido> = [];
+  public itemComanda = new ItemComanda;
+  public itemComandaList = new Array<ItemComanda>();
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public storage: Storage
+    public storage: Storage,
+    public alertCtrl: AlertController,
   ) {
     this.itemPedidoList = navParams.data;
     this.loadCarrinho();
@@ -35,9 +39,19 @@ export class CarrinhoPage {
           this.itemPedidoList = this.itemPedidoList.concat(data);
           this.itemPedidoList[0].id = id; // TODO: pegar id pronto do banco
           this.saveCarrinho();
+          this.loadComanda();
         }
       }
     );
+  }
+
+  loadComanda(){
+    for(let i=0; i < this.itemPedidoList.length; i++){
+      this.itemComanda.pedido = this.itemPedidoList[i];
+      this.itemComanda.id = this.itemComanda.pedido.id;
+      this.itemComanda.status = 0;
+      this.itemComandaList.push(this.itemComanda);
+    }
   }
 
   saveCarrinho(){
@@ -45,7 +59,7 @@ export class CarrinhoPage {
   }
 
   public addItem(){
-    this.navCtrl.push(CardapioListPage);
+    this.navCtrl.setRoot(CardapioListPage);
   }
 
   public removeItem(item: any) {
@@ -60,6 +74,20 @@ export class CarrinhoPage {
   }
 
   public moveTo() {
-    this.navCtrl.push(ComandaPage);
+    //this.showAlert();
+    this.storage.set("carrinho", []);
+    console.log(this.itemComandaList);
+    this.navCtrl.setRoot(ComandaPage, this.itemComandaList);
   }
+
+  showAlert() {
+    // alerta para erro de login
+    let alert = this.alertCtrl.create({
+      title: "Pedido Enviado!",
+      subTitle: "Em instantes você receberá uma notificação.",
+      buttons: ["OK"]
+    });
+    alert.present();
+  }
+
 }

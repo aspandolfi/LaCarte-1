@@ -45,4 +45,9 @@ page-carrinho {
     padding-right: 0 !important;
     padding-left: 0 !important;
   }
+
+  .caixaCarrinho {
+    height:80%;
+    overflow-y: auto;
+  }
 }

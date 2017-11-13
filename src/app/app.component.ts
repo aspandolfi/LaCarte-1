@@ -12,6 +12,7 @@ import { MesaPage } from '../pages/mesa/mesa';
 import { CardapioPage } from '../pages/cardapio/cardapio';
 import { CarrinhoPage } from '../pages/carrinho/carrinho';
 import { CardapioListPage } from '../pages/cardapio-list/cardapio-list';
+import { ComandaPage } from '../pages/comanda/comanda';
 
 @Component({
   templateUrl: 'app.html'
@@ -33,6 +34,7 @@ export class MyApp {
 			{ title: 'Perfil', component: PerfilPage },
 			{ title: 'Cardapio', component: CardapioListPage },
       { title: 'Mesa', component: MesaPage },
+      { title: 'Comanda', component: ComandaPage },
       { title: 'Cozinha', component: CozinhaPage }
     ];
 

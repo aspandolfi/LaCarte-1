@@ -9,28 +9,26 @@
 
 
 <ion-content padding>
-  <ion-card>
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="http://www.pifpaf.com.br/img/000000000000050138006.JPG">
-      </ion-thumbnail>
-      <h2>Lasanha</h2>
-      <h2>R$ 10</h2>
-      <ion-icon item-end name="checkmark"  md="md-checkmark" ios="ios-checkmark" class="aceito"></ion-icon>
-    </ion-item>
-  </ion-card>
-  <ion-card>
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="https://www.designmaster.com.br/designmarketing/produtos/g_foto1_3246.jpg">
-        </ion-thumbnail>
-        <h2>Hamburguer</h2>
-        <h2>R$ 10</h2>
-        <ion-icon item-end name="close"  md="md-close" ios="ios-close" class="recusado"></ion-icon>
-      </ion-item>
-    </ion-card>
+  <div class="caixaCarrinho">
+    <div *ngFor="let item of carrinho">
+      <ion-card>
+        <ion-item>
+          <ion-thumbnail item-start>
+            <img src="{{item.pedido.produto.url}}">
+          </ion-thumbnail>
+          <h2>{{item.pedido.produto.nome}}</h2>
+          <h2>R${{item.pedido.valor | number:'1.2-2'}}</h2>
+          <ion-icon item-end name="help" ios="ios-help" md="md-help" class="statusIndef"></ion-icon>
+        </ion-item>
+      </ion-card>
+    </div>
+  </div>
+  <!--
+  <ion-icon item-end name="checkmark" md="md-checkmark" ios="ios-checkmark" class="aceito"></ion-icon>
+  <ion-icon item-end name="close" md="md-close" ios="ios-close" class="recusado"></ion-icon>
+  -->
   <br>
   <div id="finalPage">
-    <button ion-button class="buttom" >Realizar Pagamento</button>
+    <button ion-button class="buttom">Realizar Pagamento</button>
   </div>
 </ion-content>

@@ -45,6 +45,7 @@ export class Cardapio2Page {
 
   public moveTo(){
     this.itemPedidoList.push(this.itemPedido);
-    this.navCtrl.push(CarrinhoPage, this.itemPedidoList);
+    this.navCtrl.setRoot(CarrinhoPage, this.itemPedidoList);
+    this.itemPedidoList = [];
   }
 }

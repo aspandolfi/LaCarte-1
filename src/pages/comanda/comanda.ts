@@ -1,12 +1,10 @@
+//Modulos
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Storage } from "@ionic/storage";
+//classes
+import { ItemComanda } from '../../class/ItemComanda';
 
-/**
- * Generated class for the ComandaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -14,8 +12,31 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'comanda.html',
 })
 export class ComandaPage {
+  public carrinho: Array<ItemComanda> = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public storage: Storage,
+  ) {
+    this.carrinho = navParams.data;
+    console.log(this.carrinho);
+    this.loadComanda();
+  }
+
+  loadComanda(){
+    this.storage.get("comanda")
+      .then((data:any)=>{
+        if(data){ // Se já tem conteudo
+          this.carrinho = this.carrinho.concat(data);
+          this.saveComanda();
+        }
+      }
+    );
+  }
+
+  saveComanda(){
+    this.storage.set("comanda", this.carrinho);
   }
 
   ionViewDidLoad() {
