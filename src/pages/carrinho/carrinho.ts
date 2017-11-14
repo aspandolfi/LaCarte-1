@@ -26,7 +26,7 @@ export class CarrinhoPage {
     public storage: Storage,
     public alertCtrl: AlertController,
   ) {
-    this.itemPedidoList = navParams.data;
+    this.itemPedidoList.push(navParams.data);
     this.loadCarrinho();
   }
 

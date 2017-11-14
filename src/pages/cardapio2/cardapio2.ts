@@ -18,7 +18,7 @@ import { ItemPedido } from '../../class/ItemPedido';
 export class Cardapio2Page {
   public produto = new Produto();
   public itemPedido = new ItemPedido();
-  public itemPedidoList: Array<ItemPedido> = [];
+  public txtAdicio = "";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
     this.storage.get("produto")
@@ -28,6 +28,7 @@ export class Cardapio2Page {
         this.itemPedido.produto = this.produto;
         this.itemPedido.valor = this.produto.valor;
         this.itemPedido.obs = "";
+        if(this.itemPedido.produto.adicional.length > 0) this.txtAdicio = "Adicionais";
       }
     );
   }
@@ -36,16 +37,14 @@ export class Cardapio2Page {
     console.log('ionViewDidLoad Cardapio2Page');
   }
 
-  public mudaQuantia(adic: any, sinal: number){
-    if(adic.quantidade + sinal >= 0){
-      adic.quantidade += sinal;
-      this.itemPedido.valor += sinal * adic.valor;
+  public mudaQuantia(adic: any, quant: number){
+    if(adic.quantidade + quant >= 0){
+      adic.quantidade += quant;
+      this.itemPedido.valor += quant * adic.valor;
     }
   }
 
   public moveTo(){
-    this.itemPedidoList.push(this.itemPedido);
-    this.navCtrl.setRoot(CarrinhoPage, this.itemPedidoList);
-    this.itemPedidoList = [];
+    this.navCtrl.setRoot(CarrinhoPage, this.itemPedido);
   }
 }
