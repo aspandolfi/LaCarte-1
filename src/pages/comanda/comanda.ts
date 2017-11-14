@@ -19,7 +19,6 @@ export class ComandaPage {
     public navParams: NavParams,
     public storage: Storage,
   ) {
-    this.carrinho = navParams.data;
     console.log(this.carrinho);
     this.loadComanda();
   }
@@ -37,6 +36,19 @@ export class ComandaPage {
 
   saveComanda(){
     this.storage.set("comanda", this.carrinho);
+  }
+
+  returnStatus(statusNum:number, deviceNum:number):string{
+    let statusTxt:string = "";
+    //Prefixo
+    if(deviceNum == 1) statusTxt = statusTxt.concat("md-");
+    if(deviceNum == 2) statusTxt = statusTxt.concat("ios-");
+    //Sufixo
+    if(statusNum == 0) statusTxt = statusTxt.concat("time");
+    if(statusNum == 1) statusTxt = statusTxt.concat("checkmark");
+    if(statusNum == 2) statusTxt = statusTxt.concat("close");
+    
+    return statusTxt;
   }
 
   ionViewDidLoad() {

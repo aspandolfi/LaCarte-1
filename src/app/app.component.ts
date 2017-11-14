@@ -29,11 +29,9 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Login', component: LoginPage },
-      { title: 'Cadastrar', component: CadastPage },
+      { title: 'Logout', component: LoginPage }, //TODO: Fazer logout de verdade
 			{ title: 'Perfil', component: PerfilPage },
 			{ title: 'Cardapio', component: CardapioListPage },
-      { title: 'Mesa', component: MesaPage },
       { title: 'Comanda', component: ComandaPage },
       { title: 'Cozinha', component: CozinhaPage }
     ];

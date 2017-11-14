@@ -74,10 +74,16 @@ export class CarrinhoPage {
   }
 
   public moveTo() {
-    //this.showAlert();
+    this.showAlert();
     this.storage.set("carrinho", []);
-    console.log(this.itemComandaList);
-    this.navCtrl.setRoot(ComandaPage, this.itemComandaList);
+    this.storage.get("comanda")
+    .then((data:Array<ItemComanda>)=>{
+      if(data){ // Se já tem conteudo
+        this.itemComandaList = this.itemComandaList.concat(data);
+      }
+      this.storage.set("comanda", this.itemComandaList);
+      this.navCtrl.setRoot(CardapioListPage);
+    });
   }
 
   showAlert() {
