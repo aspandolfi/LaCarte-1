@@ -47,8 +47,9 @@ export class CarrinhoPage {
 
   loadComanda(){
     for(let i=0; i < this.itemPedidoList.length; i++){
+      this.itemComanda = new ItemComanda;
       this.itemComanda.pedido = this.itemPedidoList[i];
-      this.itemComanda.id = this.itemComanda.pedido.id;
+      this.itemComanda.id = this.itemComanda.pedido.id; //TODO: Pegar id do banco yada yada
       this.itemComanda.status = 0;
       this.itemComandaList.push(this.itemComanda);
     }
