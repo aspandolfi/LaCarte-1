@@ -1,41 +1,46 @@
-import { CozinhaPage } from './../pages/cozinha/cozinha';
-import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+import { CozinhaPage } from "./../pages/cozinha/cozinha";
+import { Component, ViewChild } from "@angular/core";
+import { Nav, Platform } from "ionic-angular";
+import { StatusBar } from "@ionic-native/status-bar";
+import { SplashScreen } from "@ionic-native/splash-screen";
 
-import { CadastPage } from '../pages/cadast/cadast';
-import { PerfilPage } from '../pages/perfil/perfil';
-import { LoginPage } from '../pages/login/login';
+import { CadastPage } from "../pages/cadast/cadast";
+import { PerfilPage } from "../pages/perfil/perfil";
+import { LoginPage } from "../pages/login/login";
 // import { EditarPage } from '../pages/editar/editar';
-import { MesaPage } from '../pages/mesa/mesa';
-import { CardapioPage } from '../pages/cardapio/cardapio';
-import { CarrinhoPage } from '../pages/carrinho/carrinho';
-import { CardapioListPage } from '../pages/cardapio-list/cardapio-list';
-import { ComandaPage } from '../pages/comanda/comanda';
+import { MesaPage } from "../pages/mesa/mesa";
+import { CardapioPage } from "../pages/cardapio/cardapio";
+import { CarrinhoPage } from "../pages/carrinho/carrinho";
+import { CardapioListPage } from "../pages/cardapio-list/cardapio-list";
+import { ComandaPage } from "../pages/comanda/comanda";
+import { AlertController } from "ionic-angular";
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: "app.html"
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = 'LoginPage';
+  rootPage: any = "LoginPage";
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string; component: any }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    public alertCtrl: AlertController
+  ) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Logout', component: LoginPage }, //TODO: Fazer logout de verdade
-			{ title: 'Perfil', component: PerfilPage },
-			{ title: 'Cardapio', component: CardapioListPage },
-      { title: 'Comanda', component: ComandaPage },
-      { title: 'Cozinha', component: CozinhaPage }
+      { title: "Logout", component: LoginPage }, //TODO: Fazer logout de verdade
+      { title: "Perfil", component: PerfilPage },
+      { title: "Cardapio", component: CardapioListPage },
+      { title: "Comanda", component: ComandaPage },
+      { title: "Cozinha", component: CozinhaPage }
     ];
-
   }
 
   initializeApp() {
@@ -46,7 +51,33 @@ export class MyApp {
   }
 
   openPage(page) {
+    if (page.title === "Logout") {
+      this.showConfirm(page);
+    } else {
+      this.nav.setRoot(page.component);
+    }
+  }
 
-    this.nav.setRoot(page.component);
+  showConfirm(page) {
+    let confirm = this.alertCtrl.create({
+      title: "Logout",
+      message:
+        "Deseja sair do aplicativo?",
+      buttons: [
+        {
+          text: "Não",
+          handler: () => {
+            console.log("Disagree clicked");
+          }
+        },
+        {
+          text: "Sim",
+          handler: () => {
+            this.nav.setRoot(page.component);
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 }
