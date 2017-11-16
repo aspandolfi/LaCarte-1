@@ -10,7 +10,7 @@
 
 <ion-content padding>
   <div class="caixaCarrinho">
-    <div *ngFor="let item of carrinho">
+    <button ion-item no-lines (click)="detalhe()" class="itemCardapio" *ngFor="let item of carrinho">
       <ion-card>
         <ion-item>
           <ion-thumbnail item-start>
@@ -21,7 +21,7 @@
           <ion-icon item-end name="{{returnStatus(item.status, 0)}}" md="{{returnStatus(item.status, 1)}}" ios="{{returnStatus(item.status, 2)}}" class="statusIndef"></ion-icon>
         </ion-item>
       </ion-card>
-    </div>
+    </button>
   </div>
   <br>
   <div id="finalPage">

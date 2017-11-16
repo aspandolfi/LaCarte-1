@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Detalhes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div align="center">
+    <img class="produtoImagem" src="{{itemPedido.produto.url}}">
+  </div>
+  <br>
+  <div class="caixaGenerica">
+    <h2 style="text-align: center">{{itemPedido.produto.nome}}</h2>
+    <p>{{itemPedido.produto.descricao}}</p>
+  </div>
+  <hr>
+
+  <div class="caixaGenerica">
+    <h2 style="text-align: center">
+      {{ txtAdicio }}
+    </h2>
+
+    <form>
+      <div *ngFor="let item of itemPedido.produto.adicional">
+        <div *ngIf="item.quantidade !== 0; then addBlock else removeBlock"></div>
+        <ng-template no-lines #removeBlock></ng-template>
+        <ng-template #addBlock>
+          <ion-item no-lines>
+            <div style="display: flex;">
+              <div>
+                {{ item.nome }} (R$ {{ item.valor | number:'1.2-2' }})
+              </div>
+              <div style="margin-left: auto">
+                (X{{item.quantidade}})
+              </div>
+            </div>
+          </ion-item>
+        </ng-template>
+      </div>
+      <ion-item>
+        <ion-textarea placeholder="Observacao" [(ngModel)]="itemPedido.obs" name="obs" rows="6" cols="30"></ion-textarea>
+      </ion-item>
+    </form>
+  </div>
+
+  <h4 style="text-align: center;">TOTAL: R$ {{ itemPedido.valor | number:'1.2-2' }}</h4>
+  <br>
+</ion-content>

@@ -9,7 +9,7 @@
 
 <ion-content>
   <div class="caixaCarrinho">
-    <ion-item no-lines class="itemCardapio" *ngFor="let item of itemPedidoList">
+    <button ion-item no-lines (click)="detalhe(item)" class="itemCardapio" *ngFor="let item of itemPedidoList">
       <ion-card>
         <ion-item>
           <ion-thumbnail item-start>
@@ -20,7 +20,7 @@
           <ion-icon item-end name="trash" class="excluir" (click)="removeItem(item)"></ion-icon>
         </ion-item>
       </ion-card>
-    </ion-item>
+    </button>
   </div>
   <div>
     <ion-fab right bottom id="botaoAdd">

@@ -1,3 +1,4 @@
+import { DetalhePedidoPage } from './../detalhe-pedido/detalhe-pedido';
 //Modulos
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams, AlertController } from "ionic-angular";
@@ -96,5 +97,7 @@ export class CarrinhoPage {
     });
     alert.present();
   }
-
+  public detalhe(item:any){
+    this.navCtrl.push(DetalhePedidoPage, item);
+  }
 }

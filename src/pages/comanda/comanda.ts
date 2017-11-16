@@ -1,3 +1,4 @@
+import { DetalhePedidoPage } from './../detalhe-pedido/detalhe-pedido';
 //Modulos
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -47,12 +48,15 @@ export class ComandaPage {
     if(statusNum == 0) statusTxt = statusTxt.concat("time");
     if(statusNum == 1) statusTxt = statusTxt.concat("checkmark");
     if(statusNum == 2) statusTxt = statusTxt.concat("close");
-    
+
     return statusTxt;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ComandaPage');
+  }
+  detalhe(){
+    this.navCtrl.push(DetalhePedidoPage)
   }
 
 }

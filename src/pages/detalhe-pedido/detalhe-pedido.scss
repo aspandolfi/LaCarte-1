@@ -1,0 +1,33 @@
+page-detalhe-pedido {
+  .toolbar-background {
+    background-color: rgb(211, 12, 12);
+  }
+
+  .toolbar-title,
+  ion-segment-button {
+    color: #fff !important;
+  }
+
+  .bar-button-default {
+    color: #fff;
+  }
+  ion-segment {
+    color: #fff !important;
+  }
+  .buttom {
+    background: rgb(211, 12, 12);
+  }
+  .button-ios.activated {
+    background-color: rgb(211, 12, 12) !important;
+  }
+  .button-md.activated {
+    background-color: rgb(211, 12, 12) !important;
+  }
+
+  .caixaGenerica {
+    text-align: left;
+    padding: 10px;
+    border:1px solid grey;
+    //box-shadow: 2px 2px 0px #888888;
+  }
+}
