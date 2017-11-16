@@ -10,7 +10,7 @@
 
 <ion-content padding>
   <div class="caixaCarrinho">
-    <button ion-item no-lines (click)="detalhe()" class="itemCardapio" *ngFor="let item of carrinho">
+    <button ion-item no-lines  class="itemCardapio" *ngFor="let item of carrinho" (click)="detalhe(item)">
       <ion-card>
         <ion-item>
           <ion-thumbnail item-start>

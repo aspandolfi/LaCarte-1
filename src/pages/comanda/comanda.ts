@@ -55,8 +55,8 @@ export class ComandaPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ComandaPage');
   }
-  detalhe(){
-    this.navCtrl.push(DetalhePedidoPage)
+  detalhe(item:any){
+    this.navCtrl.push(DetalhePedidoPage, item.pedido);
   }
 
 }

@@ -1,3 +1,4 @@
+import { ItemComanda } from './../../class/ItemComanda';
 import { ItemPedido } from './../../class/ItemPedido';
 import { Produto } from './../../class/produtos';
 import { Component } from "@angular/core";
