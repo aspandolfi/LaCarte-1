@@ -24,7 +24,7 @@
     </h2>
 
     <form>
-      <div *ngFor="let item of itemPedido.produto.adicional">
+      <div *ngFor="let item of itemPedido.adicional">
         <div *ngIf="item.quantidade !== 0; then addBlock else removeBlock"></div>
         <ng-template no-lines #removeBlock></ng-template>
         <ng-template #addBlock>

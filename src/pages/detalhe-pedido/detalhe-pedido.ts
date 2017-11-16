@@ -1,4 +1,3 @@
-import { ItemComanda } from './../../class/ItemComanda';
 import { ItemPedido } from './../../class/ItemPedido';
 import { Produto } from './../../class/produtos';
 import { Component } from "@angular/core";
@@ -24,7 +23,6 @@ export class DetalhePedidoPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
     this.itemPedido = navParams.data;
-    console.log(this.itemPedido);
   }
 
   ionViewDidLoad() {

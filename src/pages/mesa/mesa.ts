@@ -4,6 +4,8 @@ import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { Mesa } from "../../class/Restaurante";
 import { AlertController, MenuController } from "ionic-angular";
 import { RestProvider } from "../../providers/rest/rest";
+import { User } from '../../class/User';
+import { Storage } from "@ionic/storage";
 
 @IonicPage()
 @Component({
@@ -13,6 +15,7 @@ import { RestProvider } from "../../providers/rest/rest";
 export class MesaPage {
   public mesaLogin = new Mesa();
   public mesa = {};
+  public mesaTeste = new Mesa(); //TODO: yada yada yada
   public data = JSON.parse(localStorage.getItem("mesaData"));
   mesaData = { restaurante: "", numero: "", codigo: "", qrcode: "" };
 
@@ -21,8 +24,17 @@ export class MesaPage {
     public navParams: NavParams,
     public rest: RestProvider,
     public alertCtrl: AlertController,
-    private menu: MenuController
-  ) {}
+    private menu: MenuController,
+    public storage: Storage
+  ) {
+    this.mesaTeste.usuario = navParams.data;
+    this.mesaTeste.codigo = 1; //TODO:Pegar do sql daqui pra baixo
+    this.mesaTeste.numero = 182929283;
+    this.mesaTeste.qrcode = "xadhgadgasidgadygas";
+    this.mesaTeste.restaurante = 1;
+
+    this.storage.set("mesa", this.mesaTeste);
+  }
 
   Validar() {
     //verifica se a mesa se encontra no banco.

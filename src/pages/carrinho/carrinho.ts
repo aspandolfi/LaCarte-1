@@ -8,7 +8,7 @@ import { ComandaPage } from "./../comanda/comanda";
 import { CardapioListPage } from "./../cardapio-list/cardapio-list";
 //Classes
 import { ItemPedido } from "../../class/ItemPedido";
-import { ItemComanda } from "../../class/ItemComanda";
+import { Comanda } from "../../class/ItemComanda";
 
 
 @IonicPage()
@@ -17,9 +17,8 @@ import { ItemComanda } from "../../class/ItemComanda";
   templateUrl: "carrinho.html"
 })
 export class CarrinhoPage {
-  public itemPedidoList: Array<ItemPedido> = [];
-  public itemComanda = new ItemComanda;
-  public itemComandaList = new Array<ItemComanda>();
+  public carrinho: Array<ItemPedido> = [];
+  public comanda: Comanda;
 
   constructor(
     public navCtrl: NavController,
@@ -27,48 +26,57 @@ export class CarrinhoPage {
     public storage: Storage,
     public alertCtrl: AlertController,
   ) {
-    this.itemPedidoList.push(navParams.data);
+    this.carrinho.push(navParams.data);
     this.loadCarrinho();
   }
 
-  loadCarrinho(){
+  loadCarrinho() {
     this.storage.get("carrinho")
-      .then((data:Array<ItemPedido>)=>{
-        if(data){ // Se já tem conteudo
-          let id = 1;
-          if(data.length != 0) id = data[0].id + 1;
-          this.itemPedidoList = this.itemPedidoList.concat(data);
-          this.itemPedidoList[0].id = id; // TODO: pegar id pronto do banco
-          this.saveCarrinho();
-          this.loadComanda();
+      .then((data: Array<ItemPedido>) => {
+        let id = 1;
+        if (data) { // Se já tem conteudo
+          this.carrinho = this.carrinho.concat(data);
+          if (data.length != 0) id = data[0].id + 1;
         }
+        this.carrinho[0].id = id; // TODO: pegar id pronto do banco
+        this.storage.set("carrinho", this.carrinho);
+        this.loadComanda();
       }
-    );
+      );
   }
 
-  loadComanda(){
-    for(let i=0; i < this.itemPedidoList.length; i++){
-      this.itemComanda = new ItemComanda;
-      this.itemComanda.pedido = this.itemPedidoList[i];
-      this.itemComanda.id = this.itemComanda.pedido.id; //TODO: Pegar id do banco yada yada
-      this.itemComanda.status = 0;
-      this.itemComandaList.push(this.itemComanda);
+  loadComanda() {
+    this.comanda = new Comanda();
+    this.comanda.pedido = new Array<ItemPedido>();
+    for (let i = 0; i < this.carrinho.length; i++) {
+      this.comanda.pedido.push(this.carrinho[i]);
+      this.comanda.id = 1;
     }
+    this.storage.get("mesa").then((data) => {
+      this.comanda.mesa = data;
+    });
   }
 
-  saveCarrinho(){
-    this.storage.set("carrinho", this.itemPedidoList);
+  saveComanda(){
+    this.storage.get("comanda")
+    .then((data: Comanda) => {
+      if (data) { // Se já tem conteudo
+        this.comanda.pedido = this.comanda.pedido.concat(data.pedido);
+      }
+      this.storage.set("comanda", this.comanda);
+    });
   }
 
-  public addItem(){
+  public addItem() {
     this.navCtrl.setRoot(CardapioListPage);
   }
 
   public removeItem(item: any) {
-    this.itemPedidoList = this.itemPedidoList.filter(itemNaLista => {
+    this.carrinho = this.carrinho.filter(itemNaLista => {
       return itemNaLista.id !== item.id;
     });
-    this.saveCarrinho();
+    this.storage.set("carrinho",this.carrinho);
+    this.loadComanda();
   }
 
   ionViewDidLoad() {
@@ -77,15 +85,9 @@ export class CarrinhoPage {
 
   public moveTo() {
     this.showAlert();
-    this.storage.set("carrinho", []);
-    this.storage.get("comanda")
-    .then((data:Array<ItemComanda>)=>{
-      if(data){ // Se já tem conteudo
-        this.itemComandaList = this.itemComandaList.concat(data);
-      }
-      this.storage.set("comanda", this.itemComandaList);
-      this.navCtrl.setRoot(CardapioListPage);
-    });
+    this.saveComanda();
+    this.storage.remove("carrinho");
+    this.navCtrl.setRoot(CardapioListPage);
   }
 
   showAlert() {
@@ -97,7 +99,8 @@ export class CarrinhoPage {
     });
     alert.present();
   }
-  public detalhe(item:any){
+
+  public detalhe(item: any) {
     this.navCtrl.push(DetalhePedidoPage, item);
   }
 }

@@ -31,6 +31,10 @@ export class CardapioListPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
     this.initializeItems();
+    this.storage.get("mesa").then((data) => {
+      console.log("mesa:");
+      console.log(data);
+    });
   }
 
   initializeItems() {

@@ -5,4 +5,5 @@ export class ItemPedido{
   produto: Produto;
   valor: number;
   obs: string;
+  status: number;
 }

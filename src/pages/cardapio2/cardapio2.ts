@@ -25,9 +25,11 @@ export class Cardapio2Page {
       .then((data)=>{
         let id_do_produto = navParams.data;
         this.produto = data[(id_do_produto)-1]; //TODO: Melhorar essa busca, esta passível de erro
+        
         this.itemPedido.produto = this.produto;
         this.itemPedido.valor = this.produto.valor;
         this.itemPedido.obs = "";
+        this.itemPedido.status = 0;
         if(this.itemPedido.produto.adicional.length > 0) this.txtAdicio = "Adicionais";
       }
     );

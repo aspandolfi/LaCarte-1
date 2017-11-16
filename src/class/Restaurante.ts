@@ -1,3 +1,5 @@
+import { User } from "./User";
+
 export class Restaurante {
 	nome: string;
 	email: string;
@@ -11,6 +13,7 @@ export class Mesa {
 	numero: number; // identificação da mesa pelo usuario
 	codigo: number; // metodo 1 de achar a mesa no banco de dados
 	qrcode: string; // metodo 2 de achar a mesa no banco de dados
+	usuario: User;
 }
 
 /*
