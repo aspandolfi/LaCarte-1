@@ -1,7 +1,8 @@
 import { ItemPedido } from "./ItemPedido";
+import { Mesa } from "./Restaurante";
 
-export class ItemComanda{
+export class Comanda{
   id: number;
-  status: number;
-  pedido: ItemPedido;
+  pedido: Array<ItemPedido>;
+  mesa: Mesa;
 }

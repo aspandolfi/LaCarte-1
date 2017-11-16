@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from "@ionic/storage";
 //classes
-import { ItemComanda } from '../../class/ItemComanda';
+import { Comanda } from '../../class/ItemComanda';
+import { ItemPedido } from '../../class/ItemPedido';
 
 
 @IonicPage()
@@ -13,30 +14,29 @@ import { ItemComanda } from '../../class/ItemComanda';
   templateUrl: 'comanda.html',
 })
 export class ComandaPage {
-  public carrinho: Array<ItemComanda> = [];
+  public comanda: Comanda = new Comanda;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public storage: Storage,
   ) {
-    console.log(this.carrinho);
     this.loadComanda();
   }
 
   loadComanda(){
     this.storage.get("comanda")
-      .then((data:any)=>{
+      .then((data:Comanda)=>{
+        this.comanda = new Comanda();
+        this.comanda.pedido = new Array<ItemPedido>();
         if(data){ // Se já tem conteudo
-          this.carrinho = this.carrinho.concat(data);
-          this.saveComanda();
+          this.comanda.id = data.id;
+          this.comanda.pedido = this.comanda.pedido.concat(data.pedido);
+          this.comanda.mesa = data.mesa;
         }
+        this.storage.set("comanda", this.comanda);
       }
     );
-  }
-
-  saveComanda(){
-    this.storage.set("comanda", this.carrinho);
   }
 
   returnStatus(statusNum:number, deviceNum:number):string{
@@ -55,8 +55,9 @@ export class ComandaPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ComandaPage');
   }
+
   detalhe(item:any){
-    this.navCtrl.push(DetalhePedidoPage, item.pedido);
+    this.navCtrl.push(DetalhePedidoPage, item);
   }
 
 }

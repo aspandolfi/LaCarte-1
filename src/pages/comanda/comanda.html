@@ -10,14 +10,14 @@
 
 <ion-content padding>
   <div class="caixaCarrinho">
-    <button ion-item no-lines  class="itemCardapio" *ngFor="let item of carrinho" (click)="detalhe(item)">
+    <button ion-item no-lines  class="itemCardapio" *ngFor="let item of comanda.pedido" (click)="detalhe(item)">
       <ion-card>
         <ion-item>
           <ion-thumbnail item-start>
-            <img src="{{item.pedido.produto.url}}">
+            <img src="{{item.produto.url}}">
           </ion-thumbnail>
-          <h2>{{item.pedido.produto.nome}}</h2>
-          <h2>R${{item.pedido.valor | number:'1.2-2'}}</h2>
+          <h2>{{item.produto.nome}}</h2>
+          <h2>R${{item.valor | number:'1.2-2'}}</h2>
           <ion-icon item-end name="{{returnStatus(item.status, 0)}}" md="{{returnStatus(item.status, 1)}}" ios="{{returnStatus(item.status, 2)}}" class="statusIndef"></ion-icon>
         </ion-item>
       </ion-card>

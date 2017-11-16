@@ -17,14 +17,14 @@ import { Storage } from "@ionic/storage";
   templateUrl: "login.html"
 })
 export class LoginPage {
-  usuarios: string[];
-  errorMessage: string;
   public user = {};
-  userDetails: any;
-  responseData: any;
+  public userDetails: any;
+  public responseData: any;
   public usuarioLogin = new User();
   public data1: any;
-  userData = { name: "", email: "", telefone: "", cpf: "", senha: "" }; // apenas pra teste
+  public userData = { name: "", email: "", telefone: "", cpf: "", senha: "" }; // apenas pra teste
+  public usuario = new User(); //TODO: Eh, checa essa bagunça toda de variáveis
+
 
   constructor(
     public loadingCtrl: LoadingController,
@@ -39,8 +39,9 @@ export class LoginPage {
     this.splashScreen.show();
     this.usuarioLogin.email = "";
     this.usuarioLogin.senha = "";
+    this.usuario = {id: 1, nome: "Fulano", email: "fulano@gmail.com", telefone: "99990000", cpf: 12345678901, senha: "leds123"};
     this.storage.clear(); //TODO: remover isso, só pra teste
-    this.storage.set("comanda",[]);
+    this.storage.set("carrinho",[]);
   }
 
   presentModal() {
@@ -69,8 +70,8 @@ export class LoginPage {
       spinner: "dots"
     });
     loading.present();
-    this.splashScreen.hide(); //TODO: temporário, modificar
-    this.navCtrl.setRoot(MesaPage);
+    this.splashScreen.hide(); //TODO: temporário, modificar(?)
+    this.navCtrl.setRoot(MesaPage, this.usuario);
 
     // if (this.usuarioLogin.email === "" || this.usuarioLogin.senha === "") {
     //   loading.dismiss();
