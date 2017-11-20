@@ -26,8 +26,12 @@ export class CarrinhoPage {
     public storage: Storage,
     public alertCtrl: AlertController,
   ) {
-    this.carrinho.push(navParams.data);
-    this.loadCarrinho();
+    if(navParams.data!=={}){
+      console.log("ENTROU");
+      console.log(navParams.data.id);
+      this.carrinho.push(navParams.data);
+      this.loadCarrinho();
+    }
   }
 
   loadCarrinho() {

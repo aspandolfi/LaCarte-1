@@ -24,7 +24,7 @@
     </h2>
 
     <form>
-      <div *ngFor="let item of itemPedido.adicional">
+      <div *ngFor="let item of itemPedido.produto.adicional">
         <div *ngIf="item.quantidade !== 0; then addBlock else removeBlock"></div>
         <ng-template no-lines #removeBlock></ng-template>
         <ng-template #addBlock>
@@ -48,4 +48,7 @@
 
   <h4 style="text-align: center;">TOTAL: R$ {{ itemPedido.valor | number:'1.2-2' }}</h4>
   <br>
+  <div align="center">
+      <button ion-button class="buttom" (click)="showConfirm()" >Cancelar Pedido</button>
+    </div>
 </ion-content>

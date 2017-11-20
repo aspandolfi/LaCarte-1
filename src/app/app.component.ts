@@ -1,3 +1,4 @@
+import { PedidosProntosPage } from './../pages/pedidos-prontos/pedidos-prontos';
 import { CozinhaPage } from "./../pages/cozinha/cozinha";
 import { Component, ViewChild } from "@angular/core";
 import { Nav, Platform } from "ionic-angular";
@@ -38,8 +39,10 @@ export class MyApp {
       { title: "Logout", component: LoginPage }, //TODO: Fazer logout de verdade
       { title: "Perfil", component: PerfilPage },
       { title: "Cardapio", component: CardapioListPage },
+      { title: "Carrinho", component: CarrinhoPage },
       { title: "Comanda", component: ComandaPage },
-      { title: "Cozinha", component: CozinhaPage }
+      { title: "Cozinha", component: CozinhaPage },
+      { title: "Garçom", component: PedidosProntosPage }
     ];
   }
 
