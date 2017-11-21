@@ -12,26 +12,17 @@
   <ion-item>
     <h1 class="titulo" >Pedidos</h1>
   </ion-item>
-  <button ion-item no-lines class="detalhes" (click)="moveTo()">
-  <ion-card>
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="http://www.pifpaf.com.br/img/000000000000050138006.JPG">
-      </ion-thumbnail>
-      <h2>Lasanha</h2>
-      <h2 item-end >Nº 1</h2>
-    </ion-item>
-  </ion-card>
-  </button>
-  <button ion-item no-lines class="detalhes" (click)="moveTo()">
-  <ion-card>
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="https://www.designmaster.com.br/designmarketing/produtos/g_foto1_3246.jpg">
-      </ion-thumbnail>
-      <h2>Hamburguer</h2>
-      <h2 item-end>Nº 2</h2>
-    </ion-item>
-  </ion-card>
-</button>
+  <div class="caixaCarrinho">
+    <button ion-item no-lines  class="detalhes" *ngFor="let item of comanda.pedido" (click)="moveTo(item)">
+      <ion-card>
+        <ion-item>
+          <ion-thumbnail item-start>
+            <img src="{{item.produto.url}}">
+          </ion-thumbnail>
+          <h2>{{item.produto.nome}}</h2>
+          <h2 item-end>Nº {{item.id}}</h2>
+        </ion-item>
+      </ion-card>
+    </button>
+  </div>
 </ion-content>

@@ -14,12 +14,15 @@ import { AlertController } from "ionic-angular";
 export class CozinhaDetalhePage {
   testRadioResult: any;
   testRadioOpen: boolean;
+  itemPedido: ItemPedido;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public storage: Storage,
     public alertCtrl: AlertController
-  ) {}
+  ) {
+  }
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad CozinhaDetalhePage");
