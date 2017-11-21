@@ -8,12 +8,6 @@ import { AlertController } from "ionic-angular";
 import { Comanda } from "../../class/ItemComanda";
 import { Events } from "ionic-angular";
 
-/**
- * Generated class for the DetalhePedidoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
