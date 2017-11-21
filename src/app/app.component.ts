@@ -1,3 +1,4 @@
+import { Storage } from '@ionic/storage';
 import { PedidosProntosPage } from './../pages/pedidos-prontos/pedidos-prontos';
 import { CozinhaPage } from "./../pages/cozinha/cozinha";
 import { Component, ViewChild } from "@angular/core";
@@ -30,7 +31,8 @@ export class MyApp {
     public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public storage: Storage
   ) {
     this.initializeApp();
 
@@ -77,6 +79,7 @@ export class MyApp {
           text: "Sim",
           handler: () => {
             this.nav.setRoot(page.component);
+            this.storage.clear();
           }
         }
       ]
