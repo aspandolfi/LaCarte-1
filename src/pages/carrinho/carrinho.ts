@@ -45,14 +45,12 @@ export class CarrinhoPage {
 
   async loadCarrinho() {
     this.storage.get("carrinho").then((data: Array<ItemPedido>) => {
-      let id = 1;
       if (data) {
         // Se já tem conteudo
         this.carrinho = this.carrinho.concat(data);
-        if (data.length > 0) id = data[0].id + 1;
       }
       if (this.carrinho.length > 0) {
-        this.carrinho[0].id = id; // TODO: pegar id pronto do banco
+        this.carrinho[0].id = this.carrinho.length; // TODO: pegar id pronto do banco
         this.storage.set("carrinho", this.carrinho);
         this.loadComanda();
       }

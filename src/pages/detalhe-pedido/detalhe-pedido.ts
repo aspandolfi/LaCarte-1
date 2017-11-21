@@ -35,6 +35,7 @@ export class DetalhePedidoPage {
     public alertCtrl: AlertController,
     public events: Events
   ) {
+    console.log(navParams.data);
     this.itemPedido = navParams.data;
     this.loadCarrinho();
   }
@@ -86,15 +87,15 @@ export class DetalhePedidoPage {
   }
 
   public removeItem(item: any) {
-    console.log("ANTES");
-    console.log(this.carrinho);
+    // console.log("ANTES");
+    // console.log(this.carrinho);
     this.carrinho = this.carrinho.filter(itemNaLista => {
-      console.log("itemNaLista.id !== item.id");
-      console.log(itemNaLista.id,"!==",item.id);
+      // console.log("itemNaLista.id !== item.id");
+      // console.log(itemNaLista.id,"!==",item.id);
       return itemNaLista.id !== item.id;
     });
-    console.log("DEPOIS");
-    console.log(this.carrinho);
+    // console.log("DEPOIS");
+    // console.log(this.carrinho);
     this.storage.set("carrinho", this.carrinho);
     this.loadComanda();
   }
