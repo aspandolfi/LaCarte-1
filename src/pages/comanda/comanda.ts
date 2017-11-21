@@ -1,7 +1,7 @@
 import { DetalhePedidoPage } from './../detalhe-pedido/detalhe-pedido';
 //Modulos
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { Storage } from "@ionic/storage";
 //classes
 import { Comanda } from '../../class/ItemComanda';
@@ -20,8 +20,13 @@ export class ComandaPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public storage: Storage,
+    public events: Events
   ) {
     this.loadComanda();
+
+    events.subscribe('apagarItemComanda',(data: ItemPedido) => {
+      this.removeItem(data);
+    });
   }
 
   loadComanda(){
@@ -37,6 +42,13 @@ export class ComandaPage {
         this.storage.set("comanda", this.comanda);
       }
     );
+  }
+
+  public removeItem(item: any) {
+    this.comanda.pedido = this.comanda.pedido.filter(itemNaLista => {
+      return itemNaLista.id !== item.id;
+    });
+    this.storage.set("comanda", this.comanda);
   }
 
   returnStatus(statusNum:number, deviceNum:number):string{
@@ -57,7 +69,7 @@ export class ComandaPage {
   }
 
   detalhe(item:any){
-    this.navCtrl.push(DetalhePedidoPage, item);
+    this.navCtrl.push(DetalhePedidoPage, {itemPedido:item, op:2});
   }
 
 }

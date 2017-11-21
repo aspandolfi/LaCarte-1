@@ -33,26 +33,32 @@ export class CarrinhoPage {
     public events: Events
   ) {
     //if(navParams.data instanceof ItemPedido){}
-    this.events.subscribe('reloadCarrinhoPage',() => {
-      this.carrinho = []
-      this.loadCarrinho();
-    });
     if (Object.keys(navParams.data).length !== 0) {
       this.carrinho.push(navParams.data);
     }
     this.loadCarrinho();
+
+    events.subscribe('apagarItemCarrinho', (data: ItemPedido) => {
+      this.removeItem(data);
+    });
   }
 
   async loadCarrinho() {
-    this.storage.get("carrinho").then((data: Array<ItemPedido>) => {
+    await this.storage.get("carrinho").then((data: Array<ItemPedido>) => {
       if (data) {
         // Se já tem conteudo
         this.carrinho = this.carrinho.concat(data);
       }
       if (this.carrinho.length > 0) {
-        this.carrinho[0].id = this.carrinho.length; // TODO: pegar id pronto do banco
-        this.storage.set("carrinho", this.carrinho);
-        this.loadComanda();
+        this.storage.get("lastCarrinhoId").then((dataid) => {
+          this.carrinho[0].id = 1;
+          if(dataid){
+            this.carrinho[0].id = dataid + 1; // TODO: pegar id pronto do banco?
+          }
+          this.storage.set("lastCarrinhoId", this.carrinho[0].id)
+          this.storage.set("carrinho", this.carrinho);
+          this.loadComanda();
+        });
       }
     });
   }
@@ -71,17 +77,16 @@ export class CarrinhoPage {
 
   saveComanda() {
     this.storage.get("comanda").then((data: Comanda) => {
-      if (data) {
-        // Se já tem conteudo
+      if (data) { //Se já tem conteudo
         this.comanda.pedido = this.comanda.pedido.concat(data.pedido);
       }
       this.storage.set("comanda", this.comanda);
     });
   }
 
-  public getItemById(id:number):ItemPedido{
-    for(let i=0; i < this.carrinho.length; i++){
-      if(this.carrinho[i].id === id){
+  public getItemById(id: number): ItemPedido {
+    for (let i = 0; i < this.carrinho.length; i++) {
+      if (this.carrinho[i].id === id) {
         return this.carrinho[i];
       }
     }
@@ -122,6 +127,6 @@ export class CarrinhoPage {
   }
 
   public detalhe(item: any) {
-    this.navCtrl.push(DetalhePedidoPage, item);
+    this.navCtrl.push(DetalhePedidoPage, { itemPedido: item, op: 1 });
   }
 }
