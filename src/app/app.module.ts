@@ -1,3 +1,4 @@
+import { PedidosProntosPageModule } from './../pages/pedidos-prontos/pedidos-prontos.module';
 import { DetalhePedidoPageModule } from './../pages/detalhe-pedido/detalhe-pedido.module';
 import { CozinhaDetalhePageModule } from './../pages/cozinha-detalhe/cozinha-detalhe.module';
 import { CozinhaPageModule } from './../pages/cozinha/cozinha.module';
@@ -51,6 +52,7 @@ import { IonicStorageModule } from '@ionic/storage';
     CozinhaPageModule,
     CozinhaDetalhePageModule,
     DetalhePedidoPageModule,
+    PedidosProntosPageModule,
     IonicStorageModule.forRoot()
   ],
 
