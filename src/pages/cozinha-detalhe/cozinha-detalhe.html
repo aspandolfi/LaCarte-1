@@ -9,37 +9,34 @@
 
 <ion-content padding>
   <ion-card-content>
-    <img class="produtoImagem" src="https://www.designmaster.com.br/designmarketing/produtos/g_foto1_3246.jpg">
+    <img class="produtoImagem" src="{{itemPedido.produto.url}}">
     <br>
     <div class="caixaGenerica">
-      <h2>Hamburguer</h2>
-      <p>Hamburger de picanha 150g, cheddar, cebola crua, alface, tomate e maionese artesanal.</p>
+      <h2>{{itemPedido.produto.nome}}</h2>
+      <p>{{itemPedido.produto.descricao}}</p>
     </div>
     <br>
     <div class="caixaGenerica">
-      <form>
-        <h2>Adicionais</h2>
-        <ion-item>
-          <div style="display: flex;">
-            <div>
-              Bacon
+      <h2>{{txtAdicio}}</h2>
+      <div *ngFor="let item of itemPedido.produto.adicional">
+        <div *ngIf="item.quantidade !== 0; then addBlock else removeBlock"></div>
+        <ng-template no-lines #removeBlock></ng-template>
+        <ng-template #addBlock>
+          <ion-item no-lines>
+            <div style="display: flex;">
+              <div>
+                {{ item.nome }} (R$ {{ item.valor | number:'1.2-2' }})
+              </div>
+              <div style="margin-left: auto">
+                (X{{item.quantidade}})
+              </div>
             </div>
-            <div style="margin-left: auto">
-              x2
-            </div>
-          </div>
-        </ion-item>
-      </form>
+          </ion-item>
+        </ng-template>
+      </div>
     </div>
     <br>
-    <div class="caixaGenerica">
-      <h2>Observação</h2>
-      <p>
-        Sem cebola.
-      </p>
-    </div>
-    <br>
-    <button class="recusa" (click)="recusar()" >
+    <button class="recusa" (click)="recusar()">
       <ion-icon item-end name="close" md="md-close" ios="ios-close" class="aceito"></ion-icon>
     </button>
     <button class="confirma" (click)="confirmar()">
