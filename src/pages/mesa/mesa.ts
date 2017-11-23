@@ -6,6 +6,7 @@ import { AlertController, MenuController } from "ionic-angular";
 import { RestProvider } from "../../providers/rest/rest";
 import { User } from '../../class/User';
 import { Storage } from "@ionic/storage";
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @IonicPage()
 @Component({
@@ -18,6 +19,7 @@ export class MesaPage {
   public mesaTeste = new Mesa(); //TODO: yada yada yada
   public data = JSON.parse(localStorage.getItem("mesaData"));
   mesaData = { restaurante: "", numero: "", codigo: "", qrcode: "" };
+  scannedCode = null;
 
   constructor(
     public navCtrl: NavController,
@@ -25,7 +27,8 @@ export class MesaPage {
     public rest: RestProvider,
     public alertCtrl: AlertController,
     private menu: MenuController,
-    public storage: Storage
+    public storage: Storage,
+    private barcodeScanner: BarcodeScanner
   ) {
     this.mesaTeste.usuario = navParams.data;
     this.mesaTeste.codigo = 1; //TODO:Pegar do sql daqui pra baixo
@@ -69,4 +72,11 @@ export class MesaPage {
     this.menu.swipeEnable(false);
     console.log("ionViewDidLoad MesaPage");
   }
+
+  scanCode(){
+    this.barcodeScanner.scan().then(barcodeData =>{
+      this.scannedCode = barcodeData.text;
+    })
+  }
+
 }

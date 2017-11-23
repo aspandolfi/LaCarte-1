@@ -28,6 +28,8 @@ import { CardapioListPageModule } from '../pages/cardapio-list/cardapio-list.mod
 import { Geolocation } from '@ionic-native/geolocation';
 import { IonicStorageModule } from '@ionic/storage';
 
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import { IonicStorageModule } from '@ionic/storage';
     CozinhaDetalhePageModule,
     DetalhePedidoPageModule,
     PedidosProntosPageModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    NgxQRCodeModule 
   ],
 
   bootstrap: [IonicApp],
@@ -66,7 +69,8 @@ import { IonicStorageModule } from '@ionic/storage';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Geolocation,
-    RestProvider
+    RestProvider,
+    BarcodeScanner
   ]
 })
 export class AppModule {}
