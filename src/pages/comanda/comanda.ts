@@ -23,9 +23,7 @@ export class ComandaPage {
     public storage: Storage,
     public events: Events
   ) {
-    this.loadComanda().then(() => {
-      this.loadCozinha();
-    });
+    this.loadComanda();
 
     events.subscribe('apagarItemComanda',(data: ItemPedido) => {
       this.removeItem(data);
@@ -43,22 +41,6 @@ export class ComandaPage {
           this.comanda.mesa = data.mesa;
         }
         this.storage.set("comanda", this.comanda);
-      }
-    );
-  }
-
-  loadCozinha(){ // TODO: INCOMPLETO
-    this.storage.get("comandaCozinha")
-      .then((data:Comanda)=>{
-        this.cozinha = new Comanda();
-        this.cozinha.pedido = new Array<ItemPedido>();
-        this.cozinha.id = 1;
-        if(data){ // Se já tem conteudo
-          this.cozinha.id = data.id;
-          this.cozinha.pedido = this.cozinha.pedido.concat(data.pedido);
-          this.cozinha.mesa = data.mesa;
-        }
-        this.storage.set("comandaCozinha", this.cozinha);
       }
     );
   }
