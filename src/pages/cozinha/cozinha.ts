@@ -23,11 +23,11 @@ export class CozinhaPage {
   ) {
     this.loadComanda().then(() => {
       this.loadCozinha();
-      console.log("CARREGOU 1");
+      // console.log("CARREGOU 1");
     });
 
     events.subscribe('atualizarItemStatus', (data) => {
-      console.log("CARREGOU 2");
+      // console.log("CARREGOU 2");
       this.loadComanda().then(()=> {
         this.changeStatus(this.comanda, data);
         this.changeStatus(this.cozinha, data);
@@ -77,9 +77,14 @@ export class CozinhaPage {
       }
     );
   }
-
-  updateCozinha(){
-    this.storage.set("comandaCozinha", this.cozinha);
+async verificaStatus(){
+  this.cozinha.pedido = this.comanda.pedido.filter(itemNaLista => {
+    return itemNaLista.status === 0;
+  });
+}
+  async updateCozinha(){
+    await this.verificaStatus();
+    await this.storage.set("comandaCozinha", this.cozinha);
   }
 
   updateComanda(){

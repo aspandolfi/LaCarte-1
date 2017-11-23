@@ -77,7 +77,7 @@
         <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640" />
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
     </platform>
-    <engine name="android" spec="^6.3.0" />
+    <engine name="android" spec="6.4.0" />
     <plugin name="cordova-plugin-advanced-http" spec="^1.8.1" />
     <plugin name="cordova-sqlite-storage" spec="^2.1.2" />
     <plugin name="cordova-plugin-geolocation" spec="^2.4.3">
