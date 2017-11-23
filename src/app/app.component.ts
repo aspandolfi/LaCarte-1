@@ -44,7 +44,7 @@ export class MyApp {
       { title: "Carrinho", component: CarrinhoPage },
       { title: "Comanda", component: ComandaPage },
       { title: "Cozinha", component: CozinhaPage },
-      { title: "Garçom", component: PedidosProntosPage }
+      { title: "Pedidos Prontos", component: PedidosProntosPage }
     ];
   }
 

@@ -23,8 +23,10 @@ export class CozinhaPage {
     this.loadComanda();
 
     events.subscribe('atualizarItemStatus', (data) => {
-      this.loadComanda().then(()=> {this.changeStatus(data);});
-      this.storage.set("comanda",this.comanda);
+      this.loadComanda().then(()=> {
+        this.changeStatus(data);
+        this.storage.set("comanda",this.comanda);
+      });
     });
   }
 
@@ -52,6 +54,11 @@ export class CozinhaPage {
           this.comanda.id = data.id;
           this.comanda.pedido = this.comanda.pedido.concat(data.pedido);
           this.comanda.mesa = data.mesa;
+        }
+        for(let i = 0; i < this.comanda.pedido.length; i++){
+          this.comanda.pedido = this.comanda.pedido.filter(itemNaLista => {
+            return itemNaLista.status === 0;
+          });
         }
         this.storage.set("comanda", this.comanda);
       }

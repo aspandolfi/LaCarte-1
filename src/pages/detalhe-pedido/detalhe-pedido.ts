@@ -16,7 +16,6 @@ import { Comanda } from "../../class/ItemComanda";
 export class DetalhePedidoPage {
   public produto = new Produto();
   public itemPedido = new ItemPedido();
-  public txtAdicio = "";
   public operacao: number;
 
   public carrinho: Array<ItemPedido> = [];
@@ -31,10 +30,6 @@ export class DetalhePedidoPage {
   ) {
     this.itemPedido = navParams.data.itemPedido;
     this.operacao = navParams.data.op;
-    
-    if(this.itemPedido.produto.adicional.length > 0){
-      this.txtAdicio = "Adicionais";
-    }
   }
 
   ionViewDidLoad() {

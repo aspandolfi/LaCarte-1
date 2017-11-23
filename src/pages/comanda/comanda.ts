@@ -15,6 +15,7 @@ import { ItemPedido } from '../../class/ItemPedido';
 })
 export class ComandaPage {
   public comanda: Comanda = new Comanda;
+  public cozinha: Comanda = new Comanda;
 
   constructor(
     public navCtrl: NavController,
@@ -22,15 +23,17 @@ export class ComandaPage {
     public storage: Storage,
     public events: Events
   ) {
-    this.loadComanda();
+    this.loadComanda().then(() => {
+      this.loadCozinha();
+    });
 
     events.subscribe('apagarItemComanda',(data: ItemPedido) => {
       this.removeItem(data);
     });
   }
 
-  loadComanda(){
-    this.storage.get("comanda")
+  async loadComanda(){
+    await this.storage.get("comanda")
       .then((data:Comanda)=>{
         this.comanda = new Comanda();
         this.comanda.pedido = new Array<ItemPedido>();
@@ -40,6 +43,22 @@ export class ComandaPage {
           this.comanda.mesa = data.mesa;
         }
         this.storage.set("comanda", this.comanda);
+      }
+    );
+  }
+
+  loadCozinha(){ // TODO: INCOMPLETO
+    this.storage.get("comandaCozinha")
+      .then((data:Comanda)=>{
+        this.cozinha = new Comanda();
+        this.cozinha.pedido = new Array<ItemPedido>();
+        this.cozinha.id = 1;
+        if(data){ // Se já tem conteudo
+          this.cozinha.id = data.id;
+          this.cozinha.pedido = this.cozinha.pedido.concat(data.pedido);
+          this.cozinha.mesa = data.mesa;
+        }
+        this.storage.set("comandaCozinha", this.cozinha);
       }
     );
   }
