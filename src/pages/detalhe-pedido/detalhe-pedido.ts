@@ -2,11 +2,10 @@ import { CarrinhoPage } from "./../carrinho/carrinho";
 import { ItemPedido } from "./../../class/ItemPedido";
 import { Produto } from "./../../class/produtos";
 import { Component, ViewChild } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
+import { IonicPage, NavController, NavParams, Events } from "ionic-angular";
 import { Storage } from "@ionic/storage";
 import { AlertController } from "ionic-angular";
 import { Comanda } from "../../class/ItemComanda";
-import { Events } from "ionic-angular";
 
 
 @IonicPage()
@@ -32,7 +31,10 @@ export class DetalhePedidoPage {
   ) {
     this.itemPedido = navParams.data.itemPedido;
     this.operacao = navParams.data.op;
-    console.log(this.itemPedido.id);
+    
+    if(this.itemPedido.produto.adicional.length > 0){
+      this.txtAdicio = "Adicionais";
+    }
   }
 
   ionViewDidLoad() {

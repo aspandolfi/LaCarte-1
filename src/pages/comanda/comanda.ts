@@ -51,7 +51,7 @@ export class ComandaPage {
     this.storage.set("comanda", this.comanda);
   }
 
-  returnStatus(statusNum:number, deviceNum:number):string{
+  returnStatusIcon(statusNum:number, deviceNum:number):string{
     let statusTxt:string = "";
     //Prefixo
     if(deviceNum == 1) statusTxt = statusTxt.concat("md-");

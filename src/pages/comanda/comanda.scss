@@ -1,4 +1,14 @@
 page-comanda {
+  .ion-md-time, .ion-ios-time{
+    color: rgb(50, 50, 50) !important;
+  }
+  .ion-md-checkmark, .ion-ios-checkmark{
+    color: green !important;
+  }
+  .ion-md-close, .ion-ios-close{
+    color: darkred !important;
+  }
+
   .toolbar-background {
     background-color: rgb(211, 12, 12);
   }
@@ -38,10 +48,6 @@ page-comanda {
 
   .recusado {
     color: rgb(211, 12, 12) !important;
-  }
-
-  .statusIndef {
-    color: rgb(50, 50, 50) !important;
   }
 
   .caixaCarrinho {
