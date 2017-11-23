@@ -69,7 +69,7 @@ export class CozinhaDetalhePage {
   }
 
   moveTo(op: number, val: any) {
-    let objeto = { val: op, id: this.itemPedido.id };
+    let objeto = { val: op, id: this.itemPedido.id, resposta: val }; // val n devia receber o value em vez do id?
     this.events.publish('atualizarItemStatus', objeto);
     this.navCtrl.pop();
   }

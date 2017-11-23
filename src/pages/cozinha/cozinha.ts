@@ -13,7 +13,7 @@ import { ItemPedido } from '../../class/ItemPedido';
 })
 export class CozinhaPage {
   public comanda: Comanda = new Comanda;
-  
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -32,6 +32,7 @@ export class CozinhaPage {
     let pos:number = this.getItemPos(data.id);
     let value:number = data.val;
     this.comanda.pedido[pos].status = value;
+    this.comanda.pedido[pos].respostaCozinha = data.resposta;
   }
 
   public getItemPos(id: number):number {

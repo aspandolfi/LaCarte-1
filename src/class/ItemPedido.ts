@@ -6,4 +6,5 @@ export class ItemPedido{
   valor: number;
   obs: string;
   status: number;
+  respostaCozinha: String;
 }
