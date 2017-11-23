@@ -76,6 +76,7 @@ export class MesaPage {
   scanCode(){
     this.barcodeScanner.scan().then(barcodeData =>{
       this.scannedCode = barcodeData.text;
+      this.navCtrl.setRoot(CardapioListPage);
     })
   }
 
