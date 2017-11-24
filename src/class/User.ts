@@ -5,4 +5,5 @@ export class User {
 	telefone: string;
 	cpf: number;
 	senha: string; //TODO: Criptografar senha para auto login(?)
+	avatar: string;
 }

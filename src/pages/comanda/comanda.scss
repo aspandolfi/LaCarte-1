@@ -30,6 +30,11 @@ page-comanda {
     background: rgb(211, 12, 12);
   }
 
+  .item-inner{
+    background-image: none !important;
+    padding-right: 0 !important;
+  }
+  
   .button-ios.activated,
   .button-md.activated {
     background-color: rgb(211, 12, 12) !important;
@@ -60,4 +65,5 @@ page-comanda {
     padding-right: 0 !important;
     padding-left: 0 !important;
   }
+  
 }

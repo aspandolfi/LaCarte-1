@@ -15,6 +15,7 @@ import { ItemPedido } from '../../class/ItemPedido';
 })
 export class ComandaPage {
   public comanda: Comanda = new Comanda;
+  public cozinha: Comanda = new Comanda;
 
   constructor(
     public navCtrl: NavController,
@@ -29,8 +30,8 @@ export class ComandaPage {
     });
   }
 
-  loadComanda(){
-    this.storage.get("comanda")
+  async loadComanda(){
+    await this.storage.get("comanda")
       .then((data:Comanda)=>{
         this.comanda = new Comanda();
         this.comanda.pedido = new Array<ItemPedido>();
