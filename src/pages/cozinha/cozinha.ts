@@ -12,8 +12,8 @@ import { ItemPedido } from '../../class/ItemPedido';
   templateUrl: 'cozinha.html',
 })
 export class CozinhaPage {
-  public comanda: Comanda = new Comanda;
-  public cozinha: Comanda = new Comanda;
+  public comanda: Comanda;
+  public cozinha: Comanda;
 
   constructor(
     public navCtrl: NavController,
@@ -21,30 +21,34 @@ export class CozinhaPage {
     public storage: Storage,
     public events: Events
   ) {
+    this.comanda = new Comanda;
+    this.comanda.pedido = new Array<ItemPedido>();
+    this.cozinha = new Comanda;
+    this.cozinha.pedido = new Array<ItemPedido>();
+
     this.loadComanda().then(() => {
       this.loadCozinha();
-      console.log("CARREGOU 1");
     });
 
     events.subscribe('atualizarItemStatus', (data) => {
-      console.log("CARREGOU 2");
-      this.loadComanda().then(()=> {
+      this.loadComanda().then(() => {
         this.changeStatus(this.comanda, data);
-        this.changeStatus(this.cozinha, data);
-        this.updateComanda();
-        this.updateCozinha();
+        this.saveComanda();
+        this.loadCozinha().then(() => {
+          this.saveCozinha();
+        });
       });
     });
   }
 
-  changeStatus(lst:Comanda, data:any){
-    let pos:number = this.getItemPos(lst, data.id);
-    let value:number = data.val;
+  changeStatus(lst: Comanda, data: any) {
+    let pos: number = this.getItemPos(lst, data.id);
+    let value: number = data.val;
     lst.pedido[pos].status = value;
     lst.pedido[pos].respostaCozinha = data.resposta;
   }
 
-  public getItemPos(lst:Comanda, id: number):number {
+  public getItemPos(lst: Comanda, id: number): number {
     for (let i = 0; i < lst.pedido.length; i++) {
       if (lst.pedido[i].id === id) {
         return i;
@@ -53,44 +57,55 @@ export class CozinhaPage {
     return null;
   }
 
-  async loadComanda(){
-    await this.storage.get("comanda").then((data:Comanda)=>{
+  async loadComanda() {
+    await this.storage.get("comanda").then((data: Comanda) => {
+      if (data) {
         this.comanda = data;
+      } else {
+        this.comanda.pedido = [];
+      }
     });
   }
 
-  async loadCozinha(){
-    await this.storage.get("comandaCozinha")
-      .then((data:Comanda)=>{
+  async loadCozinha() {
+    await this.storage.get("cozinhaPedidos")
+      .then((data: Comanda) => {
         this.cozinha = new Comanda();
         this.cozinha.id = 1;
-        for(let i = 0; i < this.comanda.pedido.length; i++){
-          this.cozinha.pedido = this.comanda.pedido.filter(itemNaLista => {
-            return itemNaLista.status === 0;
-          });
-        }
-        if(data){
-          this.cozinha.id = data.id;
-          this.cozinha.pedido = data.pedido;
-          this.cozinha.mesa = data.mesa;
+        this.cozinha.pedido = new Array<ItemPedido>();
+        for (let i = 0; i < this.comanda.pedido.length; i++) {
+          if (this.comanda.pedido[i].status === 0) {
+            if (this.idIsInArray(this.comanda.pedido[i].id, this.cozinha.pedido) == false) {
+              this.cozinha.pedido.push(this.comanda.pedido[i]);
+            }
+          }
         }
       }
     );
   }
 
-  updateCozinha(){
-    this.storage.set("comandaCozinha", this.cozinha);
+  idIsInArray(id: number, lst: Array<ItemPedido>): boolean {
+    for (let i = 0; i < lst.length; i++) {
+      if (lst[i].id === id) {
+        return true;
+      }
+    }
+    return false;
   }
 
-  updateComanda(){
-    this.storage.set("comanda",this.comanda);
+  saveCozinha() {
+    this.storage.set("cozinhaPedidos", this.cozinha);
+  }
+
+  saveComanda() {
+    this.storage.set("comanda", this.comanda);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CozinhaPage');
   }
 
-  public moveTo(item:any){
+  public moveTo(item: any) {
     this.navCtrl.push(CozinhaDetalhePage, item);
   }
 

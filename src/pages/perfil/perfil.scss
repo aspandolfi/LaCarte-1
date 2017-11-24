@@ -13,14 +13,31 @@ page-perfil {
   ion-item {
     background: transparent !important;
   }
+
   h2 {
     color: #fff !important;
   }
-  ion-card.card {
+  
+  .itemBox {
     box-shadow: none;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(100, 100, 100, 0.7);
     border-radius: 5px;
   }
+  
+  .botao{
+    width: 90%;
+  }
+
+  .avatarBox {
+    box-shadow: none;
+    background: none;
+  }
+
+  .avatar {
+    width: 60%;
+    height: auto;
+  }
+
   .toolbar-background {
     background-color: rgb(211, 12, 12);
   }

@@ -8,7 +8,10 @@
 </ion-header>
 
 <ion-content padding class="background">
-  <ion-card>
+  <div align="center" class="avatarBox">
+    <img class="avatar" src="{{user.avatar}}">
+  </div>
+  <ion-card class="itemBox">
     <ion-card-content>
       <ion-item>
         <h2>Nome: {{user.nome}}</h2>
@@ -22,9 +25,16 @@
       <ion-item>
         <h2>CPF: {{user.cpf}}</h2>
       </ion-item>
-      <ion-item>
-        <button ion-button block outline color="danger" (click)="mudarPage()">Editar</button>
-      </ion-item>
     </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <div style="display: flex;">
+      <div>
+        <button ion-button block class="botao" color="default" (click)="editarPerfil()">Editar Conta</button>
+      </div>
+      <div>
+        <button ion-button block class="botao" color="danger" (click)="excluirPerfil()">Apagar Conta</button>
+      </div>
+    </div>
   </ion-card>
 </ion-content>
