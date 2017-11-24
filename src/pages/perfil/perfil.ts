@@ -1,8 +1,9 @@
 import { User } from '../../class/User';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController } from 'ionic-angular';
-import { RestProvider } from './../../providers/rest/rest';
 import { EditarPage } from '../editar/editar';
+import { Storage } from '@ionic/storage';
+import { Mesa } from '../../class/Restaurante';
 
 @IonicPage()
 @Component({
@@ -11,36 +12,24 @@ import { EditarPage } from '../editar/editar';
 })
 
 export class PerfilPage {
+  public user:User = new User;
 
-  public user1 = new User();
-
-  user = {};
-  userData = {"nome": "","email": "", "telefone": "","cpf": "","senha": ""};
-
-
-  constructor(public navCtrl: NavController, private rest: RestProvider, public alertCtrl: AlertController) {
-    this.getData();
+  constructor(
+    public navCtrl: NavController,
+    public alertCtrl: AlertController,
+    public storage: Storage
+  ) {
+    this.storage.get("mesa").then((data:Mesa) => {
+      this.user = data.usuario;
+    });
 	}
 
-  getData(){
-    this.rest.getUser(1).subscribe(data=>
-      {
-        console.log(data);
-        this.user = data;
-        localStorage.setItem('userData',JSON.stringify(this.user))
-        console.log(localStorage);
-      }
-    );
-	}
-
-  mudarPage(){
+  editarPerfil(){ // TODO
     this.navCtrl.push(EditarPage);
   }
 
-  excluir(){    // Função para excluir o usuario
-    console.log(this.user1.nome);
-    this.rest.deleteUser(this.user1);
-    this.navCtrl.push(EditarPage);
+  excluirPerfil(){    // TODO: Função para excluir o usuario
+    console.log("Excluir perfil");
   }
 
   ionViewDidLoad() {

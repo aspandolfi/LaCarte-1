@@ -39,7 +39,7 @@ export class LoginPage {
     this.splashScreen.show();
     this.usuarioLogin.email = "";
     this.usuarioLogin.senha = "";
-    this.usuario = {id: 1, nome: "Fulano", email: "fulano@gmail.com", telefone: "99990000", cpf: 12345678901, senha: "leds123"};
+    this.usuario = {id: 1, nome: "Fulano", email: "fulano@gmail.com", telefone: "99990000", cpf: 12345678901, senha: "leds123", avatar: "https://i.imgur.com/EnRkN4K.jpg"};
     this.storage.clear(); //TODO: remover isso, só pra teste
     this.storage.set("carrinho",[]);
   }
