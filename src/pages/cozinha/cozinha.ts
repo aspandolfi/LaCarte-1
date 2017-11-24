@@ -72,7 +72,7 @@ export class CozinhaPage {
         if(data){
           this.cozinha.id = data.id;
           this.cozinha.pedido = data.pedido;
-          this.cozinha.mesa = data.mesa;
+          this.cozinha.mesa = data.mesa; // teste
         }
       }
     );
