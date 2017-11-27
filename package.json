@@ -28,6 +28,7 @@
     "@ionic-native/sqlite": "^4.3.1",
     "@ionic-native/status-bar": "3.12.1",
     "@ionic/storage": "2.0.1",
+    "chart.js": "^2.7.1",
     "cordova-android": "6.4.0",
     "cordova-plugin-advanced-http": "^1.8.1",
     "cordova-plugin-compat": "^1.2.0",
