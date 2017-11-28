@@ -1,3 +1,4 @@
+import { LocalNotifications } from '@ionic-native/local-notifications';
 import { PedidosProntosPageModule } from './../pages/pedidos-prontos/pedidos-prontos.module';
 import { DetalhePedidoPageModule } from './../pages/detalhe-pedido/detalhe-pedido.module';
 import { CozinhaDetalhePageModule } from './../pages/cozinha-detalhe/cozinha-detalhe.module';
@@ -30,6 +31,7 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Platform } from 'ionic-angular/es2015/platform/platform';
 
 @NgModule({
   declarations: [
@@ -67,10 +69,13 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
   providers: [
     StatusBar,
     SplashScreen,
+    LocalNotifications,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Geolocation,
     RestProvider,
-    BarcodeScanner
+    BarcodeScanner,
+    Platform
+   
   ]
 })
 export class AppModule {}
