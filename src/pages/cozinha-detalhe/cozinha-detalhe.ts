@@ -8,6 +8,7 @@ import { IonicPage, NavController, NavParams, Events } from "ionic-angular";
 import { Storage } from "@ionic/storage";
 import { AlertController} from "ionic-angular";
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { ComandaPage } from '../comanda/comanda';
 
 
 @IonicPage()
@@ -62,6 +63,7 @@ export class CozinhaDetalhePage {
       text: "OK",
       handler: data => {
         this.moveTo(2, data); //2 eh status de cancelado
+        this.scheduleNotification(); // Notificações Locais
       }
     });
     alert.present();
@@ -96,11 +98,12 @@ export class CozinhaDetalhePage {
   scheduleNotification(){
     this.localNotification.schedule({
       id: 1,
-      title: 'Atenção',
-      text: 'Seu Pedido está sendo preparado.',
+      title: 'Pedido Respondido',
+      text: 'Seu pedido foi respondido! Por favor verifique a comanda.',
       data: { mydata: 'Minha mensagem oucuta é essa' },
       at: new Date(new Date().getTime() + 5 * 1000)
     });
+    this.navCtrl.setRoot(ComandaPage);
   }
 
 }
