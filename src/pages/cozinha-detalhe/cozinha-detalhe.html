@@ -16,26 +16,30 @@
       <p>{{itemPedido.produto.descricao}}</p>
     </div>
     <br>
-    <div class="caixaGenerica">
-      <h2>{{txtAdicio}}</h2>
-      <div *ngFor="let item of itemPedido.produto.adicional">
-        <div *ngIf="item.quantidade !== 0; then addBlock else removeBlock"></div>
-        <ng-template no-lines #removeBlock></ng-template>
-        <ng-template #addBlock>
-          <ion-item no-lines>
-            <div style="display: flex;">
-              <div>
-                {{ item.nome }} (R$ {{ item.valor | number:'1.2-2' }})
+
+    <div *ngIf="temAdicional(); then addBlockAdicionais"></div>
+    <ng-template #addBlockAdicionais>
+      <div class="caixaGenerica">
+        <h2>Adicionais</h2>
+        <div *ngFor="let item of itemPedido.produto.adicional">
+          <div *ngIf="item.quantidade !== 0; then addBlock else removeBlock"></div>
+          <ng-template no-lines #removeBlock></ng-template>
+          <ng-template #addBlock>
+            <ion-item no-lines>
+              <div style="display: flex;">
+                <div>
+                  {{ item.nome }} (R$ {{ item.valor | number:'1.2-2' }})
+                </div>
+                <div style="margin-left: auto">
+                  (X{{item.quantidade}})
+                </div>
               </div>
-              <div style="margin-left: auto">
-                (X{{item.quantidade}})
-              </div>
-            </div>
-          </ion-item>
-        </ng-template>
+            </ion-item>
+          </ng-template>
+        </div>
       </div>
-    </div>
-    <br>
+      <br>
+    </ng-template>
     <button class="recusa" (click)="recusar()">
       <ion-icon item-end name="close" md="md-close" ios="ios-close" class="aceito"></ion-icon>
     </button>

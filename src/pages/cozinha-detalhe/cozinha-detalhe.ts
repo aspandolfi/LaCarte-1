@@ -13,7 +13,6 @@ import { AlertController } from "ionic-angular";
 })
 export class CozinhaDetalhePage {
   public itemPedido: ItemPedido;
-  public txtAdicio = "";
 
   constructor(
     public navCtrl: NavController,
@@ -23,15 +22,27 @@ export class CozinhaDetalhePage {
     public events: Events
   ) {
     this.itemPedido = navParams.data;
-
-    if (this.itemPedido.produto.adicional.length > 0) {
-      this.txtAdicio = "Adicionais";
-    }
   }
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad CozinhaDetalhePage");
   }
+
+  isUndefined(val:any):boolean{
+    return (typeof val === 'undefined');
+  }
+  
+  temAdicional():boolean{
+    if(!this.isUndefined(this.itemPedido.produto.adicional)){
+      for(let i=0; i < this.itemPedido.produto.adicional.length; i++){
+        if(this.itemPedido.produto.adicional[i].quantidade !== 0){
+          return true;
+        }
+      }
+      return false;
+    }
+  }
+
   recusar() {
     let alert = this.alertCtrl.create();
     alert.setTitle("Motivo do cancelamento");
