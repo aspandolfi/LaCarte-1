@@ -6,7 +6,13 @@
 
 <ion-content padding>
   <ion-card-content>
-    <div class="background">
+    <div>
+      <ion-card *ngIf="scannedCode">
+          <ion-card-content>
+            Result from Scan: {{ scannedCode }}
+          </ion-card-content>
+      </ion-card>
+      <button ion-button full icon-left (click)="scanCode()" color="danger"><ion-icon name="qr-scanner"></ion-icon>Scanner Code</button>
     </div>
     <br>
     <div id="codeInput">

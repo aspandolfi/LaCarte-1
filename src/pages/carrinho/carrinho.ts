@@ -63,6 +63,7 @@ export class CarrinhoPage {
     });
   }
 
+
   loadComanda() {
     this.comanda = new Comanda();
     this.comanda.pedido = new Array<ItemPedido>();
