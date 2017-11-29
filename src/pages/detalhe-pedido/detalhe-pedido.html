@@ -16,41 +16,63 @@
     <h2 style="text-align: center">{{itemPedido.produto.nome}}</h2>
     <p>{{itemPedido.produto.descricao}}</p>
   </div>
-  <hr>
+  <br>
 
-  <div class="caixaGenerica">
-    <form>
-      <div *ngFor="let item of itemPedido.produto.adicional">
-        <div *ngIf="item.quantidade !== 0; then addBlock else removeBlock"></div>
-        <ng-template no-lines #removeBlock></ng-template>
-        <ng-template #addBlock>
-          <h2 style="text-align: center">
-            Adicionais
-          </h2>
-          <ion-item no-lines>
-            <div style="display: flex;">
-              <div>
-                {{ item.nome }} (R$ {{ item.valor | number:'1.2-2' }})
+  <div *ngIf="temAdicional(); then addBlockAdicionaisStart"></div>
+  <ng-template #addBlockAdicionaisStart>
+    <div class="caixaGenerica">
+      <form>
+        <div *ngFor="let item of itemPedido.produto.adicional">
+          <div *ngIf="item.quantidade !== 0; then addBlockAdicionais"></div>
+          <ng-template #addBlockAdicionais>
+            <h2 style="text-align: center">
+              Adicionais
+            </h2>
+            <ion-item no-lines>
+              <div style="display: flex;">
+                <div>
+                  {{ item.nome }} (R$ {{ item.valor | number:'1.2-2' }})
+                </div>
+                <div style="margin-left: auto">
+                  (X{{item.quantidade}})
+                </div>
               </div>
-              <div style="margin-left: auto">
-                (X{{item.quantidade}})
-              </div>
-            </div>
-          </ion-item>
-        </ng-template>
+            </ion-item>
+          </ng-template>
+        </div>
+      </form>
+    </div>
+    <br>
+  </ng-template>
+  <div *ngIf="itemPedido.obs.length > 0; then addBlockObs"></div>
+  <ng-template #addBlockObs>
+    <div class="caixaGenerica">
+      OBS: {{itemPedido.obs}}
+    </div>
+    <br>
+  </ng-template>
+
+  <div *ngIf="!isUndefined(itemPedido.respostaCozinha); then addBlockStatus"></div>
+  <ng-template #addBlockStatus>
+    <div *ngIf="isNumber(itemPedido.respostaCozinha); then addBlockConfirmado else addBlockCancelado"></div>
+    <ng-template #addBlockConfirmado>
+      <div class="caixaGenerica">
+        Previsão de entrega: {{itemPedido.respostaCozinha}} minutos
       </div>
-      <ion-item>
-        <ion-textarea placeholder="Observacao" [(ngModel)]="itemPedido.obs" name="obs" rows="6" cols="30"></ion-textarea>
-      </ion-item>
-      <ion-item>
-        <div > {{itemPedido.respostaCozinha}} </div>
-      </ion-item>
-    </form>
-  </div>
+    </ng-template>
+    <ng-template #addBlockCancelado>
+      <div class="caixaGenerica">
+        {{itemPedido.respostaCozinha}}
+      </div>
+    </ng-template>
+  </ng-template>
 
   <h4 style="text-align: center;">TOTAL: R$ {{ itemPedido.valor | number:'1.2-2' }}</h4>
   <br>
-  <div align="center">
-      <button ion-button class="buttom" (click)="showConfirm()" >Cancelar Pedido</button>
+  <div *ngIf="itemPedido.status !== 1; then addBlockBotao"></div>
+  <ng-template #addBlockBotao>
+    <div align="center">
+      <button ion-button class="buttom" (click)="showConfirm()">Cancelar Pedido</button>
     </div>
+  </ng-template>
 </ion-content>
