@@ -1,9 +1,14 @@
+import { Notification } from 'rxjs/Rx';
+import { state } from '@angular/core/src/animation/dsl';
+import { Platform } from 'ionic-angular/es2015';
 import { ItemPedido } from "./../../class/ItemPedido";
 import { Produto } from "./../../class/produtos";
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams, Events } from "ionic-angular";
 import { Storage } from "@ionic/storage";
-import { AlertController } from "ionic-angular";
+import { AlertController} from "ionic-angular";
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { ComandaPage } from '../comanda/comanda';
 
 
 @IonicPage()
@@ -19,7 +24,10 @@ export class CozinhaDetalhePage {
     public navParams: NavParams,
     public storage: Storage,
     public alertCtrl: AlertController,
-    public events: Events
+    public events: Events,
+    private localNotification: LocalNotifications,
+    private plt: Platform
+
   ) {
     this.itemPedido = navParams.data;
   }
@@ -31,7 +39,7 @@ export class CozinhaDetalhePage {
   isUndefined(val:any):boolean{
     return (typeof val === 'undefined');
   }
-  
+
   temAdicional():boolean{
     if(!this.isUndefined(this.itemPedido.produto.adicional)){
       for(let i=0; i < this.itemPedido.produto.adicional.length; i++){
@@ -55,6 +63,7 @@ export class CozinhaDetalhePage {
       text: "OK",
       handler: data => {
         this.moveTo(2, data); //2 eh status de cancelado
+        this.scheduleNotification(); // Notificações Locais
       }
     });
     alert.present();
@@ -74,6 +83,7 @@ export class CozinhaDetalhePage {
       text: "OK",
       handler: data => {
         this.moveTo(1, data); //1 eh status de aceito
+        this.scheduleNotification(); // Notificações Locais
       }
     });
     alert.present();
@@ -84,4 +94,18 @@ export class CozinhaDetalhePage {
     this.events.publish('atualizarItemStatus', objeto);
     this.navCtrl.pop();
   }
+
+  scheduleNotification(){
+    this.localNotification.schedule({
+      id: 1,
+      title: 'Pedido Respondido',
+      text: 'Seu pedido foi respondido! Por favor verifique a comanda.',
+      data: { mydata: 'Minha mensagem oucuta é essa' },
+      at: new Date(new Date().getTime() + 5 * 1000)
+    });
+    this.navCtrl.setRoot(ComandaPage);
+  }
+
 }
+
+

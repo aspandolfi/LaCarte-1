@@ -31,9 +31,9 @@
             {{ item.nome }} (R$ {{ item.valor | number:'1.2-2' }})
           </div>
           <div style="margin-left: auto">
-            <ion-icon name="add-circle" class="addButtom" (click)="mudaQuantia(item, 1)"></ion-icon>
-            {{item.quantidade}}
             <ion-icon name="remove-circle" class="remButtom" (click)="mudaQuantia(item, -1)"></ion-icon>
+            {{item.quantidade}}
+            <ion-icon name="add-circle" class="addButtom" (click)="mudaQuantia(item, 1)"></ion-icon>
           </div>
         </div>
       </ion-item>
