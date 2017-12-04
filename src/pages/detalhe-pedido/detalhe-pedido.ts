@@ -36,6 +36,29 @@ export class DetalhePedidoPage {
     console.log("ionViewDidLoad DetalhePedidoPage");
   }
 
+  isUndefined(val:any):boolean{
+    return (typeof val === 'undefined');
+  }
+
+  isNumber(val: any):boolean {
+    if (val) {
+      return (!isNaN(Number(val)));
+    }else{
+      return false;
+    }
+  }
+
+  temAdicional():boolean{
+    if(!this.isUndefined(this.itemPedido.produto.adicional)){
+      for(let i=0; i < this.itemPedido.produto.adicional.length; i++){
+        if(this.itemPedido.produto.adicional[i].quantidade !== 0){
+          return true;
+        }
+      }
+      return false;
+    }
+  }
+
   showConfirm() {
     let confirm = this.alertCtrl.create({
       title: "Cancelamento",
