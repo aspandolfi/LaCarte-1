@@ -14,3 +14,29 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.menuButton, .menuBackground{
+    background-color: rgb(155, 10, 10) !important;
+}
+
+.menuButton, .menuBackground{
+    color: white;
+}
+
+.naoIgnoraEspaco{
+    white-space: pre;
+}
+
+.toolbar-background {
+    background-color: rgb(155, 10, 10);
+}
+
+.toolbar-title, ion-segment-button {
+  color: #fff !important;
+}
+
+ion-menu{
+    ion-content{
+        background-color:rgb(155, 10, 10) !important;
+    }
+}

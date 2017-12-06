@@ -25,7 +25,7 @@ export class MyApp {
 
   rootPage: any = "LoginPage";
 
-  pages: Array<{ title: string; component: any }>;
+  pages: Array<{ title: string; component: any, icon: string }>;
 
   constructor(
     public platform: Platform,
@@ -38,13 +38,13 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: "Logout", component: LoginPage }, //TODO: Fazer logout de verdade
-      { title: "Perfil", component: PerfilPage },
-      { title: "Cardapio", component: CardapioListPage },
-      { title: "Carrinho", component: CarrinhoPage },
-      { title: "Comanda", component: ComandaPage },
-      { title: "Cozinha", component: CozinhaPage },
-      { title: "Pedidos Prontos", component: PedidosProntosPage }
+      { title: "Logout", component: LoginPage, icon:"log-out" }, //TODO: Fazer logout de verdade
+      { title: "Perfil", component: PerfilPage, icon:"person" },
+      { title: "Cardapio", component: CardapioListPage, icon:"book" },
+      { title: "Carrinho", component: CarrinhoPage, icon:"cart" },
+      { title: "Comanda", component: ComandaPage, icon:"bookmarks" },
+      { title: "Cozinha", component: CozinhaPage, icon:"bonfire" }
+      //{ title: "Pedidos Prontos", component: PedidosProntosPage, icon:"time" }
     ];
   }
 
