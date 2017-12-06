@@ -10,7 +10,7 @@ import "rxjs/add/operator/map";
 
 export class RestProvider {
 
-  private apiUrl = "http://lacarte-api.azurewebsites.net/api/v1"; // link para acessa o banco de dados.
+  private apiUrl = "http://lacarte-api.herokuapp.com/api/v1"; // link para acessa o banco de dados.
 
   constructor(public http: HttpClient) {
     console.log("Hello RestProvider Provider");
@@ -50,15 +50,15 @@ export class RestProvider {
 
   // ==================================================
 
-  public getMesa(id: any) { // pegando mesa
-    return this.http.get(this.apiUrl + "/mesa/" + id).map(res => res);
+  public getMesa() { // pegando mesa
+    return this.http.get(this.apiUrl + "/mesa/").map(res => res);
     // .catch(error => console.log(error)
   }
 
   //=============== trabalhando com os itens do cardápio. =================
 
-  public getProduto(id: any) { // função que mostra os produtos no cardápio.
-    return this.http.get(this.apiUrl + "/prod/" + id).map(res => res);
+  public getProduto() { // função que mostra os produtos no cardápio.
+    return this.http.get(this.apiUrl + "/produto").map(res => res);
     // .catch(error => console.log(error)
   }
 

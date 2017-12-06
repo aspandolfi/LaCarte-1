@@ -37,6 +37,13 @@ export class MesaPage {
     this.mesaTeste.restaurante = 1;
 
     this.storage.set("mesa", this.mesaTeste);
+    this.getData();
+    // this.rest.getProduto().subscribe(data => {
+    //   console.log(data);
+    //   // localStorage.setItem("userData", JSON.stringify(data));
+    //   // let data1 = JSON.parse(localStorage.getItem("userData"));
+    //   // console.log(data1);
+    // })
   }
 
   Validar() {
@@ -50,7 +57,7 @@ export class MesaPage {
   }
 
   getData() {
-    this.rest.getMesa(123).subscribe(data => {
+    this.rest.getMesa().subscribe(data => {
       console.log(data);
       this.mesa = data;
       localStorage.setItem("mesaData", JSON.stringify(this.mesa));

@@ -1,3 +1,4 @@
+import { RestProvider } from '../../providers/rest/rest';
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { Cardapio2Page } from "../cardapio2/cardapio2";
@@ -29,12 +30,14 @@ export class CardapioListPage {
   private bebidas = [];
   private sobremesas = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public rest: RestProvider,
+    public storage: Storage
+  ) {
     this.initializeItems();
-    this.storage.get("mesa").then((data) => {
-      console.log("mesa:");
-      console.log(data);
-    });
+    this.getData();
   }
 
   initializeItems() {
@@ -91,6 +94,14 @@ export class CardapioListPage {
       if (this.produto[i].tipo == 2) this.bebidas.push(this.produto[i]);
       if (this.produto[i].tipo == 3) this.sobremesas.push(this.produto[i]);
     }
+  }
+
+  getData() {
+    this.rest.getProduto().subscribe(data => {
+      console.log(data);
+      localStorage.setItem("produtoData", JSON.stringify(data));
+      console.log(localStorage);
+    });
   }
 
   createStorageItem(keyName:string, keyValue:any){
