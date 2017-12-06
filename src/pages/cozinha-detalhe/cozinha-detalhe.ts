@@ -8,7 +8,7 @@ import { IonicPage, NavController, NavParams, Events } from "ionic-angular";
 import { Storage } from "@ionic/storage";
 import { AlertController} from "ionic-angular";
 import { LocalNotifications } from '@ionic-native/local-notifications';
-import { ComandaPage } from '../comanda/comanda';
+import { CozinhaPage } from '../cozinha/cozinha';
 
 
 @IonicPage()
@@ -103,7 +103,7 @@ export class CozinhaDetalhePage {
       data: { mydata: 'Minha mensagem oucuta é essa' },
       at: new Date(new Date().getTime() + 5 * 1000)
     });
-    this.navCtrl.setRoot(ComandaPage);
+    this.navCtrl.setRoot(CozinhaPage);
   }
 
 }

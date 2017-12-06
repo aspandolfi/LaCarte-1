@@ -22,12 +22,12 @@
   <ng-template #addBlockAdicionaisStart>
     <div class="caixaGenerica">
       <form>
+        <h2 style="text-align: center">
+          Adicionais
+        </h2>
         <div *ngFor="let item of itemPedido.produto.adicional">
           <div *ngIf="item.quantidade !== 0; then addBlockAdicionais"></div>
           <ng-template #addBlockAdicionais>
-            <h2 style="text-align: center">
-              Adicionais
-            </h2>
             <ion-item no-lines>
               <div style="display: flex;">
                 <div>
