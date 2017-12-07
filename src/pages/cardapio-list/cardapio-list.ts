@@ -63,9 +63,8 @@ export class CardapioListPage {
       this.produto = new Array<Produto>();
       for(let i = 0; i < data.length; i++){
         this.produto.push(new Produto);
+        this.produto[i].adicional = new Array<Adicional>();
         for(let j = 0; j < data[i].produtosAdicionais.length; j++){
-          this.produto[i].adicional = new Array<Adicional>();
-          this.produto[i].adicional.push(new Adicional)
           this.produto[i].adicional[j] = {
             id: data[i].produtosAdicionais[j].adicionais.id,
             nome: data[i].produtosAdicionais[j].adicionais.nome,
