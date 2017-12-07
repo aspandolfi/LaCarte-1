@@ -40,6 +40,13 @@
       </div>
       <br>
     </ng-template>
+    <div *ngIf="itemPedido.obs.length > 0; then addBlockObs"></div>
+    <ng-template #addBlockObs>
+      <div class="caixaGenerica">
+        OBS: {{itemPedido.obs}}
+      </div>
+      <br>
+    </ng-template>
     <button class="recusa" (click)="recusar()">
       <ion-icon item-end name="close" md="md-close" ios="ios-close" class="aceito"></ion-icon>
     </button>
