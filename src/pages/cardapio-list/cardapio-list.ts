@@ -98,7 +98,8 @@ export class CardapioListPage {
 
   getData() {
     this.rest.getProduto().subscribe(data => {
-      console.log(data);
+      let teste = data;
+      console.log(teste);
       localStorage.setItem("produtoData", JSON.stringify(data));
       console.log(localStorage);
     });

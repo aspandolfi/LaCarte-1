@@ -30,7 +30,7 @@
     "@ionic-native/status-bar": "3.12.1",
     "@ionic/storage": "2.0.1",
     "cordova-android": "6.4.0",
-    "cordova-plugin-advanced-http": "^1.8.1",
+    "cordova-plugin-advanced-http": "^1.9.0",
     "cordova-plugin-app-event": "^1.2.1",
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-console": "^1.1.0",

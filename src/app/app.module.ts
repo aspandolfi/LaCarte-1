@@ -58,7 +58,7 @@ import { Platform } from 'ionic-angular/es2015/platform/platform';
     DetalhePedidoPageModule,
     PedidosProntosPageModule,
     IonicStorageModule.forRoot(),
-    NgxQRCodeModule 
+    NgxQRCodeModule
   ],
 
   bootstrap: [IonicApp],
@@ -75,7 +75,7 @@ import { Platform } from 'ionic-angular/es2015/platform/platform';
     RestProvider,
     BarcodeScanner,
     Platform
-   
+
   ]
 })
 export class AppModule {}

@@ -4,7 +4,6 @@ import "rxjs/add/operator/do";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/map";
 // import 'rxjs/add/operator/';
-// ============================================= Comunicação com a API ==============================================
 
 @Injectable()
 
@@ -16,7 +15,7 @@ export class RestProvider {
     console.log("Hello RestProvider Provider");
   }
 
-  // =========================== trabalhando com os  usuarios ===========================
+  // =========================== usuarios ===========================
 
   public getUser(id: any) { // função que imprime o usuário na tela.
     return this.http.get(this.apiUrl + "/user/" + id).map(res => res);
@@ -48,14 +47,14 @@ export class RestProvider {
     });
   }
 
-  // ==================================================
+  // =========================== mesas ===========================
 
   public getMesa() { // pegando mesa
-    return this.http.get(this.apiUrl + "/mesa/").map(res => res);
+    return this.http.get(this.apiUrl + "/mesa").map(res => res);
     // .catch(error => console.log(error)
   }
 
-  //=============== trabalhando com os itens do cardápio. =================
+  // =========================== cardapios ===========================
 
   public getProduto() { // função que mostra os produtos no cardápio.
     return this.http.get(this.apiUrl + "/produto").map(res => res);
