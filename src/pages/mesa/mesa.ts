@@ -37,6 +37,7 @@ export class MesaPage {
     });
     this.loading.present();
     this.getAllMesas();
+
   }
 
   /**
