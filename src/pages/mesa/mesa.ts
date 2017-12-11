@@ -47,15 +47,15 @@ export class MesaPage {
     if (mesa.codigo != null) {
       this.navCtrl.setRoot(CardapioListPage);
     } else {
-      this.showAlert("Erro","Não foi possivel encontrar esta mesa.");
+      this.showAlert("Erro", "Não foi possivel encontrar esta mesa.");
     }
   }
 
   /**
    * retorna um array com todas as mesas do banco de dados
    */
-  public async getAllMesas():Promise<any>{
-    await this.rest.getMesa().subscribe((data:any) => {
+  public async getAllMesas(): Promise<any> {
+    await this.rest.getMesa().subscribe((data: any) => {
       this.mesaArray = data;
       console.log("mesaArray 1: ", this.mesaArray);
       this.loading.dismiss();
@@ -68,17 +68,17 @@ export class MesaPage {
    * @param codigo
    * @param listaDeMesas
    */
-  public getMesaByCode(codigo:any, listaDeMesas:Array<any>):Mesa{
+  public getMesaByCode(codigo: any, listaDeMesas: Array<any>): Mesa {
     let mesa = new Mesa;
     let i: number;
-    mesa = {codigo: null, numero: null, qrcode: null, restaurante: 1, usuario: null} //TODO: Restaurante dinamico
-    for(i = 0; i < listaDeMesas.length && listaDeMesas[i].qrcode != codigo; i++);
-    if(i < listaDeMesas.length){
+    mesa = { codigo: null, numero: null, qrcode: null, restaurante: 1, usuario: null } //TODO: Restaurante dinamico
+    for (i = 0; i < listaDeMesas.length && listaDeMesas[i].qrcode != codigo; i++);
+    if (i < listaDeMesas.length) {
       mesa.codigo = listaDeMesas[i].id;
       mesa.numero = listaDeMesas[i].numero;
       mesa.qrcode = listaDeMesas[i].qrcode;
     }
-    console.log("mesa: ",mesa);
+    console.log("mesa: ", mesa);
     return mesa;
   }
 
@@ -87,7 +87,7 @@ export class MesaPage {
    * @param titleArg
    * @param subTitleArg
    */
-  showAlert(titleArg:string, subTitleArg:string) {
+  showAlert(titleArg: string, subTitleArg: string) {
     let alert = this.alertCtrl.create({
       title: titleArg,
       subTitle: subTitleArg,
@@ -101,8 +101,8 @@ export class MesaPage {
     console.log("ionViewDidLoad MesaPage");
   }
 
-  scanCode(){
-    this.barcodeScanner.scan().then(barcodeData =>{
+  scanCode() {
+    this.barcodeScanner.scan().then(barcodeData => {
       this.scannedCode = barcodeData.text;
       this.mesaLogin.codigo = this.scannedCode;
       this.Validar();
