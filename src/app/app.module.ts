@@ -32,6 +32,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Platform } from 'ionic-angular/es2015/platform/platform';
+import { UserService } from '../services/user.service';
+import { Api } from '../providers/api/api';
 
 @NgModule({
   declarations: [
@@ -42,13 +44,13 @@ import { Platform } from 'ionic-angular/es2015/platform/platform';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     CadastPageModule,
-		PerfilPageModule,
-		LoginPageModule,
-		CardapioPageModule,
-		Cardapio2PageModule,
+    PerfilPageModule,
+    LoginPageModule,
+    CardapioPageModule,
+    Cardapio2PageModule,
     HttpClientModule,
-		EditarPageModule,
-		MesaPageModule,
+    EditarPageModule,
+    MesaPageModule,
     HttpModule,
     CarrinhoPageModule,
     CardapioListPageModule,
@@ -70,12 +72,13 @@ import { Platform } from 'ionic-angular/es2015/platform/platform';
     StatusBar,
     SplashScreen,
     LocalNotifications,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     Geolocation,
     RestProvider,
     BarcodeScanner,
-    Platform
-
+    Platform,
+    UserService,
+    Api
   ]
 })
-export class AppModule {}
+export class AppModule { }

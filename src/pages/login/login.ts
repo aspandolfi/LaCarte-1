@@ -1,15 +1,14 @@
 import { MesaPage } from '../mesa/mesa';
-import { PerfilPage } from "./../perfil/perfil";
 import { User } from "./../../class/User";
 import { Component } from "@angular/core";
 import { IonicPage, LoadingController, MenuController, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from "ionic-angular";
-import { RestProvider } from "../../providers/rest/rest";
 import { CadastPage } from "../cadast/cadast";
 import { CardapioListPage } from "../cardapio-list/cardapio-list";
 import { SplashScreen } from "@ionic-native/splash-screen";
-// import { SqliteServe } from '../../class/SqliteServe';
 import { Storage } from "@ionic/storage";
+import { ResponseData } from '../../class/ResponseData';
+import { UserService } from '../../services/user.service';
 
 @IonicPage()
 @Component({
@@ -17,31 +16,25 @@ import { Storage } from "@ionic/storage";
   templateUrl: "login.html"
 })
 export class LoginPage {
-  public user = {};
-  public userDetails: any;
-  public responseData: any;
-  public usuarioLogin = new User();
-  public data1: any;
-  public userData = { name: "", email: "", telefone: "", cpf: "", senha: "" }; // apenas pra teste
-  public usuario = new User(); //TODO: Eh, checa essa bagunça toda de variáveis
 
+  public usuarioLogin = new User();
 
   constructor(
     public loadingCtrl: LoadingController,
     public navCtrl: NavController,
     public navParams: NavParams,
-    public rest: RestProvider,
     public alertCtrl: AlertController,
     private menu: MenuController,
     public splashScreen: SplashScreen,
-    public storage: Storage
+    public storage: Storage,
+    private service: UserService
   ) {
     this.splashScreen.show();
+    this.storage.clear(); //TODO: só pra teste
+    this.storage.set("carrinho", []);
+    this.splashScreen.hide();
     this.usuarioLogin.email = "";
     this.usuarioLogin.senha = "";
-    this.usuario = {id: 1, nome: "Fulano", email: "fulano@gmail.com", telefone: "99990000", cpf: 12345678901, senha: "leds123", avatar: "https://i.imgur.com/EnRkN4K.jpg"};
-    this.storage.clear(); //TODO: remover isso, só pra teste
-    this.storage.set("carrinho",[]);
   }
 
   presentModal() {
@@ -63,55 +56,51 @@ export class LoginPage {
   }
 
   Validar() {
-    //verifica se o usuario se encontra no banco.
     let loading = this.loadingCtrl.create({
-      content: "Fetching content...",
+      content: "Login...",
       dismissOnPageChange: true,
       spinner: "dots"
     });
     loading.present();
-    this.splashScreen.hide(); //TODO: temporário, modificar(?)
-    this.navCtrl.setRoot(MesaPage, this.usuario);
-
-    // if (this.usuarioLogin.email === "" || this.usuarioLogin.senha === "") {
-    //   loading.dismiss();
-    //   this.showAlert();
-    // } else {
-    //   this.rest.getUserEmail(this.usuarioLogin.email).subscribe(data => {
-    //     this.user = data;
-    //     localStorage.setItem("userData", JSON.stringify(this.user));
-    //     this.data1 = JSON.parse(localStorage.getItem("userData"));
-    //     loading.dismiss();
-    //     if (
-    //       this.usuarioLogin.email === this.data1.email &&
-    //       this.usuarioLogin.senha === this.data1.senha
-    //     ) {
-    //       this.showAlertOn();
-    //       this.navCtrl.setRoot(PerfilPage);
-    //     } else {
-    //       this.showAlert();
-    //     }
-    //   }, err => {
-    //     loading.dismiss();
-    //     this.showAlert();
-    //   });
-    // }
+    //verifica se o usuario se encontra no banco.
+    console.log(this.usuarioLogin.email)
+    console.log(this.usuarioLogin.senha)
+    if(this.usuarioLogin.email === "" || this.usuarioLogin.senha === ""){
+      console.log("caminho 1");
+      loading.dismiss();
+      this.showAlertGenerico("Erro ao logar", "Por favor, preencha ambos os campos.");
+    }else{
+      this.service.doLogin({ email: this.usuarioLogin.email, senha: this.usuarioLogin.senha })
+      .subscribe((response: ResponseData) => {
+        if (!response.status) {
+          let mensagem;
+          response.mensagens.forEach(val => mensagem += val);
+          this.showAlert(mensagem);
+          loading.dismiss();
+        }
+        else {
+          this.storage.set("_token", response.objeto);
+          this.navCtrl.setRoot(MesaPage);
+        }
+      });
+    }
   }
 
-  getData() {
-    this.rest.getUser(1).subscribe(data => {
-      // console.log(data);
-      this.user = data;
-      localStorage.setItem("userData", JSON.stringify(this.user));
-      // console.log(localStorage);
-    });
-  }
-
-  showAlert() {
+  showAlert(mensagem?: string) {
     // alerta para erro de login
     let alert = this.alertCtrl.create({
       title: "Usuário não encontrado",
-      subTitle: "Não foi possível logar, login ou senha incorreto!",
+      subTitle: (mensagem ? mensagem : "Não foi possível logar, login ou senha incorreto!"),
+      buttons: ["OK"]
+    });
+    alert.present();
+  }
+
+  showAlertGenerico(varT, varS) {
+    // alerta para erro de login
+    let alert = this.alertCtrl.create({
+      title: varT,
+      subTitle: (varS),
       buttons: ["OK"]
     });
     alert.present();

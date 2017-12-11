@@ -4,6 +4,6 @@ export class User {
 	email: string;
 	telefone: string;
 	cpf: number;
-	senha: string; //TODO: Criptografar senha para auto login(?)
+	senha: string;
 	avatar: string;
 }

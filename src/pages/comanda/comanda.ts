@@ -16,6 +16,7 @@ import { ItemPedido } from '../../class/ItemPedido';
 export class ComandaPage {
   public comanda: Comanda = new Comanda;
   public cozinha: Comanda = new Comanda;
+  public total: number;
 
   constructor(
     public navCtrl: NavController,
@@ -23,7 +24,9 @@ export class ComandaPage {
     public storage: Storage,
     public events: Events
   ) {
-    this.loadComanda();
+    this.loadComanda().then(() => {
+      this.calcularTotal();
+    });
 
     events.subscribe('apagarItemComanda',(data: ItemPedido) => {
       this.removeItem(data);
@@ -45,11 +48,19 @@ export class ComandaPage {
     );
   }
 
+  calcularTotal(){
+    this.total = 0;
+    for(let i = 0; i < this.comanda.pedido.length; i++){
+      this.total += this.comanda.pedido[i].valor;
+    }
+  }
+
   public removeItem(item: any) {
     this.comanda.pedido = this.comanda.pedido.filter(itemNaLista => {
       return itemNaLista.id !== item.id;
     });
     this.storage.set("comanda", this.comanda);
+    this.calcularTotal();
   }
 
   returnStatusIcon(statusNum:number, deviceNum:number):string{

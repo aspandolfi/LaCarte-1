@@ -24,6 +24,7 @@ import { Comanda } from "../../class/ItemComanda";
 export class CarrinhoPage {
   public carrinho: Array<ItemPedido> = [];
   public comanda: Comanda;
+  public total: number;
 
   constructor(
     public navCtrl: NavController,
@@ -36,7 +37,9 @@ export class CarrinhoPage {
     if (Object.keys(navParams.data).length !== 0) {
       this.carrinho.push(navParams.data);
     }
-    this.loadCarrinho();
+    this.loadCarrinho().then(() => {
+      this.calcularTotal();
+    });
 
     events.subscribe('apagarItemCarrinho', (data: ItemPedido) => {
       this.removeItem(data);
@@ -53,9 +56,9 @@ export class CarrinhoPage {
         this.storage.get("lastCarrinhoId").then((dataid) => {
           this.carrinho[0].id = 1;
           if(dataid){
-            this.carrinho[0].id = dataid + 1; // TODO: pegar id pronto do banco?
+            this.carrinho[0].id = dataid + 1; // TODO: pegar id pronto?
           }
-          this.storage.set("lastCarrinhoId", this.carrinho[0].id)
+          this.storage.set("lastCarrinhoId", this.carrinho[0].id);
           this.storage.set("carrinho", this.carrinho);
           this.loadComanda();
         });
@@ -63,6 +66,12 @@ export class CarrinhoPage {
     });
   }
 
+  calcularTotal(){
+    this.total = 0;
+    for(let i = 0; i < this.carrinho.length; i++){
+      this.total += this.carrinho[i].valor;
+    }
+  }
 
   loadComanda() {
     this.comanda = new Comanda();
@@ -104,6 +113,7 @@ export class CarrinhoPage {
     });
     this.storage.set("carrinho", this.carrinho);
     this.loadComanda();
+    this.calcularTotal();
   }
 
   ionViewDidLoad() {

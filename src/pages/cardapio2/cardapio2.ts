@@ -22,10 +22,13 @@ export class Cardapio2Page {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
     this.storage.get("produto")
-      .then((data)=>{
+      .then((data:Array<Produto>)=>{
         let id_do_produto = navParams.data;
-        this.produto = data[(id_do_produto)-1]; //TODO: Melhorar essa busca, esta passível de erro
-        
+        data = data.filter(item => {
+          return item.id === id_do_produto;
+        });
+        this.produto = data[0]
+
         this.itemPedido.produto = this.produto;
         this.itemPedido.valor = this.produto.valor;
         this.itemPedido.obs = "";
