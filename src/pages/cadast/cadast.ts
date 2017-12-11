@@ -1,9 +1,11 @@
-import { LoginPage } from './../login/login';
 import { Component } from "@angular/core";
 import { Validators, FormBuilder, FormGroup } from "@angular/forms";
-import { IonicPage, NavController } from "ionic-angular";
+import { IonicPage, NavController, AlertController, LoadingController } from "ionic-angular";
 import { User } from "./../../class/User";
-import { RestProvider } from "./../../providers/rest/rest";
+import { MesaPage } from '../mesa/mesa';
+import { UserService } from "../../services/user.service";
+import { ResponseData } from "../../class/ResponseData";
+import { Storage } from "@ionic/storage";
 
 @IonicPage()
 @Component({
@@ -13,13 +15,15 @@ import { RestProvider } from "./../../providers/rest/rest";
 export class CadastPage {
   private formCadastro: FormGroup;
 
-  // usuarios = {};
   public user = new User();
 
   constructor(
     public navCtrl: NavController,
-    private rest: RestProvider,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private service: UserService,
+    private storage: Storage,
+    private alertCtrl: AlertController,
+    private loadingCtrl: LoadingController,
   ) {
     this.formCadastro = this.formBuilder.group({
       nome: ["", Validators.required],
@@ -34,9 +38,36 @@ export class CadastPage {
     console.log("ionViewDidLoad CadastPage");
   }
 
+  showAlert(mensagem?: string) {
+    // alerta para erro de login
+    let alert = this.alertCtrl.create({
+      title: "Erro ao cadastrar.",
+      subTitle: (mensagem ? mensagem : "Não foi possível cadastrar o usuário!"),
+      buttons: ["OK"]
+    });
+    alert.present();
+  }
+
   public salvar() {
-    console.log(this.user.nome);
-    this.rest.addUser(this.user);
-    this.navCtrl.push(LoginPage);
+    let loading = this.loadingCtrl.create({
+      content: "Salvando...",
+      dismissOnPageChange: true,
+      spinner: "dots"
+    });
+    loading.present();
+
+    this.service.salvar(this.user)
+      .subscribe((data: ResponseData) => {
+        if (data.status) {
+          this.storage.set("_token", data.objeto);
+          this.navCtrl.push(MesaPage);
+        }
+        else {
+          let mensagem;
+          data.mensagens.forEach(val => mensagem += val);
+          loading.dismiss();
+          this.showAlert(mensagem);
+        }
+      });
   }
 }
