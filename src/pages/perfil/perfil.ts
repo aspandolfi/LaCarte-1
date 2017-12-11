@@ -19,9 +19,10 @@ export class PerfilPage {
     public alertCtrl: AlertController,
     public storage: Storage
   ) {
-    this.storage.get("mesa").then((data:Mesa) => {
-      this.user = data.usuario;
-    });
+    //this.storage.get("mesa").then((data:Mesa) => {
+    //  this.user = data.usuario;
+    //});
+    this.user = {avatar: "https://i.imgur.com/EnRkN4K.jpg", telefone: "", senha: "", nome: "", id: 0, email: "", cpf: 100000}
 	}
 
   editarPerfil(){ // TODO
@@ -29,7 +30,17 @@ export class PerfilPage {
   }
 
   excluirPerfil(){    // TODO: Função para excluir o usuario
-    console.log("Excluir perfil");
+    this.showAlert("","Essa opção estará disponível em breve!");
+  }
+
+  showAlert(varT, varS) {
+    // alerta para erro de login
+    let alert = this.alertCtrl.create({
+      title: varT,
+      subTitle: (varS),
+      buttons: ["OK"]
+    });
+    alert.present();
   }
 
   ionViewDidLoad() {

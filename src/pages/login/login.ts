@@ -30,9 +30,11 @@ export class LoginPage {
     private service: UserService
   ) {
     this.splashScreen.show();
-    this.storage.clear(); //TODO: remover isso, só pra teste
+    this.storage.clear(); //TODO: só pra teste
     this.storage.set("carrinho", []);
     this.splashScreen.hide();
+    this.usuarioLogin.email = "";
+    this.usuarioLogin.senha = "";
   }
 
   presentModal() {
@@ -61,7 +63,14 @@ export class LoginPage {
     });
     loading.present();
     //verifica se o usuario se encontra no banco.
-    this.service.doLogin({ email: this.usuarioLogin.email, senha: this.usuarioLogin.senha })
+    console.log(this.usuarioLogin.email)
+    console.log(this.usuarioLogin.senha)
+    if(this.usuarioLogin.email === "" || this.usuarioLogin.senha === ""){
+      console.log("caminho 1");
+      loading.dismiss();
+      this.showAlertGenerico("Erro ao logar", "Por favor, preencha ambos os campos.");
+    }else{
+      this.service.doLogin({ email: this.usuarioLogin.email, senha: this.usuarioLogin.senha })
       .subscribe((response: ResponseData) => {
         if (!response.status) {
           let mensagem;
@@ -74,6 +83,7 @@ export class LoginPage {
           this.navCtrl.setRoot(MesaPage);
         }
       });
+    }
   }
 
   showAlert(mensagem?: string) {
@@ -81,6 +91,16 @@ export class LoginPage {
     let alert = this.alertCtrl.create({
       title: "Usuário não encontrado",
       subTitle: (mensagem ? mensagem : "Não foi possível logar, login ou senha incorreto!"),
+      buttons: ["OK"]
+    });
+    alert.present();
+  }
+
+  showAlertGenerico(varT, varS) {
+    // alerta para erro de login
+    let alert = this.alertCtrl.create({
+      title: varT,
+      subTitle: (varS),
       buttons: ["OK"]
     });
     alert.present();
