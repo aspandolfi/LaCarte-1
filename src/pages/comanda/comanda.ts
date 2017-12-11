@@ -51,7 +51,9 @@ export class ComandaPage {
   calcularTotal(){
     this.total = 0;
     for(let i = 0; i < this.comanda.pedido.length; i++){
-      this.total += this.comanda.pedido[i].valor;
+      if(this.comanda.pedido[i].status !== 2){
+        this.total += this.comanda.pedido[i].valor;
+      }
     }
   }
 

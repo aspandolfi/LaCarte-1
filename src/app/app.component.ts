@@ -39,7 +39,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: "Logout", component: LoginPage, icon:"log-out" }, //TODO: Fazer logout de verdade
-      { title: "Perfil", component: PerfilPage, icon:"person" },
+      //{ title: "Perfil", component: PerfilPage, icon:"person" },
       { title: "Cardapio", component: CardapioListPage, icon:"book" },
       { title: "Carrinho", component: CarrinhoPage, icon:"cart" },
       { title: "Comanda", component: ComandaPage, icon:"bookmarks" },
